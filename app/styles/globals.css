@@ -2,19 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-bg-color: #006ada;
+  --main-color: #12121c;
+  --secondary-bg-color: #222233;
+  --secondary-text-color: #88888d;
+  --lime-color: #57efb4;
+}
+
 html,
 body,
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body,
 html,
 #__next {
-  @apply h-full;
+  @apply min-h-screen min-w-fit;
+}
+
+.li_padding {
+  @apply pt-5 pb-3;
+}
+
+body {
+  @apply bg-[var(--main-color)] text-white;
 }
 
 #__next {
@@ -23,9 +39,4 @@ html,
 
 main {
   @apply flex-grow;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }

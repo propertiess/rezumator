@@ -20,7 +20,9 @@ const Layout: FC<PropsWithChildren<Props>> = ({
         <meta name='description' content={description} />
       </Head>
       <Header />
-      <main>{children}</main>
+      <main>
+        <div className='container mx-auto'>{children}</div>
+      </main>
       <Footer />
     </>
   );

@@ -1,0 +1,17 @@
+.wrapper {
+  @apply py-3 px-6 rounded-lg text-[16px] font-semibold shadow;
+}
+
+.primary {
+  @apply bg-[var(--primary-bg-color)];
+}
+
+.secondary {
+  @apply bg-[var(--secondary-bg-color)];
+}
+
+.primary,
+.secondary {
+  @apply opacity-90 hover:opacity-100 active:opacity-100;
+  transition: opacity 0.3s ease;
+}

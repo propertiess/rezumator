@@ -4,6 +4,6 @@ import { store } from '@/store';
 
 export const wrapperProvider = ({
   children
-}: PropsWithChildren<{}>): JSX.Element => {
+}: PropsWithChildren): JSX.Element => {
   return <Provider store={store}>{children}</Provider>;
 };

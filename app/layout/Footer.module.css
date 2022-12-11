@@ -1,0 +1,26 @@
+.footer {
+  @apply mt-auto;
+}
+
+.footer_wrapper {
+  @apply bg-[var(--secondary-bg-color)] mt-10;
+}
+
+.wrapper {
+  @apply p-5;
+}
+
+.content {
+  @apply flex flex-col items-center;
+}
+
+.text {
+  font-family: 'Sora', sans-serif;
+  @apply text-[var(--secondary-text-color)] text-[14px];
+}
+
+@media (min-width: 768px) {
+  .text {
+    @apply text-[16px];
+  }
+}
