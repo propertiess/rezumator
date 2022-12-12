@@ -1,5 +1,3 @@
-import { AppDispatch, AppStore, RootState, persistor, wrapper } from './store';
-import { store } from './store';
-
-export { persistor, wrapper, store };
-export type { AppDispatch, RootState, AppStore };
+export * from './store';
+export * from './hooks/useAppDispatch';
+export * from './hooks/useAppSelector';
