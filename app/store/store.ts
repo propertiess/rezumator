@@ -2,8 +2,11 @@ import { createWrapper } from 'next-redux-wrapper';
 import { configureStore } from '@reduxjs/toolkit';
 import { PreloadedState, Store, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+import { rezumatorSlice } from './slices/rezumator';
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  rezumator: rezumatorSlice.reducer
+});
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
   return configureStore({
