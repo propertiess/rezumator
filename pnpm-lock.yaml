@@ -26,10 +26,10 @@ specifiers:
   prettier: ^2.7.1
   react: 18.2.0
   react-dom: 18.2.0
+  react-hook-form: ^7.40.0
   react-redux: ^8.0.4
   react-transition-group: ^4.4.5
   redux: ^4.2.0
-  redux-persist: ^6.0.0
   redux-thunk: ^2.4.1
   tailwindcss: ^3.1.8
   typescript: 4.8.4
@@ -41,10 +41,10 @@ dependencies:
   next-redux-wrapper: 8.0.0_wnml2u2rjvrq3plu2g7enler3e
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-hook-form: 7.40.0_react@18.2.0
   react-redux: 8.0.4_yfr4m6wk75wdra335rld4tkrbu
   react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
   redux: 4.2.0
-  redux-persist: 6.0.0_react@18.2.0+redux@4.2.0
   redux-thunk: 2.4.1_redux@4.2.0
 
 devDependencies:
@@ -4305,6 +4305,15 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
+  /react-hook-form/7.40.0_react@18.2.0:
+    resolution: {integrity: sha512-0rokdxMPJs0k9bvFtY6dbcSydyNhnZNXCR49jgDr/aR03FDHFOK6gfh8ccqB3fl696Mk7lqh04xdm+agqWXKSw==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -4389,19 +4398,6 @@ packages:
       indent-string: 4.0.0
       strip-indent: 3.0.0
     dev: true
-
-  /redux-persist/6.0.0_react@18.2.0+redux@4.2.0:
-    resolution: {integrity: sha512-71LLMbUq2r02ng2We9S215LtPu3fY0KgaGE0k8WRgl6RkqxtGfl7HUozz1Dftwsb0D/5mZ8dwAaPbtnzfvbEwQ==}
-    peerDependencies:
-      react: '>=16'
-      redux: '>4.0.0'
-    peerDependenciesMeta:
-      react:
-        optional: true
-    dependencies:
-      react: 18.2.0
-      redux: 4.2.0
-    dev: false
 
   /redux-thunk/2.4.1_redux@4.2.0:
     resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
