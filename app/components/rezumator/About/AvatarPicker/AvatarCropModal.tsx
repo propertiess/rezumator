@@ -33,6 +33,7 @@ const AvatarCropModal: FC<Props> = ({ src, open, close, onImageChange }) => {
         <h5>Обрезать изображение</h5>
         <AvatarCrop src={src} onPreviewChange={src => setPreview(src)} />
         <div className={styles.btn_wrapper}>
+          <Button onClick={close}>Отменить</Button>
           <Button
             onClick={() => {
               onImageChange(preview ?? '');
@@ -41,7 +42,6 @@ const AvatarCropModal: FC<Props> = ({ src, open, close, onImageChange }) => {
           >
             Сохранить
           </Button>
-          <Button onClick={close}>Отменить</Button>
         </div>
       </div>
     </ModalNoSSR>

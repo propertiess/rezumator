@@ -14,7 +14,7 @@ export const RezumatorScreen: FC = () => {
 
         <Button
           disabled={errors.rezumator?.message ? true : false}
-          className='mt-5 text-center'
+          className='flex mt-5 ml-auto text-center'
           type='submit'
         >
           Предпросмотр

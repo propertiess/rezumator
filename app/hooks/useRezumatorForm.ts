@@ -21,7 +21,15 @@ export const useRezumatorForm = () => {
   useSaveRezumatorToStorage({ rezumator }, setValue, getValues);
 
   const onSubmit: SubmitHandler<{ rezumator: RezumatorState }> = data => {
-    setRezumator(data.rezumator);
+    const newRezumator = {
+      ...data.rezumator,
+      aboutInfo: {
+        ...data.rezumator.aboutInfo,
+        avatar: rezumator.aboutInfo.avatar
+      }
+    };
+
+    setRezumator(newRezumator);
   };
 
   return {

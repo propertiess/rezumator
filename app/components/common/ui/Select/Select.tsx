@@ -8,9 +8,13 @@ import {
 } from 'react-hook-form';
 import styles from './Select.module.css';
 
+export interface SelectOptions {
+  label: string;
+  value: string;
+}
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   className?: string;
-  options?: { label: string; value: string }[];
+  options?: SelectOptions[];
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<FieldValues>>;
 }
 

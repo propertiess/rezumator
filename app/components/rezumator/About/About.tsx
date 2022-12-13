@@ -14,6 +14,7 @@ import { useActions } from '@/store/hooks/useActions';
 import { AboutInfoState, RezumatorState } from '@/store/slices/rezumator';
 import styles from './About.module.css';
 import { AvatarPicker } from './AvatarPicker';
+import { currencies, phoneCodes } from './about.data';
 
 interface Props {
   register: UseFormRegister<{
@@ -66,7 +67,7 @@ export const About: FC<Props> = ({ register, errors }) => {
         <Label label='Телефон:'>
           <span className='flex flex-grow gap-1'>
             <Select
-              options={[{ value: '+ 7', label: '+ 7' }]}
+              options={phoneCodes}
               {...register('rezumator.aboutInfo.phoneNumber.code')}
             />
             <Input
@@ -74,7 +75,9 @@ export const About: FC<Props> = ({ register, errors }) => {
               error={errors?.phoneNumber}
               placeholder='(000) 000 00 00'
               {...register('rezumator.aboutInfo.phoneNumber.phone', {
-                required: true
+                required: true,
+                maxLength: 10,
+                minLength: 10
               })}
             />
           </span>
@@ -86,16 +89,17 @@ export const About: FC<Props> = ({ register, errors }) => {
               {...register('rezumator.aboutInfo.salary.amountOfMoney')}
             />
             <Select
-              options={[
-                { value: '₽', label: '₽' },
-                { value: '$', label: '$' }
-              ]}
+              options={currencies}
               {...register('rezumator.aboutInfo.salary.symbolOfMoney')}
             />
           </span>
         </Label>
         <Label label='Должность:'>
-          <Input {...register('rezumator.aboutInfo.profession')} />
+          <Input
+            {...register('rezumator.aboutInfo.profession', {
+              required: true
+            })}
+          />
         </Label>
       </div>
       <div className={styles.col + ' ' + styles.middle_col}>
