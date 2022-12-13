@@ -16,11 +16,5 @@
 
 .text {
   font-family: 'Sora', sans-serif;
-  @apply text-[var(--secondary-text-color)] text-[14px];
-}
-
-@media (min-width: 768px) {
-  .text {
-    @apply text-[16px];
-  }
+  @apply text-[var(--secondary-text-color)] text-[14px] md:text-[16px];
 }

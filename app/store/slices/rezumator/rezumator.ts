@@ -77,6 +77,9 @@ export const rezumatorSlice = createSlice({
   reducers: {
     setRezumator: (state, action: PayloadAction<RezumatorState>) => {
       return (state = action.payload);
+    },
+    setAvatar: (state, action: PayloadAction<string>) => {
+      state.aboutInfo.avatar = action.payload;
     }
   }
 });

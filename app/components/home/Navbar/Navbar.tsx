@@ -15,7 +15,7 @@ export const Navbar: FC<Props> = ({ ...rest }) => {
         {links.map(link => (
           <NavItem key={link.title} {...link} />
         ))}
-        <li>
+        <li className='li_padding'>
           <A href='/login'>
             <Button color={AVAILABLE_COLOR.secondary}>Войти</Button>
           </A>

@@ -1,5 +1,5 @@
 .wrapper {
-  @apply block;
+  @apply block md:hidden;
 }
 
 .burger_icon {
@@ -22,10 +22,4 @@
 .burger_menu_exit_active {
   @apply translate-x-full opacity-0;
   transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-@media (min-width: 768px) {
-  .wrapper {
-    @apply hidden;
-  }
 }

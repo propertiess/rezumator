@@ -1,18 +1,37 @@
 import { FC, InputHTMLAttributes, forwardRef } from 'react';
 import classNames from 'classnames';
+import {
+  FieldError,
+  FieldErrorsImpl,
+  FieldValues,
+  Merge
+} from 'react-hook-form';
 import styles from './Input.module.css';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
+  error?: FieldError | Merge<FieldError, FieldErrorsImpl<FieldValues>>;
 }
 
 const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(function Input(
-  { className, ...rest },
+  { className, error, type, ...rest },
   ref
 ) {
-  const style = classNames(styles.wrapper, className);
+  const style = classNames(className, {
+    [styles.wrapper]: type !== 'checkbox',
+    [styles.error]: error
+  });
 
-  return <input className={style} ref={ref} {...rest} />;
+  if (type === 'file') {
+    return (
+      <>
+        <input type={type} hidden />
+        <input />
+      </>
+    );
+  }
+
+  return <input className={style} ref={ref} type={type} {...rest} />;
 });
 
 export { Input };

@@ -1,5 +1,5 @@
 .wrapper {
-  @apply hidden;
+  @apply hidden md:block;
 }
 
 .list {
@@ -13,10 +13,4 @@
 
 .active {
   @apply opacity-100;
-}
-
-@media (min-width: 768px) {
-  .wrapper {
-    @apply block;
-  }
 }

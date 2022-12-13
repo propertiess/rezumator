@@ -1,5 +1,7 @@
 .list {
-  @apply flex flex-wrap justify-center mt-14 gap-5;
+  @apply flex flex-wrap justify-center 
+  mt-14 gap-5
+  md:justify-start md:mt-24;
 }
 
 .item {
@@ -32,10 +34,4 @@
 
 .lime {
   @apply bg-[var(--lime-color)];
-}
-
-@media (min-width: 768px) {
-  .list {
-    @apply justify-start mt-24;
-  }
 }

@@ -1,6 +1,5 @@
 import { FC } from 'react';
-import { CSSTransition } from 'react-transition-group';
-import { Modal } from '@/components/common/Modal';
+import { ModalNoSSR } from '@/components/common/Modal';
 import { NavItem } from '../Navbar/NavItem';
 import { links } from '../Navbar/links.data';
 import styles from './Burger.module.css';
@@ -18,22 +17,21 @@ const classNames = {
 
 const BurgerMenu: FC<Props> = ({ open, close }) => {
   return (
-    <CSSTransition
-      in={open}
-      timeout={300}
-      classNames={classNames}
-      mountOnEnter
-      unmountOnExit
+    <ModalNoSSR
+      className='bg-[var(--main-color)]'
+      timeoutContent={300}
+      timeoutModal={300}
+      modalClassNames={classNames}
+      trigger={open}
+      close={close}
     >
-      <Modal close={close}>
-        <ul className='p-3' onClick={e => e.stopPropagation()}>
-          {links.map(link => (
-            <NavItem key={link.href} {...link} />
-          ))}
-          <NavItem href='/login' title='Войти' />
-        </ul>
-      </Modal>
-    </CSSTransition>
+      <ul className='p-3'>
+        {links.map(link => (
+          <NavItem key={link.href} {...link} />
+        ))}
+        <NavItem href='/login' title='Войти' />
+      </ul>
+    </ModalNoSSR>
   );
 };
 

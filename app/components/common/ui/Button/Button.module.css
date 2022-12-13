@@ -1,17 +1,22 @@
 .wrapper {
-  @apply py-3 px-6 rounded-lg text-[16px] font-semibold shadow;
+  @apply py-3 px-6 rounded-lg text-[16px] font-semibold shadow 
+  focus:outline-0;
 }
 
 .primary {
-  @apply bg-[var(--primary-bg-color)];
+  @apply bg-[var(--primary-bg-color)]
+  focus:shadow focus:shadow-[var(--primary-bg-color)]
+  hover:shadow hover:shadow-[var(--primary-bg-color)];
 }
 
 .secondary {
-  @apply bg-[var(--secondary-bg-color)];
+  @apply bg-[var(--secondary-bg-color)]
+  focus:shadow focus:shadow-[var(--secondary-bg-color)]
+  hover:shadow hover:shadow-[var(--secondary-bg-color)];
 }
 
 .primary,
 .secondary {
   @apply opacity-90 hover:opacity-100 active:opacity-100;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }

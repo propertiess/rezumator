@@ -1,0 +1,33 @@
+.modal {
+  @apply flex justify-center items-center bg-black bg-opacity-90;
+}
+
+.content {
+  @apply flex flex-col bg-[var(--secondary-bg-color)] 
+  min-w-[200px]
+  sm:min-w-[400px]
+  md:min-w-[768px]
+  p-5 rounded-lg gap-5 max-h-fit overflow-hidden;
+}
+
+.content div:first-child {
+  @apply mx-auto;
+}
+
+.btn_wrapper {
+  @apply flex gap-3 justify-end;
+}
+
+.content_enter {
+  @apply opacity-0 scale-0 translate-x-4 -translate-y-0.5;
+}
+
+.content_enter_active {
+  @apply opacity-100 scale-100;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.content_exit_active {
+  @apply -translate-y-0.5 scale-0 opacity-0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}

@@ -7,11 +7,17 @@ import { useSaveRezumatorToStorage } from './useSaveRezumatorToStorage';
 export const useRezumatorForm = () => {
   const rezumator = useAppSelector(state => state.rezumator);
 
-  const { register, handleSubmit, setValue, getValues } = useForm<{
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    getValues,
+    formState: { errors }
+  } = useForm<{
     rezumator: RezumatorState;
   }>({ mode: 'onChange', defaultValues: { rezumator } });
-  const { setRezumator } = useActions();
 
+  const { setRezumator } = useActions();
   useSaveRezumatorToStorage({ rezumator }, setValue, getValues);
 
   const onSubmit: SubmitHandler<{ rezumator: RezumatorState }> = data => {
@@ -20,6 +26,7 @@ export const useRezumatorForm = () => {
 
   return {
     register,
+    errors,
     onSubmit: handleSubmit(onSubmit)
   };
 };

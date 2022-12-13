@@ -18,7 +18,7 @@ export const Hero: FC<Props> = ({ ...rest }) => {
         Создай профессиональное резюме всего за 7 минут.
       </p>
       <A href='/rezumator'>
-        <Button color={AVAILABLE_COLOR.primary} className={styles.btn}>
+        <Button className={styles.btn}>
           Создать резюме
         </Button>
       </A>

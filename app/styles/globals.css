@@ -28,6 +28,10 @@ html,
 .li_padding {
   @apply pt-5 pb-3;
 }
+li,
+a {
+  @apply focus:outline-0;
+}
 
 body {
   @apply bg-[var(--main-color)] text-white;

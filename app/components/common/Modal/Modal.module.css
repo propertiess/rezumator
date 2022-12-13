@@ -1,3 +1,17 @@
-.modal {
-  @apply fixed top-0 left-0 w-full h-full bg-[var(--main-color)];
+.backdrop {
+  @apply fixed top-0 left-0 w-full h-full;
+}
+
+.modal_enter {
+  @apply opacity-0;
+}
+
+.modal_enter_active {
+  @apply opacity-100;
+  transition: opacity 0.3s ease;
+}
+
+.modal_exit_active {
+  @apply opacity-0;
+  transition: opacity 0.3s ease;
 }

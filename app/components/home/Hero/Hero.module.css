@@ -1,8 +1,8 @@
 .wrapper {
-  @apply mt-12 px-2;
+  @apply px-5 mt-12 md:mt-28 sm:px-2;
 }
 .wrapper h1 {
-  @apply capitalize text-[40px] font-semibold;
+  @apply capitalize text-[40px] md:text-[72px] font-semibold;
 }
 .dark,
 .desc {
@@ -10,28 +10,13 @@
 }
 
 .btn {
-  @apply w-full mt-8;
+  @apply w-full mt-8 md:w-fit;
 }
 
 .desc {
-  @apply text-[16px];
+  @apply text-[16px] md:text-[24px];
 }
 
 .lime {
   @apply text-[var(--lime-color)];
-}
-
-@media (min-width: 768px) {
-  .wrapper {
-    @apply mt-28;
-  }
-  .wrapper h1 {
-    @apply text-[72px];
-  }
-  .desc {
-    @apply text-[24px];
-  }
-  .btn {
-    @apply w-fit;
-  }
 }

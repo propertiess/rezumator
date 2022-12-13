@@ -1,0 +1,11 @@
+.wrapper {
+  @apply flex flex-wrap items-center gap-3;
+}
+
+.wrapper input {
+  @apply flex-grow;
+}
+
+.span {
+  @apply basis-full sm:basis-[21%] sm:max-w-full;
+}
