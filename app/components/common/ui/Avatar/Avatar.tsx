@@ -13,7 +13,7 @@ export const Avatar: FC<Props> = ({ src, ...rest }) => {
 
   return (
     <span className={styles.wrapper} {...rest}>
-      <img src={src} alt='avatar' />
+      <Image src={src} alt='avatar' layout='fill' />
     </span>
   );
 };

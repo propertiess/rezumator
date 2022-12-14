@@ -5,7 +5,7 @@ import { useRezumatorForm } from '@/hooks/useRezumatorForm';
 import { Layout } from '@/layout/Layout';
 
 export const RezumatorScreen: FC = () => {
-  const { register, errors, onSubmit } = useRezumatorForm();
+  const { register, errors, onSubmit, isDirty, isValid } = useRezumatorForm();
 
   return (
     <Layout title='Составить резюме' description='Составить резюме'>
@@ -13,7 +13,7 @@ export const RezumatorScreen: FC = () => {
         <About register={register} errors={errors.rezumator?.aboutInfo} />
 
         <Button
-          disabled={errors.rezumator?.message ? true : false}
+          disabled={!isDirty || !isValid}
           className='flex mt-5 ml-auto text-center'
           type='submit'
         >

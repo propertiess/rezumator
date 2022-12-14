@@ -7,16 +7,22 @@ import {
   Merge
 } from 'react-hook-form';
 import { Button } from '@/components/common/ui/Button';
-import { AVAILABLE_COLOR } from '@/utils/color';
 import styles from './FileInput.module.css';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<FieldValues>>;
   onImageChange?: (src: string) => void;
+  openModalCrop?: () => void;
 }
 
-const FileInput: FC<Props> = ({ className, error, onImageChange, ...rest }) => {
+const FileInput: FC<Props> = ({
+  className,
+  error,
+  onImageChange,
+  openModalCrop,
+  ...rest
+}) => {
   const style = classNames(className, {
     [styles.error]: error
   });
@@ -28,6 +34,7 @@ const FileInput: FC<Props> = ({ className, error, onImageChange, ...rest }) => {
         let a = reader.result;
         a = a!.toString();
         onImageChange && onImageChange(a);
+        openModalCrop && openModalCrop();
       };
       try {
         reader.readAsDataURL(e.target.files[0]);

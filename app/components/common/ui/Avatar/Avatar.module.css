@@ -1,5 +1,3 @@
 .wrapper {
-  @apply flex w-full h-full 
-  sm:max-h-28
-  min-w-[184px] min-h-[184px] max-w-full max-h-full relative;
+  @apply flex w-full h-[20rem] relative;
 }

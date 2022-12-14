@@ -1,5 +1,5 @@
-import { FC, HTMLAttributes, useState } from 'react';
-import { AvatarCrop } from '@/components/common/AvatarCrop';
+import { FC, HTMLAttributes, useRef, useState } from 'react';
+import AvatarEditor from 'react-avatar-editor';
 import { ModalNoSSR } from '@/components/common/Modal';
 import { Button } from '@/components/common/ui/Button';
 import styles from './AvatarCropModal.module.css';
@@ -7,6 +7,7 @@ import styles from './AvatarCropModal.module.css';
 interface Props extends HTMLAttributes<unknown> {
   src?: string;
   open: boolean;
+  reset: () => void;
   close: () => void;
   onImageChange: (src: string) => void;
 }
@@ -17,8 +18,20 @@ const classNames = {
   exitActive: styles.content_exit_active
 };
 
-const AvatarCropModal: FC<Props> = ({ src, open, close, onImageChange }) => {
-  const [preview, setPreview] = useState(src);
+const AvatarCropModal: FC<Props> = ({
+  src,
+  open,
+  reset,
+  close,
+  onImageChange
+}) => {
+  const editorRef = useRef<AvatarEditor>(null);
+  const [scale, setScale] = useState(1);
+
+  const onSaveCropImage = async () => {
+    onImageChange(editorRef.current?.getImage().toDataURL() ?? '');
+    close();
+  };
 
   return (
     <ModalNoSSR
@@ -27,21 +40,31 @@ const AvatarCropModal: FC<Props> = ({ src, open, close, onImageChange }) => {
       timeoutContent={300}
       transitionClassNames={classNames}
       trigger={open}
-      close={close}
+      close={reset}
     >
       <div className={styles.content}>
         <h5>Обрезать изображение</h5>
-        <AvatarCrop src={src} onPreviewChange={src => setPreview(src)} />
+        <div className='flex justify-center overflow-hidden'>
+          <AvatarEditor
+            image={src ?? ''}
+            height={320}
+            width={320}
+            scale={scale}
+            borderRadius={300}
+            ref={editorRef}
+          />
+        </div>
+        <input
+          value={scale}
+          onChange={e => setScale(+e.target.value)}
+          min={1}
+          step={0.01}
+          max={2}
+          type='range'
+        />
         <div className={styles.btn_wrapper}>
-          <Button onClick={close}>Отменить</Button>
-          <Button
-            onClick={() => {
-              onImageChange(preview ?? '');
-              close();
-            }}
-          >
-            Сохранить
-          </Button>
+          <Button onClick={reset}>Отменить</Button>
+          <Button onClick={onSaveCropImage}>Сохранить</Button>
         </div>
       </div>
     </ModalNoSSR>
