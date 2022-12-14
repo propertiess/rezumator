@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppSelector } from '@/store';
 import { useActions } from '@/store/hooks/useActions';
 import { RezumatorState } from '@/store/slices/rezumator/rezumator';
-import { useSaveRezumatorToStorage } from './useSaveRezumatorToStorage';
+import { useRezumatorFromStorage } from './useRezumatorFromStorage';
 
 export const useRezumatorForm = () => {
   const rezumator = useAppSelector(state => state.rezumator);
@@ -18,9 +18,13 @@ export const useRezumatorForm = () => {
   }>({ mode: 'onChange', defaultValues: { rezumator } });
 
   const { setRezumator } = useActions();
-  useSaveRezumatorToStorage({ rezumator }, setValue, getValues);
+  useRezumatorFromStorage(setValue);
 
   const onSubmit: SubmitHandler<{ rezumator: RezumatorState }> = data => {
+    if (!isDirty && !isValid) {
+      return;
+    }
+
     const newRezumator = {
       ...data.rezumator,
       aboutInfo: {
@@ -28,6 +32,9 @@ export const useRezumatorForm = () => {
         avatar: rezumator.aboutInfo.avatar
       }
     };
+
+    sessionStorage.setItem('rezumator', JSON.stringify(newRezumator));
+    console.log('@ save', rezumator);
 
     setRezumator(newRezumator);
   };

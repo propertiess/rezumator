@@ -13,9 +13,9 @@ export const RezumatorScreen: FC = () => {
         <About register={register} errors={errors.rezumator?.aboutInfo} />
 
         <Button
-          disabled={!isDirty || !isValid}
           className='flex mt-5 ml-auto text-center'
           type='submit'
+          disabled={!isValid || !isDirty}
         >
           Предпросмотр
         </Button>

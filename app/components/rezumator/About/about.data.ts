@@ -2,6 +2,10 @@ import { SelectOptions } from '@/components/common/ui/Select';
 
 export const phoneCodes: SelectOptions[] = [
   {
+    label: '+ 7',
+    value: '+ 7'
+  },
+  {
     label: '+ 237',
     value: '+ 237'
   },
@@ -29,10 +33,7 @@ export const phoneCodes: SelectOptions[] = [
     label: '+ 380',
     value: '+ 380'
   },
-  {
-    label: '+ 7',
-    value: '+ 7'
-  },
+
   {
     label: '+ 994',
     value: '+ 994'
