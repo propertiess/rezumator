@@ -1,27 +1,17 @@
 import { FC } from 'react';
-import {
-  FieldError,
-  FieldErrorsImpl,
-  FieldValues,
-  Merge,
-  UseFormRegister
-} from 'react-hook-form';
+import classNames from 'classnames';
 import { Label } from '@/components/common/Label';
 import { Input } from '@/components/common/ui/Input';
 import { Select } from '@/components/common/ui/Select';
+import { RezumatorProps } from '@/components/rezumator/interfaces';
 import { useAppSelector } from '@/store';
 import { useActions } from '@/store/hooks/useActions';
-import { AboutInfoState, RezumatorState } from '@/store/slices/rezumator';
-import styles from './About.module.css';
+import { AboutInfoState } from '@/store/slices/rezumator';
+import styles from '../Repeat.module.css';
 import { AvatarPicker } from './AvatarPicker';
 import { currencies, phoneCodes, scheduleOfWork } from './about.data';
 
-interface Props {
-  register: UseFormRegister<{
-    rezumator: RezumatorState;
-  }>;
-  errors?: Merge<FieldError, FieldErrorsImpl<AboutInfoState | FieldValues>>;
-}
+type Props = RezumatorProps<AboutInfoState>;
 
 export const About: FC<Props> = ({ register, errors }) => {
   const src = useAppSelector(state => state.rezumator.aboutInfo.avatar);
@@ -29,7 +19,7 @@ export const About: FC<Props> = ({ register, errors }) => {
 
   return (
     <section className={styles.wrapper}>
-      <div className={styles.col + ' ' + styles.big_col}>
+      <div className={classNames(styles.col, styles.big_col)}>
         <Label label='Фамилия:'>
           <Input
             error={errors?.secondName}
@@ -106,7 +96,7 @@ export const About: FC<Props> = ({ register, errors }) => {
           </span>
         </Label>
       </div>
-      <div className={styles.col + ' ' + styles.middle_col}>
+      <div className={classNames(styles.col, styles.middle_col)}>
         <>
           <label>Фото:</label>
           <AvatarPicker src={src} onImageChange={src => setAvatar(src)} />

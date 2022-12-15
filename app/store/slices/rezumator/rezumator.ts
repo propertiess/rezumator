@@ -32,7 +32,7 @@ const initialState: RezumatorState = {
       symbolOfMoney: '₽',
       amountOfMoney: ''
     },
-    scheduleOfWork: ''
+    scheduleOfWork: null
   },
   personalInfo: {
     city: '',

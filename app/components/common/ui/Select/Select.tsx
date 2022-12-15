@@ -23,16 +23,14 @@ const Select: FC<Props> = forwardRef<HTMLSelectElement, Props>(function Select(
   { className, error, options, placeholder, ...rest },
   ref
 ) {
-  const style = classNames(className, {
-    // [styles.wrapper]: type !== 'checkbox',
-    [styles.wrapper]: true,
+  const style = classNames(className, styles.wrapper, {
     [styles.error]: error
   });
 
   return (
-    <select className={style} ref={ref} {...rest}>
+    <select defaultValue='' className={style} ref={ref} {...rest}>
       {placeholder && (
-        <option selected disabled hidden value=''>
+        <option disabled hidden value=''>
           {placeholder}
         </option>
       )}
