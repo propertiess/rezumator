@@ -55,7 +55,6 @@ const AvatarCropModal: FC<Props> = ({
             height={250}
             width={250}
             scale={scale}
-            borderRadius={300}
             ref={editorRef}
           />
         </div>

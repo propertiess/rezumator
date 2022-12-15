@@ -96,6 +96,7 @@ export const About: FC<Props> = ({ register, errors }) => {
         </Label>
         <Label label='Должность:'>
           <Input
+            error={errors?.profession}
             {...register('rezumator.aboutInfo.profession', {
               required: true
             })}

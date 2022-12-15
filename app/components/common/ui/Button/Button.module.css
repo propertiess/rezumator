@@ -6,13 +6,15 @@
 .primary {
   @apply bg-[var(--primary-bg-color)]
   focus:shadow focus:shadow-[var(--primary-bg-color)]
-  hover:shadow hover:shadow-[var(--primary-bg-color)];
+  hover:shadow hover:shadow-[var(--primary-bg-color)]
+  disabled:opacity-50 disabled:hover:opacity-50;
 }
 
 .secondary {
   @apply bg-[var(--secondary-bg-color)]
   focus:shadow focus:shadow-[var(--secondary-bg-color)]
-  hover:shadow hover:shadow-[var(--secondary-bg-color)];
+  hover:shadow hover:shadow-[var(--secondary-bg-color)]
+  disabled:opacity-50 disabled:hover:opacity-50;
 }
 
 .primary,

@@ -11,8 +11,7 @@ export const useRezumatorForm = () => {
     register,
     handleSubmit,
     setValue,
-    getValues,
-    formState: { errors, isDirty, isValid }
+    formState: { errors, isDirty, isValid, isSubmitting }
   } = useForm<{
     rezumator: RezumatorState;
   }>({ mode: 'onChange', defaultValues: { rezumator } });
@@ -44,6 +43,7 @@ export const useRezumatorForm = () => {
     errors,
     isDirty,
     isValid,
+    isSubmitting,
     onSubmit: handleSubmit(onSubmit)
   };
 };
