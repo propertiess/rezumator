@@ -2,6 +2,6 @@
   @apply flex flex-col gap-3;
 }
 
-.btn_group {
-  @apply flex gap-2 ml-auto lg:ml-0;
+.btn {
+  @apply flex ml-auto lg:ml-0;
 }

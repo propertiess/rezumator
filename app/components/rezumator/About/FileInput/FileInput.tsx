@@ -16,6 +16,8 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   openModalCrop?: () => void;
 }
 
+// TODO: make custom hook with functional for file to image string
+
 const FileInput: FC<Props> = ({
   className,
   error,
@@ -23,6 +25,8 @@ const FileInput: FC<Props> = ({
   openModalCrop,
   ...rest
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const style = classNames(className, {
     [styles.error]: error
   });
@@ -44,16 +48,14 @@ const FileInput: FC<Props> = ({
     }
   };
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const onClickFileInput = () => {
+    inputRef.current?.click();
+  };
 
   return (
     <>
       <input type='file' ref={inputRef} hidden onChange={onChange} {...rest} />
-      <Button
-        className={style}
-        onClick={() => inputRef.current?.click()}
-        type='button'
-      >
+      <Button className={style} onClick={onClickFileInput} type='button'>
         Загрузить файл
       </Button>
     </>

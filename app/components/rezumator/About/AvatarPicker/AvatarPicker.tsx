@@ -1,7 +1,7 @@
+import { FC } from 'react';
 import { Avatar } from '@/components/common/ui/Avatar';
 import { Button } from '@/components/common/ui/Button';
-import { useAvatarCropModal } from '@/hooks/useAvatarCropModal';
-import { FC } from 'react';
+import { useOpenSwitcher } from '@/hooks/useOpenSwitcher';
 import { FileInput } from '../FileInput';
 import { AvatarCropModal } from './AvatarCropModal';
 import styles from './AvatarPicker.module.css';
@@ -12,11 +12,11 @@ interface Props {
 }
 
 export const AvatarPicker: FC<Props> = ({ src, onImageChange }) => {
-  const { closeModal, isOpen, openModal } = useAvatarCropModal();
+  const { setClose, isOpen, setOpen } = useOpenSwitcher();
 
   const resetImage = () => {
     onImageChange('');
-    closeModal();
+    setClose();
   };
 
   return (
@@ -26,17 +26,17 @@ export const AvatarPicker: FC<Props> = ({ src, onImageChange }) => {
         <FileInput
           accept='.png,.jpeg,.jpg'
           onImageChange={onImageChange}
-          openModalCrop={openModal}
+          openModalCrop={setOpen}
         />
       ) : (
-        <span className={styles.btn_group}>
+        <span className={styles.btn}>
           <Button onClick={resetImage}>Удалить</Button>
         </span>
       )}
       <AvatarCropModal
         open={isOpen}
         reset={resetImage}
-        close={closeModal}
+        close={setClose}
         src={src}
         onImageChange={onImageChange}
       />

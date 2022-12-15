@@ -2,6 +2,7 @@ import { FC, HTMLAttributes, useRef, useState } from 'react';
 import AvatarEditor from 'react-avatar-editor';
 import { ModalNoSSR } from '@/components/common/Modal';
 import { Button } from '@/components/common/ui/Button';
+import { useOpenSwitcher } from '@/hooks/useOpenSwitcher';
 import styles from './AvatarCropModal.module.css';
 
 interface Props extends HTMLAttributes<unknown> {
@@ -25,8 +26,10 @@ const AvatarCropModal: FC<Props> = ({
   close,
   onImageChange
 }) => {
-  const editorRef = useRef<AvatarEditor>(null);
   const [scale, setScale] = useState(1);
+  const { isOpen, setClose, setOpen } = useOpenSwitcher();
+
+  const editorRef = useRef<AvatarEditor>(null);
 
   const onSaveCropImage = async () => {
     onImageChange(editorRef.current?.getImage().toDataURL() ?? '');
@@ -36,7 +39,9 @@ const AvatarCropModal: FC<Props> = ({
   return (
     <ModalNoSSR
       className={styles.modal}
-      timeoutModal={300}
+      onEnteringModal={setOpen}
+      onExitingModal={setClose}
+      triggerContent={isOpen}
       timeoutContent={300}
       transitionClassNames={classNames}
       trigger={open}
@@ -47,8 +52,8 @@ const AvatarCropModal: FC<Props> = ({
         <div className='flex justify-center overflow-hidden'>
           <AvatarEditor
             image={src ?? ''}
-            height={320}
-            width={320}
+            height={250}
+            width={250}
             scale={scale}
             borderRadius={300}
             ref={editorRef}

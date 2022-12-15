@@ -20,7 +20,6 @@ const BurgerMenu: FC<Props> = ({ open, close }) => {
     <ModalNoSSR
       className='bg-[var(--main-color)]'
       timeoutContent={300}
-      timeoutModal={300}
       modalClassNames={classNames}
       trigger={open}
       close={close}

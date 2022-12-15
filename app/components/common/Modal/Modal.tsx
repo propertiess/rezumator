@@ -14,12 +14,15 @@ interface CSSClassNames {
 
 interface Props {
   trigger: boolean;
-  close: () => void;
+  triggerContent?: boolean;
   className?: string;
-  timeoutModal: number;
+  timeoutModal?: number;
   timeoutContent: number;
   transitionClassNames?: CSSClassNames;
   modalClassNames?: CSSClassNames;
+  onEnteringModal?: () => void;
+  onExitingModal?: () => void;
+  close: () => void;
 }
 
 const defaultCSSTransition = {
@@ -33,9 +36,12 @@ export const Modal: FC<PropsWithChildren<Props>> = ({
   trigger,
   close,
   className,
-  timeoutModal,
+  timeoutModal = 500,
   timeoutContent,
   transitionClassNames,
+  triggerContent,
+  onEnteringModal,
+  onExitingModal,
   modalClassNames = defaultCSSTransition
 }) => {
   const ref = useClickOutside(close, trigger);
@@ -43,27 +49,31 @@ export const Modal: FC<PropsWithChildren<Props>> = ({
   const backdrop = classNames(styles.backdrop, className);
 
   return createPortal(
-    <CSSTransition
-      in={trigger}
-      timeout={timeoutModal}
-      classNames={modalClassNames}
-      mountOnEnter
-      unmountOnExit
-    >
-      <div className={backdrop}>
-        <CSSTransition
-          in={trigger}
-          timeout={timeoutContent}
-          classNames={transitionClassNames}
-          mountOnEnter
-          unmountOnExit
-        >
-          <div ref={ref} className={styles.content}>
-            {children}
-          </div>
-        </CSSTransition>
-      </div>
-    </CSSTransition>,
+    <>
+      <CSSTransition
+        in={trigger}
+        timeout={timeoutModal}
+        classNames={modalClassNames}
+        onEntering={onEnteringModal}
+        onExiting={onExitingModal}
+        mountOnEnter
+        unmountOnExit
+      >
+        <div className={backdrop}>
+          <CSSTransition
+            in={triggerContent ?? true}
+            timeout={timeoutContent}
+            classNames={transitionClassNames}
+            mountOnEnter
+            unmountOnExit
+          >
+            <div ref={ref} className={styles.content}>
+              {children}
+            </div>
+          </CSSTransition>
+        </div>
+      </CSSTransition>
+    </>,
     document.getElementById('portal') as HTMLElement
   );
 };

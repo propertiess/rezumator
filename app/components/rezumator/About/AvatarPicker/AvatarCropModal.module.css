@@ -19,15 +19,16 @@
 }
 
 .content_enter {
-  @apply opacity-0 scale-0 translate-x-4 -translate-y-0.5;
+  @apply scale-0 -translate-x-4 translate-y-4;
 }
 
 .content_enter_active {
-  @apply opacity-100 scale-100;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  @apply scale-100 translate-x-0 translate-y-0;
+  transition: transform 0.3s ease;
 }
 
 .content_exit_active {
-  @apply -translate-y-0.5 scale-0 opacity-0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  @apply scale-0 -translate-x-4 translate-y-4;
+
+  transition: transform 0.3s ease;
 }

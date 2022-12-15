@@ -1,19 +1,19 @@
 import { useState } from 'react';
 
-export const useAvatarCropModal = () => {
+export const useOpenSwitcher = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const openModal = () => {
+  const setOpen = () => {
     setIsOpen(true);
   };
 
-  const closeModal = () => {
+  const setClose = () => {
     setIsOpen(false);
   };
 
   return {
     isOpen,
-    openModal,
-    closeModal
+    setOpen,
+    setClose
   };
 };
