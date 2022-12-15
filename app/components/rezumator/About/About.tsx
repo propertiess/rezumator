@@ -14,7 +14,7 @@ import { useActions } from '@/store/hooks/useActions';
 import { AboutInfoState, RezumatorState } from '@/store/slices/rezumator';
 import styles from './About.module.css';
 import { AvatarPicker } from './AvatarPicker';
-import { currencies, phoneCodes } from './about.data';
+import { currencies, phoneCodes, scheduleOfWork } from './about.data';
 
 interface Props {
   register: UseFormRegister<{
@@ -94,6 +94,23 @@ export const About: FC<Props> = ({ register, errors }) => {
             />
           </span>
         </Label>
+        <Label label='График работы:'>
+          <span className='flex flex-grow'>
+            <Select
+              className='basis-full'
+              placeholder='Выберите из списка'
+              options={scheduleOfWork}
+              error={errors?.scheduleOfWork}
+              {...register('rezumator.aboutInfo.scheduleOfWork')}
+            />
+          </span>
+        </Label>
+      </div>
+      <div className={styles.col + ' ' + styles.middle_col}>
+        <>
+          <label>Фото:</label>
+          <AvatarPicker src={src} onImageChange={src => setAvatar(src)} />
+        </>
         <Label label='Должность:'>
           <Input
             error={errors?.profession}
@@ -102,12 +119,6 @@ export const About: FC<Props> = ({ register, errors }) => {
             })}
           />
         </Label>
-      </div>
-      <div className={styles.col + ' ' + styles.middle_col}>
-        <>
-          <label>Фото:</label>
-          <AvatarPicker src={src} onImageChange={src => setAvatar(src)} />
-        </>
         <Label label='Готов к командировкам:'>
           <Input
             type='checkbox'

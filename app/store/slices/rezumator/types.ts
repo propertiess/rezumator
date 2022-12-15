@@ -28,7 +28,7 @@ export type ScheduleOfWork =
   | 'Частичная занятость в офисе'
   | 'Полный день удаленно'
   | 'Частичная занятость удаленно'
-  | null;
+  | '';
 
 export interface PersonalInfoState {
   city: string;

@@ -48,3 +48,22 @@ export const currencies: SelectOptions[] = [
   { value: '£', label: '£' },
   { value: '₣', label: '₣' }
 ];
+
+export const scheduleOfWork: SelectOptions[] = [
+  {
+    label: 'Полный рабочий день',
+    value: 'Полный рабочий день'
+  },
+  {
+    label: 'Частичная занятость в офисе',
+    value: 'Частичная занятость в офисе'
+  },
+  {
+    label: 'Полный день удаленно',
+    value: 'Полный день удаленно'
+  },
+  {
+    label: 'Частичная занятость удаленно',
+    value: 'Частичная занятость удаленно'
+  }
+];

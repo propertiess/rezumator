@@ -16,10 +16,11 @@ interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
   className?: string;
   options?: SelectOptions[];
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<FieldValues>>;
+  placeholder?: string;
 }
 
 const Select: FC<Props> = forwardRef<HTMLSelectElement, Props>(function Select(
-  { className, error, options, ...rest },
+  { className, error, options, placeholder, ...rest },
   ref
 ) {
   const style = classNames(className, {
@@ -30,6 +31,11 @@ const Select: FC<Props> = forwardRef<HTMLSelectElement, Props>(function Select(
 
   return (
     <select className={style} ref={ref} {...rest}>
+      {placeholder && (
+        <option selected disabled hidden value=''>
+          {placeholder}
+        </option>
+      )}
       {options?.map(option => (
         <option key={option.value} value={option.value}>
           {option.label}
