@@ -7,9 +7,9 @@ interface Props extends HTMLAttributes<unknown> {
 
 export const Label: FC<PropsWithChildren<Props>> = ({ label, children }) => {
   return (
-    <label className={styles.wrapper}>
-      <span className={styles.span}>{label}</span>
+    <div className={styles.wrapper}>
+      <label>{label}</label>
       {children}
-    </label>
+    </div>
   );
 };

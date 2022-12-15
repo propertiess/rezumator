@@ -1,5 +1,5 @@
+import Image from 'next/image';
 import { FC } from 'react';
-import { Avatar } from '@/components/common/ui/Avatar';
 import { Button } from '@/components/common/ui/Button';
 import { useOpenSwitcher } from '@/hooks/useOpenSwitcher';
 import { FileInput } from '../FileInput';
@@ -21,7 +21,7 @@ export const AvatarPicker: FC<Props> = ({ src, onImageChange }) => {
 
   return (
     <span className={styles.wrapper}>
-      <Avatar src={src} />
+      {src && <Image src={src} alt='avatar' width={300} height={300} />}
       {!src ? (
         <FileInput
           accept='.png,.jpeg,.jpg'

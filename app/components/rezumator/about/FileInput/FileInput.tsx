@@ -56,7 +56,7 @@ const FileInput: FC<Props> = ({
     <>
       <input type='file' ref={inputRef} hidden onChange={onChange} {...rest} />
       <Button className={style} onClick={onClickFileInput} type='button'>
-        Загрузить файл
+        Добавить
       </Button>
     </>
   );

@@ -97,10 +97,9 @@ export const About: FC<Props> = ({ register, errors }) => {
         </Label>
       </div>
       <div className={classNames(styles.col, styles.middle_col)}>
-        <>
-          <label>Фото:</label>
+        <Label label='Фото:'>
           <AvatarPicker src={src} onImageChange={src => setAvatar(src)} />
-        </>
+        </Label>
         <Label label='Должность:'>
           <Input
             error={errors?.profession}
