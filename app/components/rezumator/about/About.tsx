@@ -1,12 +1,15 @@
 import { FC } from 'react';
 import classNames from 'classnames';
 import { Label } from '@/components/common/Label';
+import { LabelForCheckbox } from '@/components/common/LabelForCheckbox';
 import { Input } from '@/components/common/ui/Input';
 import { Select } from '@/components/common/ui/Select';
 import { RezumatorProps } from '@/components/rezumator/interfaces';
 import { useAppSelector } from '@/store';
 import { useActions } from '@/store/hooks/useActions';
 import { AboutInfoState } from '@/store/slices/rezumator';
+import { formatPhoneNumber } from '@/utils/formatPhoneNumber';
+import { formatSalary } from '@/utils/formatSalary';
 import styles from '../Repeat.module.css';
 import { FormSectionLayout } from '../common/FormSectionLayout';
 import { AvatarPicker } from './AvatarPicker';
@@ -67,8 +70,10 @@ export const About: FC<Props> = ({ register, errors }) => {
               placeholder='(000) 000 00 00'
               {...register('rezumator.aboutInfo.phoneNumber.phone', {
                 required: true,
-                maxLength: 10,
-                minLength: 10
+                minLength: 15,
+                onChange: e => {
+                  e.target.value = formatPhoneNumber(e.target.value);
+                }
               })}
             />
           </span>
@@ -77,7 +82,11 @@ export const About: FC<Props> = ({ register, errors }) => {
           <span className='flex flex-grow gap-2'>
             <Input
               error={errors?.salary}
-              {...register('rezumator.aboutInfo.salary.amountOfMoney')}
+              {...register('rezumator.aboutInfo.salary.amountOfMoney', {
+                onChange: e => {
+                  e.target.value = formatSalary(e.target.value);
+                }
+              })}
             />
             <Select
               options={currencies}
@@ -109,12 +118,12 @@ export const About: FC<Props> = ({ register, errors }) => {
             })}
           />
         </Label>
-        <Label label='Готов к командировкам:'>
+        <LabelForCheckbox label='Готов к командировкам:'>
           <Input
             type='checkbox'
             {...register('rezumator.aboutInfo.readyForTravel')}
           />
-        </Label>
+        </LabelForCheckbox>
       </div>
     </FormSectionLayout>
   );

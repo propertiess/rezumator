@@ -1,6 +1,7 @@
 import { FC, Fragment } from 'react';
 import { useFieldArray } from 'react-hook-form';
 import { Label } from '@/components/common/Label';
+import { LabelForCheckbox } from '@/components/common/LabelForCheckbox';
 import { Input } from '@/components/common/ui/Input';
 import { TextArea } from '@/components/common/ui/TextArea';
 import { RezumatorPropsWithControl } from '@/components/rezumator/interfaces';
@@ -37,12 +38,12 @@ export const Optional: FC<Props> = ({ register, control }) => {
             </Fragment>
           ))}
         </Label>
-        <Label label='Есть медицинская книжка'>
+        <LabelForCheckbox label='Есть медицинская книжка:'>
           <Input
             type='checkbox'
             {...register('rezumator.optionalInfo.medBook')}
           />
-        </Label>
+        </LabelForCheckbox>
         <Label label='Ссылки:'>
           <TextArea {...register('rezumator.optionalInfo.info')} />
         </Label>

@@ -49,7 +49,9 @@ export const Personal: FC<Props> = ({ register, errors }) => {
               placeholder='День'
               options={DAYS}
               error={errors?.birthDay}
-              {...register('rezumator.personalInfo.birthDay.day')}
+              {...register('rezumator.personalInfo.birthDay.day', {
+                required: true
+              })}
             />
             <Select
               placeholder='Месяц'
@@ -64,7 +66,9 @@ export const Personal: FC<Props> = ({ register, errors }) => {
               placeholder='Год'
               options={YEARS}
               error={errors?.birthDay}
-              {...register('rezumator.personalInfo.birthDay.year')}
+              {...register('rezumator.personalInfo.birthDay.year', {
+                required: true
+              })}
             />
           </span>
         </Label>
