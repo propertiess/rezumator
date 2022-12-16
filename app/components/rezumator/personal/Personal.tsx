@@ -6,6 +6,7 @@ import { Select } from '@/components/common/ui/Select';
 import { PersonalInfoState } from '@/store/slices/rezumator';
 import { DAYS, MONTHS, YEARS } from '@/utils/DateState.constant';
 import styles from '../Repeat.module.css';
+import { FormSectionLayout } from '../common/FormSectionLayout';
 import { RezumatorProps } from '../interfaces';
 import { removal } from './personal.data';
 
@@ -13,7 +14,7 @@ type Props = RezumatorProps<PersonalInfoState>;
 
 export const Personal: FC<Props> = ({ register, errors }) => {
   return (
-    <section className={styles.wrapper}>
+    <FormSectionLayout title='Личная информация'>
       <div className={classNames(styles.col, styles.big_col)}>
         <Label label='Город:'>
           <Input
@@ -25,7 +26,7 @@ export const Personal: FC<Props> = ({ register, errors }) => {
         </Label>
         <Label label='Гражданство:'>
           <Input
-            error={errors?.city}
+            error={errors?.citizenShip}
             {...register('rezumator.personalInfo.citizenShip', {
               required: true
             })}
@@ -68,6 +69,6 @@ export const Personal: FC<Props> = ({ register, errors }) => {
           </span>
         </Label>
       </div>
-    </section>
+    </FormSectionLayout>
   );
 };

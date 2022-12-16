@@ -1,0 +1,9 @@
+.wrapper {
+  @apply border border-white border-opacity-20 flex flex-wrap gap-3 
+  p-5 rounded-lg mt-5 text-[14px] 
+  md:text-[16px] lg:gap-10;
+}
+
+.title {
+  @apply basis-full text-[46px] mt-3 font-semibold;
+}

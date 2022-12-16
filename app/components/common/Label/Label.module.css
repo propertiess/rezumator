@@ -6,6 +6,6 @@
   @apply flex-grow;
 }
 
-.wrapper label {
-  @apply basis-full sm:basis-[21%] sm:max-w-full;
+.label {
+  @apply basis-full sm:max-w-full;
 }

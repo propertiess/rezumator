@@ -15,7 +15,15 @@ export const getDateStateForSelect = () => {
 
   const years: SelectOptions[] = [];
   for (let i = 1950; i <= currentYear; i++) {
-    years.push({
+    years.unshift({
+      value: i.toString(),
+      label: i.toString()
+    });
+  }
+
+  const educationYears = years.map(el => el);
+  for (let i = currentYear + 1; i <= currentYear + 4; i++) {
+    educationYears.unshift({
       value: i.toString(),
       label: i.toString()
     });
@@ -36,6 +44,7 @@ export const getDateStateForSelect = () => {
 
   return {
     years,
+    educationYears,
     months,
     days
   };

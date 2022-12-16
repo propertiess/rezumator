@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { getId } from '@/utils/getId';
 import {
   AboutInfoState,
   EducationState,
@@ -10,10 +11,26 @@ import {
 export interface RezumatorState {
   aboutInfo: AboutInfoState;
   personalInfo: PersonalInfoState;
-  educationInfo: EducationState;
-  experienceInfo: ExperienceState;
+  educationInfo: EducationState[];
+  experienceInfo: ExperienceState[];
   optionalInfo: OptionalState;
 }
+
+export const initialEducation: EducationState = {
+  form: null,
+  faculty: '',
+  institute: '',
+  specialty: '',
+  end: ''
+};
+
+export const initialExperience: ExperienceState = {
+  organization: '',
+  profession: '',
+  startJob: null,
+  endJob: null,
+  duties: ''
+};
 
 const initialState: RezumatorState = {
   aboutInfo: {
@@ -40,20 +57,8 @@ const initialState: RezumatorState = {
     removal: null,
     birthDay: null
   },
-  educationInfo: {
-    form: null,
-    faculty: '',
-    institute: '',
-    specialty: '',
-    end: ''
-  },
-  experienceInfo: {
-    organization: '',
-    profession: '',
-    startJob: null,
-    endJob: null,
-    duties: ''
-  },
+  educationInfo: [],
+  experienceInfo: [],
   optionalInfo: {
     languages: '',
     medBook: false,

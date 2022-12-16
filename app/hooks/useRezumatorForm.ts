@@ -11,6 +11,7 @@ export const useRezumatorForm = () => {
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors, isDirty, isValid, isSubmitting }
   } = useForm<{
     rezumator: RezumatorState;
@@ -33,13 +34,14 @@ export const useRezumatorForm = () => {
     };
 
     sessionStorage.setItem('rezumator', JSON.stringify(newRezumator));
-    console.log('@ save', rezumator);
+    console.log('@ save', newRezumator);
 
     setRezumator(newRezumator);
   };
 
   return {
     register,
+    control,
     errors,
     isDirty,
     isValid,

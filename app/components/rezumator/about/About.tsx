@@ -8,6 +8,7 @@ import { useAppSelector } from '@/store';
 import { useActions } from '@/store/hooks/useActions';
 import { AboutInfoState } from '@/store/slices/rezumator';
 import styles from '../Repeat.module.css';
+import { FormSectionLayout } from '../common/FormSectionLayout';
 import { AvatarPicker } from './AvatarPicker';
 import { currencies, phoneCodes, scheduleOfWork } from './about.data';
 
@@ -18,7 +19,7 @@ export const About: FC<Props> = ({ register, errors }) => {
   const { setAvatar } = useActions();
 
   return (
-    <section className={styles.wrapper}>
+    <FormSectionLayout title='Обо мне'>
       <div className={classNames(styles.col, styles.big_col)}>
         <Label label='Фамилия:'>
           <Input
@@ -55,7 +56,7 @@ export const About: FC<Props> = ({ register, errors }) => {
           />
         </Label>
         <Label label='Телефон:'>
-          <span className='flex flex-grow gap-1'>
+          <span className='flex flex-grow gap-2'>
             <Select
               options={phoneCodes}
               {...register('rezumator.aboutInfo.phoneNumber.code')}
@@ -73,7 +74,7 @@ export const About: FC<Props> = ({ register, errors }) => {
           </span>
         </Label>
         <Label label='Ожидаемая зарплата:'>
-          <span className='flex flex-grow gap-1'>
+          <span className='flex flex-grow gap-2'>
             <Input
               error={errors?.salary}
               {...register('rezumator.aboutInfo.salary.amountOfMoney')}
@@ -115,6 +116,6 @@ export const About: FC<Props> = ({ register, errors }) => {
           />
         </Label>
       </div>
-    </section>
+    </FormSectionLayout>
   );
 };
