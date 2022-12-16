@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { getId } from '@/utils/getId';
 import {
   AboutInfoState,
   EducationState,

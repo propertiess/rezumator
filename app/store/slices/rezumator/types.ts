@@ -57,8 +57,8 @@ export type FormEducation = 'Очная' | 'Заочная' | null;
 export interface ExperienceState {
   organization: string;
   profession: string;
-  startJob: DateState | null;
-  endJob: DateState | null;
+  startJob: Omit<DateState, 'day'> | null;
+  endJob: Omit<DateState, 'day'> | null;
   duties: string;
 }
 

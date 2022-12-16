@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Button } from '@/components/common/ui/Button';
 import { About } from '@/components/rezumator/about';
 import { Education } from '@/components/rezumator/education';
+import { Experience } from '@/components/rezumator/experience';
 import { Personal } from '@/components/rezumator/personal';
 import { useRezumatorForm } from '@/hooks/useRezumatorForm';
 import { Layout } from '@/layout/Layout';
@@ -18,6 +19,11 @@ export const RezumatorScreen: FC = () => {
         <Education
           register={register}
           errors={errors.rezumator?.educationInfo}
+          control={control}
+        />
+        <Experience
+          register={register}
+          errors={errors.rezumator?.experienceInfo}
           control={control}
         />
 

@@ -1,4 +1,5 @@
 import {
+  Control,
   FieldError,
   FieldErrorsImpl,
   FieldValues,
@@ -13,3 +14,13 @@ export interface RezumatorProps<T extends FieldValues> {
   }>;
   errors?: Merge<FieldError, FieldErrorsImpl<T>>;
 }
+
+export type RezumatorPropsWithControl<T extends FieldValues> =
+  RezumatorProps<T> & {
+    control: Control<
+      {
+        rezumator: RezumatorState;
+      },
+      unknown
+    >;
+  };
