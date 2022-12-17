@@ -1,2 +1,2 @@
-export * from './rezumator'
-export * from './types'
+export * from './rezumator';
+export * from './types';

@@ -27,7 +27,11 @@ export const RezumatorScreen: FC = () => {
           errors={errors.rezumator?.experienceInfo}
           control={control}
         />
-        <Optional register={register} errors={errors.rezumator?.optionalInfo} control={control} />
+        <Optional
+          register={register}
+          errors={errors.rezumator?.optionalInfo}
+          control={control}
+        />
 
         <Button
           className='flex mt-5 ml-auto'

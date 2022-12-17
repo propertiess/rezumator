@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import { FC, HTMLAttributes } from 'react';
-import { A } from '@/components/common/A';
 import { Button } from '@/components/common/ui/Button';
 import { AVAILABLE_COLOR } from '@/utils/color';
 import { NavItem } from './NavItem';
@@ -16,9 +16,9 @@ export const Navbar: FC<Props> = ({ ...rest }) => {
           <NavItem key={link.title} {...link} />
         ))}
         <li className='li_padding'>
-          <A href='/login'>
+          <Link href='/login'>
             <Button color={AVAILABLE_COLOR.secondary}>Войти</Button>
-          </A>
+          </Link>
         </li>
       </ul>
     </nav>

@@ -27,13 +27,13 @@ export const Optional: FC<Props> = ({ register, control }) => {
           {driveLicenses.map((driveLicense, index) => (
             <Fragment key={driveLicense.id}>
               <label className='flex items-center gap-3'>
-                {driveLicense.type}
                 <Input
                   type='checkbox'
                   {...register(
                     `rezumator.optionalInfo.driveLicenses.${index}.exist`
                   )}
                 />
+                {driveLicense.type}
               </label>
             </Fragment>
           ))}

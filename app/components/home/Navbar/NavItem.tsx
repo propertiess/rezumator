@@ -1,7 +1,7 @@
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 import classnames from 'classnames';
-import { A } from '@/components/common/A';
 import styles from './Navbar.module.css';
 
 interface Props {
@@ -17,9 +17,9 @@ const NavItem: FC<Props> = ({ href, title }) => {
 
   return (
     <li className='li_padding'>
-      <A className={linkStyles} href={href}>
+      <Link className={linkStyles} href={href}>
         {title}
-      </A>
+      </Link>
     </li>
   );
 };
