@@ -41,7 +41,7 @@ const initialState: RezumatorState = {
     profession: '',
     readyForTravel: false,
     phoneNumber: {
-      code: '+ 7',
+      code: '+7',
       phone: ''
     },
     salary: {
