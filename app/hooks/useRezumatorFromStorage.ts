@@ -3,7 +3,7 @@ import { FieldValues, Path, UseFormSetValue } from 'react-hook-form';
 import { useActions } from '@/store/hooks/useActions';
 
 export const useRezumatorFromStorage = <T extends FieldValues>(
-  action: UseFormSetValue<T>
+  action?: UseFormSetValue<T>
 ) => {
   const firstRender = useRef(true);
   const { setRezumator } = useActions();
@@ -13,7 +13,7 @@ export const useRezumatorFromStorage = <T extends FieldValues>(
     if (firstRender.current && data) {
       setRezumator(JSON.parse(data));
       firstRender.current = false;
-      action('rezumator' as Path<T>, JSON.parse(data));
+      action && action('rezumator' as Path<T>, JSON.parse(data));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

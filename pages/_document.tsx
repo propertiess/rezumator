@@ -8,7 +8,7 @@ const Document = () => {
           href='https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap'
           rel='stylesheet'
         />
-        <link rel='icon' href='/favicon.png'/>
+        <link rel='icon' href='/favicon.png' />
       </Head>
       <body>
         <Main />

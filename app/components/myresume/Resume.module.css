@@ -1,0 +1,11 @@
+.wrapper {
+  @apply px-5 sm:px-2 flex flex-col items-center;
+}
+
+.content {
+  @apply mt-5 max-w-[1000px] border rounded p-10;
+}
+
+.divider {
+  @apply bg-[var(--primary-bg-color)] opacity-50;
+}

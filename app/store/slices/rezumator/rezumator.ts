@@ -1,4 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { getFullBirthDay } from '@/utils/getFullBirthDay';
+import { getFullExperienceJob } from '@/utils/getFullExperienceJob';
 import {
   AboutInfoState,
   EducationState,
@@ -27,6 +29,7 @@ export const initialExperience: ExperienceState = {
   organization: '',
   profession: '',
   startJob: null,
+  fullExperienceJob: '',
   endJob: null,
   duties: ''
 };
@@ -44,17 +47,20 @@ const initialState: RezumatorState = {
       code: '+7',
       phone: ''
     },
+    fullPhoneNumber: '',
     salary: {
-      symbolOfMoney: '₽',
-      amountOfMoney: ''
+      amountOfMoney: '',
+      symbolOfMoney: '₽'
     },
+    fullSalary: '',
     scheduleOfWork: null
   },
   personalInfo: {
     city: '',
     citizenShip: '',
     removal: null,
-    birthDay: null
+    birthDay: null,
+    fullBirthDay: ''
   },
   educationInfo: [],
   experienceInfo: [],
@@ -80,6 +86,30 @@ export const rezumatorSlice = createSlice({
   initialState,
   reducers: {
     setRezumator: (state, action: PayloadAction<RezumatorState>) => {
+      action.payload.aboutInfo.fullSalary =
+        action.payload.aboutInfo.salary.amountOfMoney +
+        ' ' +
+        action.payload.aboutInfo.salary.symbolOfMoney;
+
+      action.payload.aboutInfo.fullPhoneNumber =
+        action.payload.aboutInfo.phoneNumber.code +
+        ' ' +
+        action.payload.aboutInfo.phoneNumber.phone;
+
+      action.payload.personalInfo.fullBirthDay = getFullBirthDay(
+        action.payload.personalInfo.birthDay!
+      );
+
+      action.payload.experienceInfo = action.payload.experienceInfo?.map(
+        obj => {
+          obj.fullExperienceJob = getFullExperienceJob(
+            obj.startJob!,
+            obj.endJob!
+          );
+          return obj;
+        }
+      );
+
       return (state = action.payload);
     },
     setAvatar: (state, action: PayloadAction<string>) => {

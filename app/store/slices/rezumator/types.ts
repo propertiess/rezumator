@@ -1,4 +1,4 @@
-import { DateState } from '@/store/types';
+import { DateState, JobDate } from '@/store/types';
 
 export interface AboutInfoState {
   firstName: string;
@@ -6,7 +6,9 @@ export interface AboutInfoState {
   thirdName: string;
   email: string;
   salary: Salary;
+  fullSalary: string;
   phoneNumber: Phone;
+  fullPhoneNumber: string;
   scheduleOfWork: ScheduleOfWork;
   avatar: string;
   profession: string;
@@ -19,8 +21,8 @@ export interface Phone {
 }
 
 export interface Salary {
-  symbolOfMoney: string;
   amountOfMoney: string;
+  symbolOfMoney: string;
 }
 
 export type ScheduleOfWork =
@@ -35,6 +37,7 @@ export interface PersonalInfoState {
   citizenShip: string;
   removal: Removal;
   birthDay: DateState | null;
+  fullBirthDay: string;
 }
 
 export type Removal =
@@ -57,8 +60,9 @@ export type FormEducation = 'Очная' | 'Заочная' | null;
 export interface ExperienceState {
   organization: string;
   profession: string;
-  startJob: Omit<DateState, 'day'> | null;
-  endJob: Omit<DateState, 'day'> | null;
+  startJob: JobDate | null;
+  endJob: JobDate | null;
+  fullExperienceJob: string;
   duties: string;
 }
 

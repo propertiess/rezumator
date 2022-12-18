@@ -3,3 +3,5 @@ export type DateState = {
   month: string;
   year: string;
 };
+
+export type JobDate = Omit<DateState, 'day'>;
