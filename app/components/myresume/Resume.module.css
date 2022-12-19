@@ -1,11 +1,18 @@
 .wrapper {
-  @apply px-5 sm:px-2 flex flex-col items-center;
+  @apply px-5 sm:px-2 flex flex-col items-center bg-[var(--main-color)];
 }
 
 .content {
-  @apply mt-5 max-w-[1000px] border rounded p-10;
+  @apply mt-5 max-w-[1000px] border rounded p-10 bg-[var(--main-color)];
 }
 
 .divider {
   @apply bg-[var(--primary-bg-color)] opacity-50;
+}
+
+.image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
 }

@@ -12,14 +12,16 @@ export const Header: FC<Props> = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className='flex gap-3'>
-        <Image
-          className='rounded-full'
-          src={aboutInfo.avatar}
-          alt='avatar'
-          width={120}
-          height={120}
-        />
+      <div className='flex gap-10'>
+        {aboutInfo.avatar && (
+          <Image
+            className='rounded-full'
+            src={aboutInfo.avatar}
+            alt='avatar'
+            width={120}
+            height={120}
+          />
+        )}
         <div className={styles.title_wrapper}>
           <h2 className={styles.title}>
             <span>{aboutInfo.secondName}</span>

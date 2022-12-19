@@ -86,10 +86,12 @@ export const rezumatorSlice = createSlice({
   initialState,
   reducers: {
     setRezumator: (state, action: PayloadAction<RezumatorState>) => {
-      action.payload.aboutInfo.fullSalary =
-        action.payload.aboutInfo.salary.amountOfMoney +
-        ' ' +
-        action.payload.aboutInfo.salary.symbolOfMoney;
+      if (action.payload.aboutInfo.salary.amountOfMoney) {
+        action.payload.aboutInfo.fullSalary =
+          action.payload.aboutInfo.salary.amountOfMoney +
+          ' ' +
+          action.payload.aboutInfo.salary.symbolOfMoney;
+      }
 
       action.payload.aboutInfo.fullPhoneNumber =
         action.payload.aboutInfo.phoneNumber.code +

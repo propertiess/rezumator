@@ -3,7 +3,7 @@
 }
 
 .subtitle {
-  @apply text-[var(--primary-bg-color)] text-[24px] font-semibold;
+  @apply text-[var(--primary-bg-color)] text-[24px] uppercase font-semibold;
 }
 
 .wrapper {

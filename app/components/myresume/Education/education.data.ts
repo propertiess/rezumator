@@ -3,7 +3,7 @@ import { EducationState } from '@/store/slices/rezumator';
 
 export const educationLi: InfoLi<EducationState>[] = [
   {
-    title: 'Форма:',
+    title: 'Форма обучения:',
     option: 'form'
   },
   {

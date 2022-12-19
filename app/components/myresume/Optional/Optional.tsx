@@ -18,11 +18,12 @@ export const Optional: FC<Props> = () => {
           content={optionalInfo.driveLicenses
             .map(el => {
               if (!el.exist) {
-                return null;
+                return '';
               }
               return el.type;
             })
-            .join(' ')}
+            .join(' ')
+            .trim()}
         />
 
         {optionalLi.map(li => (
