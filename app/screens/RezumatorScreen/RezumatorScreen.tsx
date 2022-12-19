@@ -23,7 +23,7 @@ export const RezumatorScreen: FC = () => {
 
   return (
     <Layout title='Составить резюме' description='Составить резюме'>
-      <form className='px-5 sm:px-2' onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <About register={register} errors={errors.rezumator?.aboutInfo} />
         <Personal register={register} errors={errors.rezumator?.personalInfo} />
         <Education

@@ -30,7 +30,7 @@ export const ResumeImage: FC<Props> = ({
 
   return (
     <div className='w-full mx-auto'>
-      <Image className={styles.image} src={image} alt='resume' fill />
+      <Image className='image' src={image} alt='resume' fill />
     </div>
   );
 };

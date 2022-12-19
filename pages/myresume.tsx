@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { NextPage } from 'next';
 import { MyResumeScreen } from '@/screens/MyResumeScreen';
 
-const MyResume: FC = () => {
+const MyResume: NextPage = () => {
   return <MyResumeScreen />;
 };
 

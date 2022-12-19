@@ -7,7 +7,7 @@ import styles from './Header.module.css';
 const Header: FC = ({ ...rest }) => {
   return (
     <header {...rest}>
-      <div className='container mx-auto'>
+      <div className='my_container'>
         <div className={styles.wrapper}>
           <ul>
             <li className='li_padding'>

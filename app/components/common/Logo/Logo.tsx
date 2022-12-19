@@ -7,7 +7,9 @@ import styles from './Logo.module.css';
 export const Logo: FC = () => {
   return (
     <Link className={styles.wrapper} href='/'>
-      <Image src={LogoAvatar} alt='logo' />
+      <span className='block w-[30px] h-[30px]'>
+        <Image className='image' src={LogoAvatar} alt='logo' fill />
+      </span>
       <h2 className={styles.text}>Rezumator</h2>
     </Link>
   );

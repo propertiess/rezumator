@@ -25,6 +25,17 @@ html,
   @apply min-h-screen min-w-fit;
 }
 
+.my_container {
+  @apply container mx-auto px-5 sm:px-2;
+}
+
+.image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+}
+
 .li_padding {
   @apply pt-5 pb-3;
 }

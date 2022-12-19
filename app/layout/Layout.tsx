@@ -21,7 +21,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({
       </Head>
       <Header />
       <main>
-        <div className='container mx-auto'>{children}</div>
+        <div className='my_container'>{children}</div>
       </main>
       <Footer />
     </>
