@@ -25,7 +25,7 @@
 }
 
 .item .img {
-  @apply p-4 rounded-lg w-fit flex items-center;
+  @apply p-4 rounded-lg w-fit flex items-center relative;
 }
 
 .primary {

@@ -29,8 +29,17 @@ export const ResumeImage: FC<Props> = ({
   }, [trigger]);
 
   return (
-    <div className='w-full mx-auto'>
-      <Image className='image' src={image} alt='resume' fill />
+    <div className='w-full mx-auto relative'>
+      {!!condition && (
+        <Image
+          className='image'
+          src={image}
+          alt='resume'
+          width='0'
+          height='0'
+          sizes='100vw'
+        />
+      )}
     </div>
   );
 };

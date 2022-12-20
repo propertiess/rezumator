@@ -36,7 +36,7 @@ const AdvantageItem: FC<Props> = ({
   return (
     <div className={itemStyles} {...rest}>
       <div className={imgStyles}>
-        <Image src={src} alt={title} width={15} height={15} />
+        <Image sizes='100vw' src={src} alt={title} />
       </div>
       <div className={styles.text}>
         <h4 className={styles.title}>{title}</h4>
