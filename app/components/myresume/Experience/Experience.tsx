@@ -9,10 +9,10 @@ type Props = HTMLAttributes<unknown>;
 
 export const Experience: FC<Props> = () => {
   const experienceInfo = useAppSelector(
-    state => state.rezumator.experienceInfo
+    state => state.rezumator.fields?.experienceInfo
   );
 
-  if (!experienceInfo.length) {
+  if (!experienceInfo?.length) {
     return null;
   }
 

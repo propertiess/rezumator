@@ -8,9 +8,11 @@ import repeatStyles from '../common/Repeat.module.css';
 type Props = HTMLAttributes<unknown>;
 
 export const Education: FC<Props> = () => {
-  const educationInfo = useAppSelector(state => state.rezumator.educationInfo);
+  const educationInfo = useAppSelector(
+    state => state.rezumator.fields?.educationInfo
+  );
 
-  if (!educationInfo.length) {
+  if (!educationInfo?.length) {
     return null;
   }
 
@@ -31,7 +33,6 @@ export const Education: FC<Props> = () => {
               ))}
             </ul>
           </div>
-          {/*<p>{education.end}</p>*/}
         </div>
       ))}
     </SectionLayout>

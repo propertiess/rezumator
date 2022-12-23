@@ -8,7 +8,13 @@ import styles from './Optional.module.css';
 type Props = HTMLAttributes<unknown>;
 
 export const Optional: FC<Props> = () => {
-  const optionalInfo = useAppSelector(state => state.rezumator.optionalInfo);
+  const optionalInfo = useAppSelector(
+    state => state.rezumator.fields?.optionalInfo
+  );
+
+  if (!optionalInfo) {
+    return null;
+  }
 
   return (
     <SectionLayout title='Дополнительная информация'>

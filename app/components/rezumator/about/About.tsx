@@ -18,7 +18,9 @@ import { currencies, phoneCodes, scheduleOfWork } from './about.data';
 type Props = RezumatorProps<AboutInfoState>;
 
 export const About: FC<Props> = ({ register, errors }) => {
-  const src = useAppSelector(state => state.rezumator.aboutInfo.avatar);
+  const src = useAppSelector(
+    state => state.rezumator.fields && state.rezumator.fields?.aboutInfo.avatar
+  );
   const { setAvatar } = useActions();
 
   return (
@@ -108,7 +110,7 @@ export const About: FC<Props> = ({ register, errors }) => {
       </div>
       <div className={classNames(styles.col, styles.middle_col)}>
         <Label label='Фото:'>
-          <AvatarPicker src={src} onImageChange={src => setAvatar(src)} />
+          <AvatarPicker src={src ?? ''} onImageChange={src => setAvatar(src)} />
         </Label>
         <Label label='Должность:'>
           <Input

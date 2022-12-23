@@ -16,7 +16,9 @@ import { formOfEducation } from './education.data';
 type Props = RezumatorPropsWithControl<EducationState>;
 
 export const Education: FC<Props> = ({ register, control }) => {
-  const education = useAppSelector(state => state.rezumator.educationInfo);
+  const education = useAppSelector(
+    state => state.rezumator.fields?.educationInfo
+  );
 
   const {
     fields: educationInfo,
@@ -28,7 +30,7 @@ export const Education: FC<Props> = ({ register, control }) => {
   // TODO: think about another way
 
   useEffect(() => {
-    replace(education);
+    education && replace(education);
   }, [education, replace]);
 
   //

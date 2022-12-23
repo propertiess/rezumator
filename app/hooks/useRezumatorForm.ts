@@ -1,26 +1,28 @@
+import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { RezumatorService } from '@/services/rezumator/rezumator';
 import { useAppSelector } from '@/store';
-import { useActions } from '@/store/hooks/useActions';
 import { RezumatorState } from '@/store/slices/rezumator/rezumator';
-import { useRezumatorFromStorage } from './useRezumatorFromStorage';
+import { useFetchFields } from './useFetchFields';
 
 export const useRezumatorForm = () => {
-  const rezumator = useAppSelector(state => state.rezumator);
+  const fields = useAppSelector(state => state.rezumator.fields);
+  const { push } = useRouter();
 
   const {
     register,
     handleSubmit,
     setValue,
     control,
+    getValues,
     formState: { errors, isDirty, isValid, isSubmitting }
   } = useForm<{
     rezumator: RezumatorState;
-  }>({ mode: 'onChange', defaultValues: { rezumator } });
+  }>({ mode: 'onChange' });
 
-  const { setRezumator } = useActions();
-  useRezumatorFromStorage(setValue);
+  useFetchFields(setValue);
 
-  const onSubmit: SubmitHandler<{ rezumator: RezumatorState }> = data => {
+  const onSubmit: SubmitHandler<{ rezumator: RezumatorState }> = async data => {
     if (!isDirty && !isValid) {
       return;
     }
@@ -29,14 +31,18 @@ export const useRezumatorForm = () => {
       ...data.rezumator,
       aboutInfo: {
         ...data.rezumator.aboutInfo,
-        avatar: rezumator.aboutInfo.avatar
+        avatar: fields && fields.aboutInfo.avatar
       }
     };
 
-    sessionStorage.setItem('rezumator', JSON.stringify(newRezumator));
-    console.log('@ save', newRezumator);
+    try {
+      await RezumatorService.setFields(newRezumator);
+    } catch (e) {
+      console.log(e);
+    }
 
-    setRezumator(newRezumator);
+    push('/myresume');
+    console.log('@ save', newRezumator);
   };
 
   return {
@@ -46,6 +52,7 @@ export const useRezumatorForm = () => {
     isDirty,
     isValid,
     isSubmitting,
+    getValues,
     onSubmit: handleSubmit(onSubmit)
   };
 };

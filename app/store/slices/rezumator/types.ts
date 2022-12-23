@@ -10,7 +10,7 @@ export interface AboutInfoState {
   phoneNumber: Phone;
   fullPhoneNumber: string;
   scheduleOfWork: ScheduleOfWork;
-  avatar: string;
+  avatar: string | null;
   profession: string;
   readyForTravel: boolean;
 }

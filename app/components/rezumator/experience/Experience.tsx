@@ -17,7 +17,9 @@ import { RezumatorPropsWithControl } from '../interfaces';
 type Props = RezumatorPropsWithControl<ExperienceState>;
 
 export const Experience: FC<Props> = ({ register, control }) => {
-  const experience = useAppSelector(state => state.rezumator.experienceInfo);
+  const experience = useAppSelector(
+    state => state.rezumator.fields?.experienceInfo
+  );
 
   const {
     fields: experienceInfo,
@@ -29,7 +31,7 @@ export const Experience: FC<Props> = ({ register, control }) => {
   // TODO: think about another way
 
   useEffect(() => {
-    replace(experience);
+    experience && replace(experience);
   }, [experience, replace]);
 
   //
