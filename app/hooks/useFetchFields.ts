@@ -12,19 +12,25 @@ export const useFetchFields = <T extends FieldValues>(
   useEffect(() => {
     (async () => {
       let data: RezumatorState | null;
+      const authToken = localStorage.getItem('token');
 
+      if (authToken) {
+        try {
+          data = await RezumatorService.getFields(authToken);
+          setRezumator(data);
+          action && action('rezumator' as Path<T>, data as any);
+        } catch (e) {
+          console.log(e);
+        }
+        return;
+      }
       try {
-        data = await RezumatorService.getFields();
+        data = await RezumatorService.getInitialFields();
+        setRezumator(data);
+        action && action('rezumator' as Path<T>, data as any);
       } catch (e) {
-        return;
+        console.log(e);
       }
-
-      if (!data) {
-        return;
-      }
-
-      setRezumator(data);
-      action && action('rezumator' as Path<T>, data as any);
     })();
   }, []);
 };
