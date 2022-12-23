@@ -24,7 +24,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     }
 
     !authToken && setAuthToken(token);
-  }, [authToken]);
+  }, []);
 
   const setAuthToken = (id: string) => {
     setToken(id);

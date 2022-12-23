@@ -10,20 +10,41 @@ import { AuthService } from '@/services/auth/auth.service';
 const Login: NextPage = () => {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const { push } = useRouter();
   const { setAuthToken } = useContext(AuthContext);
 
   const signUp = async () => {
-    const user = await AuthService.createUser(username, password);
-    setAuthToken(user.id);
-    push('/');
+    setError('');
+
+    try {
+      const user = await AuthService.createUser(username, password);
+      if (user.id) {
+        setAuthToken(user.id);
+        push('/');
+      } else {
+        setError('Такой username уже существует!');
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const login = async () => {
-    const user = await AuthService.login(username, password);
-    if (user.id) {
-      setAuthToken(user.id);
-      push('/');
+    setError('');
+
+    try {
+      const user = await AuthService.login(username, password);
+      console.log(user, 'user');
+
+      if (user.id) {
+        setAuthToken(user.id);
+        push('/');
+      } else {
+        setError('Такого пользователя не существует!');
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -44,6 +65,7 @@ const Login: NextPage = () => {
               placeholder='password'
             />
           </div>
+          {error && <span className='text-red-500'>{error}</span>}
           <div className='flex gap-3'>
             <Button onClick={login} className='flex-grow'>
               Войти

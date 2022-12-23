@@ -1,5 +1,9 @@
-import { FC } from 'react';
+import Link from 'next/link';
+import { FC, useContext } from 'react';
 import { ModalNoSSR } from '@/components/common/Modal';
+import { Button } from '@/components/common/ui/Button';
+import { AuthContext } from '@/context/AuthContext';
+import { AVAILABLE_COLOR } from '@/utils/color';
 import { NavItem } from '../Navbar/NavItem';
 import { links } from '../Navbar/links.data';
 import styles from './Burger.module.css';
@@ -16,6 +20,8 @@ const classNames = {
 };
 
 const BurgerMenu: FC<Props> = ({ open, close }) => {
+  const { authToken, setAuthToken } = useContext(AuthContext);
+
   return (
     <ModalNoSSR
       className='bg-[var(--main-color)]'
@@ -28,7 +34,20 @@ const BurgerMenu: FC<Props> = ({ open, close }) => {
         {links.map(link => (
           <NavItem key={link.href} {...link} />
         ))}
-        <NavItem href='/login' title='Войти' />
+        {!authToken ? (
+          <NavItem href='/login' title='Войти' />
+        ) : (
+          <li className='li_padding'>
+            <span
+              onClick={() => {
+                setAuthToken('');
+                close();
+              }}
+            >
+              Выйти
+            </span>
+          </li>
+        )}
       </ul>
     </ModalNoSSR>
   );
