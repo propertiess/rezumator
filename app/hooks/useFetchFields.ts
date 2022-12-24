@@ -26,6 +26,7 @@ export const useFetchFields = <T extends FieldValues>(
         }
         return;
       }
+
       if (!fields) {
         try {
           data = await RezumatorService.getInitialFields();
@@ -34,7 +35,10 @@ export const useFetchFields = <T extends FieldValues>(
         } catch (e) {
           console.log(e);
         }
+        return;
       }
+
+      action && action('rezumator' as Path<T>, fields as any);
     })();
   }, []);
 };
