@@ -1,5 +1,5 @@
 .wrapper {
-  @apply hidden md:block;
+  @apply hidden lg:block;
 }
 
 .list {

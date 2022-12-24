@@ -1,0 +1,15 @@
+.wrapper {
+  @apply max-w-[300px] sm:max-w-[500px] mx-auto mt-5;
+}
+
+.form {
+  @apply flex flex-col justify-center items-center p-5 gap-10 rounded-lg border border-white border-opacity-20 mx-auto;
+}
+
+.error {
+  @apply text-red-500;
+}
+
+.btn {
+  @apply ml-auto;
+}

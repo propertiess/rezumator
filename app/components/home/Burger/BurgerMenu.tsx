@@ -1,9 +1,6 @@
-import Link from 'next/link';
 import { FC, useContext } from 'react';
 import { ModalNoSSR } from '@/components/common/Modal';
-import { Button } from '@/components/common/ui/Button';
 import { AuthContext } from '@/context/AuthContext';
-import { AVAILABLE_COLOR } from '@/utils/color';
 import { NavItem } from '../Navbar/NavItem';
 import { links } from '../Navbar/links.data';
 import styles from './Burger.module.css';
@@ -35,7 +32,10 @@ const BurgerMenu: FC<Props> = ({ open, close }) => {
           <NavItem key={link.href} {...link} />
         ))}
         {!authToken ? (
-          <NavItem href='/login' title='Войти' />
+          <>
+            <NavItem href='/login' title='Войти' />
+            <NavItem href='/signup' title='Регистрация' />
+          </>
         ) : (
           <li className='li_padding'>
             <span

@@ -6,3 +6,5 @@ export type User = {
   password: string;
   fields: RezumatorState;
 };
+
+export type SimpleUser = Omit<User, 'id' | 'fields'>;

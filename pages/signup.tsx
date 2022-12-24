@@ -11,24 +11,23 @@ import { AuthService } from '@/services/auth/auth.service';
 import { SimpleUser } from '@/services/auth/auth.types';
 import styles from '@/styles/Auth.repeat.module.css';
 
-const Login: NextPage = () => {
+const SignUp: NextPage = () => {
   const [error, setError] = useState('');
   const { register, errors, handleSubmit } = useAuthForm();
 
-  const { push } = useRouter();
   const { setAuthToken } = useContext(AuthContext);
+  const { push } = useRouter();
 
-  const login: SubmitHandler<SimpleUser> = async ({ username, password }) => {
+  const signUp: SubmitHandler<SimpleUser> = async ({ username, password }) => {
     setError('');
 
     try {
-      const user = await AuthService.login(username.trim(), password.trim());
-
+      const user = await AuthService.createUser(username, password);
       if (user.id) {
         setAuthToken(user.id);
         push('/rezumator');
       } else {
-        setError('Такого пользователя не существует!');
+        setError('Такой username уже существует!');
       }
     } catch (e) {
       console.log(e);
@@ -36,13 +35,13 @@ const Login: NextPage = () => {
   };
 
   return (
-    <Layout title='Авторизация' description='Авторизация'>
+    <Layout title='Signup' description='Signup'>
       <div className={styles.wrapper}>
-        <form className={styles.form} onSubmit={handleSubmit(login)}>
+        <form className={styles.form} onSubmit={handleSubmit(signUp)}>
           <AuthFields register={register} errors={errors} />
           {error && <span className={styles.error}>{error}</span>}
           <Button type='submit' className={styles.btn}>
-            Войти
+            Зарегистрироваться
           </Button>
         </form>
       </div>
@@ -50,4 +49,4 @@ const Login: NextPage = () => {
   );
 };
 
-export default Login;
+export default SignUp;

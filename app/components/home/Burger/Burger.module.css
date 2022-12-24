@@ -1,5 +1,5 @@
 .wrapper {
-  @apply block md:hidden;
+  @apply block lg:hidden;
 }
 
 .burger_icon {

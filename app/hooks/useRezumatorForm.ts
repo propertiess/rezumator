@@ -28,7 +28,7 @@ export const useRezumatorForm = () => {
   useFetchFields(setValue);
 
   const onSubmit: SubmitHandler<{ rezumator: RezumatorState }> = async data => {
-    if (!isDirty && !isValid) {
+    if (!isValid) {
       return;
     }
 
