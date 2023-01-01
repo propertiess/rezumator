@@ -5,7 +5,6 @@ import { User } from './auth.types';
 export const AuthService = {
   async createUser(username: string, password: string) {
     const { data } = await instance.post<User>('/users', {
-      id: crypto.randomUUID(),
       username,
       password,
       fields: store.getState().rezumator.fields

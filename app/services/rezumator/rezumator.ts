@@ -1,11 +1,10 @@
 import { RezumatorState } from '@/store/slices/rezumator';
 import { instance } from '../api/instance';
-import { User } from '../auth/auth.types';
 
 export const RezumatorService = {
   async getFields(id: string) {
-    const { data } = await instance.get<User>(`/users/${id}/fields`);
-    return data.fields;
+    const { data } = await instance.get<RezumatorState>(`/users/${id}/fields`);
+    return data;
   },
   async getInitialFields() {
     const { data } = await instance.get<RezumatorState>(`/rezumator`);
