@@ -1,10 +1,11 @@
-import { FC, Fragment } from 'react';
+import { FC, Fragment, useEffect } from 'react';
 import { useFieldArray } from 'react-hook-form';
 import { Label } from '@/components/common/Label';
 import { LabelForCheckbox } from '@/components/common/LabelForCheckbox';
 import { Input } from '@/components/common/ui/Input';
 import { TextArea } from '@/components/common/ui/TextArea';
 import { RezumatorPropsWithControl } from '@/components/rezumator/interfaces';
+import { useAppSelector } from '@/store';
 import { OptionalState } from '@/store/slices/rezumator';
 import { FormSectionLayout } from '../common/FormSectionLayout';
 import styles from './Optional.module.css';
@@ -12,10 +13,17 @@ import styles from './Optional.module.css';
 type Props = RezumatorPropsWithControl<OptionalState>;
 
 export const Optional: FC<Props> = ({ register, control }) => {
-  const { fields: driveLicenses } = useFieldArray({
+  const driveLicensesStore = useAppSelector(
+    state => state.rezumator.fields?.optionalInfo.driveLicenses
+  );
+  const { fields: driveLicenses, replace } = useFieldArray({
     control,
     name: 'rezumator.optionalInfo.driveLicenses'
   });
+
+  useEffect(() => {
+    driveLicensesStore && replace(driveLicensesStore);
+  }, [driveLicensesStore]);
 
   return (
     <FormSectionLayout title='Дополнительная информация'>
