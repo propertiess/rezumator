@@ -1,4 +1,6 @@
-export const links = [
+export type LinkData = { href: string; title: string };
+
+export const links: LinkData[] = [
   {
     href: '/rezumator',
     title: 'Составить резюме'

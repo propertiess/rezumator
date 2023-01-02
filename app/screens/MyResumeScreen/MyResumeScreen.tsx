@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
 import { FC, HTMLAttributes, useRef } from 'react';
-import { Button } from '@/components/common/ui/Button';
+import { Breadcrumbs } from '@/components/common/breadcrumbs/Breadcrumbs';
+import { links } from '@/components/home/Navbar/links.data';
 import { Resume } from '@/components/myresume/Resume';
 import { ResumeImage } from '@/components/myresume/ResumeImage';
 import { useCounter } from '@/hooks/useCounter';
@@ -14,7 +14,6 @@ export const MyResumeScreen: FC<Props> = () => {
   const fields = useAppSelector(state => state.rezumator.fields);
   const { counter, increment } = useCounter(1);
   const ref = useRef<HTMLElement>(null);
-  const { back } = useRouter();
   useFetchFields();
 
   if (!fields) {
@@ -28,9 +27,7 @@ export const MyResumeScreen: FC<Props> = () => {
   return (
     <Layout title='Моё резюме' description='Самое лучшее резюме на планете!'>
       <div className='flex mt-3'>
-        <Button className='ml-auto' onClick={back}>
-          Назад
-        </Button>
+        <Breadcrumbs links={[links[0]]} last='Резюме' />
       </div>
       <div className='relative'>
         {counter < 4 && (

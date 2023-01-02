@@ -3,10 +3,6 @@ import { OptionalState } from '@/store/slices/rezumator';
 
 export const optionalLi: InfoLi<Omit<OptionalState, 'driveLicenses'>>[] = [
   {
-    title: '',
-    option: 'info'
-  },
-  {
     title: 'Иностранные языки:',
     option: 'languages'
   },

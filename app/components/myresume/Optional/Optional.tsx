@@ -43,6 +43,7 @@ export const Optional: FC<Props> = () => {
               content={optionalInfo[li.option]}
             />
           ))}
+          <li className='mt-2'>{optionalInfo.info}</li>
         </ul>
       </SectionLayout>
     </>
