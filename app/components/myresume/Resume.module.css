@@ -3,7 +3,7 @@
 }
 
 .content {
-  @apply mt-5 max-w-[1000px] border rounded p-10 bg-[var(--main-color)];
+  @apply mt-5 w-[700px] max-w-[1000px] border rounded p-10 bg-[var(--main-color)];
 }
 
 .divider {

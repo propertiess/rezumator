@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { FC, RefObject, useEffect, useState } from 'react';
 import { toPng } from 'html-to-image';
-import styles from './Resume.module.css';
 
 interface Props {
   trigger: number;
@@ -22,6 +21,7 @@ export const ResumeImage: FC<Props> = ({
     if (condition) {
       return;
     }
+
     toPng(resumeRef.current!).then(url => {
       setImage(url);
       action();

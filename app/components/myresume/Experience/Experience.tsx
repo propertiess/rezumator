@@ -1,7 +1,9 @@
 import { FC, HTMLAttributes } from 'react';
+import { Divider } from '@/components/common/Divider';
 import { Li } from '@/components/myresume/common/Li';
 import { SectionLayout } from '@/components/myresume/common/SectionLayout';
 import { useAppSelector } from '@/store';
+import resStyles from '../Resume.module.css';
 import repeatStyles from '../common/Repeat.module.css';
 import styles from './Experience.module.css';
 
@@ -17,22 +19,27 @@ export const Experience: FC<Props> = () => {
   }
 
   return (
-    <SectionLayout title='Опыт работы'>
-      {experienceInfo.map((experience, i) => (
-        // TODO need unique id
-        <div className={repeatStyles.wrapper} key={i}>
-          <div className={styles.col}>
-            <h4 className={repeatStyles.subtitle}>{experience.organization}</h4>
-            <ul>
-              <Li title='Должность:' content={experience.profession} />
-              {experience.duties && (
-                <li className='break-all mt-2'>{experience.duties}</li>
-              )}
-            </ul>
+    <>
+      <Divider className={resStyles.divider} />
+      <SectionLayout title='Опыт работы'>
+        {experienceInfo.map((experience, i) => (
+          // TODO need unique id
+          <div className={repeatStyles.wrapper} key={i}>
+            <div className={styles.col}>
+              <h4 className={repeatStyles.subtitle}>
+                {experience.organization}
+              </h4>
+              <ul>
+                <Li title='Должность:' content={experience.profession} />
+                {experience.duties && (
+                  <li className='break-all mt-2'>{experience.duties}</li>
+                )}
+              </ul>
+            </div>
+            <p>{experience.fullExperienceJob}</p>
           </div>
-          <p>{experience.fullExperienceJob}</p>
-        </div>
-      ))}
-    </SectionLayout>
+        ))}
+      </SectionLayout>
+    </>
   );
 };

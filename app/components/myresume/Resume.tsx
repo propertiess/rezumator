@@ -1,5 +1,4 @@
 import { forwardRef } from 'react';
-import { Divider } from '@/components/common/Divider';
 import { Education } from '@/components/myresume/Education';
 import { Experience } from '@/components/myresume/Experience';
 import { Header } from '@/components/myresume/Header';
@@ -11,11 +10,8 @@ export const Resume = forwardRef<HTMLElement>(function Resume(_, ref) {
     <section className={styles.wrapper} ref={ref}>
       <div className={styles.content}>
         <Header />
-        <Divider className={styles.divider} />
         <Education />
-        <Divider className={styles.divider} />
         <Experience />
-        <Divider className={styles.divider} />
         <Optional />
       </div>
     </section>

@@ -5,7 +5,7 @@ interface Props {
   content: string | boolean;
 }
 
-const styles = 'grid sm:grid-cols-2 items-center gap-5 mt-2';
+const styles = 'grid grid-cols-2 items-center gap-5 mt-2';
 
 const Li: FC<Props> = ({ title, content }) => {
   if (!content) {
