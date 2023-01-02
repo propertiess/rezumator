@@ -12,15 +12,19 @@ export const useFetchFields = <T extends FieldValues>(
   const fields = useAppSelector(state => state.rezumator.fields);
 
   useEffect(() => {
-    (async () => {
+    let mounted = true;
+
+    const fetchFields = async () => {
       let data: RezumatorState | null;
       const authToken = localStorage.getItem('token');
 
       if (authToken) {
         try {
           data = await RezumatorService.getFields(authToken);
-          setRezumator(data);
-          action && action('rezumator' as Path<T>, data as any);
+          if (mounted) {
+            setRezumator(data);
+            action && action('rezumator' as Path<T>, data as any);
+          }
         } catch (e) {
           console.log(e);
         }
@@ -30,8 +34,10 @@ export const useFetchFields = <T extends FieldValues>(
       if (!fields) {
         try {
           data = await RezumatorService.getInitialFields();
-          setRezumator(data);
-          action && action('rezumator' as Path<T>, data as any);
+          if (mounted) {
+            setRezumator(data);
+            action && action('rezumator' as Path<T>, data as any);
+          }
         } catch (e) {
           console.log(e);
         }
@@ -39,6 +45,17 @@ export const useFetchFields = <T extends FieldValues>(
       }
 
       action && action('rezumator' as Path<T>, fields as any);
-    })();
+    };
+
+    if (fields) {
+      action && action('rezumator' as Path<T>, fields as any);
+      return;
+    }
+
+    fetchFields();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 };

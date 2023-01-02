@@ -20,7 +20,7 @@ export const useRezumatorForm = () => {
     setValue,
     control,
     getValues,
-    formState: { errors, isDirty, isValid, isSubmitting }
+    formState: { errors, isDirty, isValid, isSubmitting, isSubmitSuccessful }
   } = useForm<{
     rezumator: RezumatorState;
   }>({ mode: 'onChange' });
@@ -60,6 +60,7 @@ export const useRezumatorForm = () => {
     isDirty,
     isValid,
     isSubmitting,
+    isSubmitSuccessful,
     getValues,
     onSubmit: handleSubmit(onSubmit)
   };
