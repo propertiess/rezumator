@@ -13,7 +13,6 @@ type Props = HTMLAttributes<unknown>;
 
 export const MyResumeScreen: FC<Props> = () => {
   const fields = useAppSelector(state => state.rezumator.fields);
-  const router = useRouter();
   const { counter, increment } = useCounter(1);
   const ref = useRef<HTMLElement>(null);
   useFetchFields();
@@ -27,9 +26,15 @@ export const MyResumeScreen: FC<Props> = () => {
   }
 
   if (!fields.aboutInfo.secondName) {
-    router.push('/rezumator');
     return (
       <Layout title='Моё резюме' description='Самое лучшее резюме на планете!'>
+        <div className='flex my-3'>
+          <Breadcrumbs
+            aria-label='breadcrumb'
+            links={[links[0]]}
+            last='Резюме'
+          />
+        </div>
         Резюме не найдено
       </Layout>
     );

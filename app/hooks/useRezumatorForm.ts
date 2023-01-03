@@ -6,7 +6,7 @@ import { AuthContext } from '@/context/AuthContext';
 import { RezumatorService } from '@/services/rezumator/rezumator.service';
 import { useAppSelector } from '@/store';
 import { useActions } from '@/store/hooks/useActions';
-import { RezumatorState } from '@/store/slices/rezumator/rezumator';
+import { RezumatorState } from '@/store/slices/rezumator/rezumator.slice';
 import { useFetchFields } from './useFetchFields';
 
 export const useRezumatorForm = () => {

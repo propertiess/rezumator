@@ -1,2 +1,2 @@
-export * from './rezumator';
+export * from './rezumator.slice';
 export * from './types';

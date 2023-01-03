@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { initialRezumator } from '@/utils/constants/initial_fields';
 import {
   AboutInfoState,
   EducationState,
@@ -33,11 +34,11 @@ export const initialExperience: ExperienceState = {
 };
 
 type State = {
-  fields: RezumatorState | null;
+  fields: RezumatorState;
 };
 
 const initialState: State = {
-  fields: null
+  fields: initialRezumator
 };
 
 export const rezumatorSlice = createSlice({

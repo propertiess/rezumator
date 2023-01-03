@@ -5,6 +5,8 @@ import { useAppSelector } from '@/store';
 import { useActions } from '@/store/hooks/useActions';
 import { RezumatorState } from '@/store/slices/rezumator';
 
+const cache: Record<string, unknown> = {};
+
 export const useFetchFields = <T extends FieldValues>(
   action?: UseFormSetValue<T>
 ) => {
@@ -13,44 +15,32 @@ export const useFetchFields = <T extends FieldValues>(
 
   useEffect(() => {
     let mounted = true;
+    const authToken = localStorage.getItem('token');
 
     const fetchFields = async () => {
+      if (!authToken) {
+        action && action('rezumator' as Path<T>, fields as any);
+        return;
+      }
+
+      if (cache[authToken] && mounted) {
+        action && action('rezumator' as Path<T>, fields as any);
+        return;
+      }
+
       let data: RezumatorState | null;
-      const authToken = localStorage.getItem('token');
 
-      if (authToken) {
-        try {
-          data = await RezumatorService.getFields(authToken);
-          if (mounted) {
-            setRezumator(data);
-            action && action('rezumator' as Path<T>, data as any);
-          }
-        } catch (e) {
-          console.log(e);
+      try {
+        data = await RezumatorService.getFields(authToken!);
+        cache[authToken] = data;
+        if (mounted) {
+          setRezumator(data);
+          action && action('rezumator' as Path<T>, data as any);
         }
-        return;
+      } catch (e) {
+        console.log(e);
       }
-
-      if (!fields) {
-        try {
-          data = await RezumatorService.getInitialFields();
-          if (mounted) {
-            setRezumator(data);
-            action && action('rezumator' as Path<T>, data as any);
-          }
-        } catch (e) {
-          console.log(e);
-        }
-        return;
-      }
-
-      action && action('rezumator' as Path<T>, fields as any);
     };
-
-    if (fields) {
-      action && action('rezumator' as Path<T>, fields as any);
-      return;
-    }
 
     fetchFields();
 

@@ -7,11 +7,6 @@ export const RezumatorService = {
     return data;
   },
 
-  async getInitialFields() {
-    const { data } = await instance.get<RezumatorState>(`/rezumator`);
-    return data;
-  },
-
   async setFields(id: string, rezumator: RezumatorState) {
     const { data } = await instance.post<RezumatorState>(
       `/users/${id}/fields`,
