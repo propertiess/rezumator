@@ -29,15 +29,14 @@ export const ResumeImage: FC<Props> = ({
   }, [trigger]);
 
   return (
-    <div className='w-full mx-auto mt-3 relative'>
+    <div className='w-full flex justify-center mx-auto mt-3 relative'>
       {condition && (
         <Image
           className='image'
           src={image}
           alt='resume'
-          width='0'
-          height='0'
-          sizes='100vw'
+          width={700}
+          height={700}
         />
       )}
     </div>

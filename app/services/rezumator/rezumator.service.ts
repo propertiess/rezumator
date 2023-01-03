@@ -6,6 +6,7 @@ export const RezumatorService = {
     const { data } = await instance.get<RezumatorState>(`/users/${id}/fields`);
     return data;
   },
+
   async getInitialFields() {
     const { data } = await instance.get<RezumatorState>(`/rezumator`);
     return data;

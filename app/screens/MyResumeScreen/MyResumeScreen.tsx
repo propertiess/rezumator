@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { FC, HTMLAttributes, useRef } from 'react';
 import { Breadcrumbs } from '@/components/common/breadcrumbs/Breadcrumbs';
 import { links } from '@/components/home/Navbar/links.data';
@@ -12,6 +13,7 @@ type Props = HTMLAttributes<unknown>;
 
 export const MyResumeScreen: FC<Props> = () => {
   const fields = useAppSelector(state => state.rezumator.fields);
+  const router = useRouter();
   const { counter, increment } = useCounter(1);
   const ref = useRef<HTMLElement>(null);
   useFetchFields();
@@ -20,6 +22,15 @@ export const MyResumeScreen: FC<Props> = () => {
     return (
       <Layout title='Моё резюме' description='Самое лучшее резюме на планете!'>
         Ищем ваше резюме...
+      </Layout>
+    );
+  }
+
+  if (!fields.aboutInfo.secondName) {
+    router.push('/rezumator');
+    return (
+      <Layout title='Моё резюме' description='Самое лучшее резюме на планете!'>
+        Резюме не найдено
       </Layout>
     );
   }

@@ -2,18 +2,18 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-import { AuthFields } from '@/components/common/auth-fields/AuthFields';
-import { Button } from '@/components/common/ui/Button';
+import { AuthForm } from '@/components/common/auth-form/AuthForm';
 import { AuthContext } from '@/context/AuthContext';
 import { useAuthForm } from '@/hooks/useAuthForm';
 import { Layout } from '@/layout/Layout';
 import { AuthService } from '@/services/auth/auth.service';
 import { SimpleUser } from '@/services/auth/auth.types';
-import styles from '@/styles/Auth.repeat.module.css';
+import { useActions } from '@/store/hooks/useActions';
 
 const Login: NextPage = () => {
   const [error, setError] = useState('');
-  const { register, errors, handleSubmit } = useAuthForm();
+  const { register, errors, handleSubmit, isSubmitting } = useAuthForm();
+  const { setRezumator } = useActions();
 
   const { push } = useRouter();
   const { setAuthToken } = useContext(AuthContext);
@@ -26,6 +26,8 @@ const Login: NextPage = () => {
 
       if (user.id) {
         setAuthToken(user.id);
+        setRezumator(user.fields);
+
         push('/rezumator');
       } else {
         setError('Такого пользователя не существует!');
@@ -37,15 +39,14 @@ const Login: NextPage = () => {
 
   return (
     <Layout title='Авторизация' description='Авторизация'>
-      <div className={styles.wrapper}>
-        <form className={styles.form} onSubmit={handleSubmit(login)}>
-          <AuthFields register={register} errors={errors} />
-          {error && <span className={styles.error}>{error}</span>}
-          <Button type='submit' className={styles.btn}>
-            Войти
-          </Button>
-        </form>
-      </div>
+      <AuthForm
+        register={register}
+        error={error}
+        errors={errors}
+        onSubmit={handleSubmit(login)}
+        submitButtonText='Войти'
+        isSubmitting={isSubmitting}
+      />
     </Layout>
   );
 };

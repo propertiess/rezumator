@@ -1,5 +1,7 @@
+import { useRouter } from 'next/router';
 import { FC, useContext } from 'react';
 import { ModalNoSSR } from '@/components/common/Modal';
+import { useAuthReset } from '@/components/home/hooks/useAuthReset';
 import { AuthContext } from '@/context/AuthContext';
 import { NavItem } from '../Navbar/NavItem';
 import { links } from '../Navbar/links.data';
@@ -17,7 +19,7 @@ const classNames = {
 };
 
 const BurgerMenu: FC<Props> = ({ open, close }) => {
-  const { authToken, setAuthToken } = useContext(AuthContext);
+  const { authToken, disconnect } = useAuthReset();
 
   return (
     <ModalNoSSR
@@ -37,10 +39,10 @@ const BurgerMenu: FC<Props> = ({ open, close }) => {
             <NavItem href='/signup' title='Регистрация' />
           </>
         ) : (
-          <li className='li_padding'>
+          <li className='li_padding cursor-pointer'>
             <span
               onClick={() => {
-                setAuthToken('');
+                disconnect();
                 close();
               }}
             >

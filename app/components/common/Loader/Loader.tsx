@@ -9,14 +9,12 @@ type Props = HTMLAttributes<unknown> & {
 
 export const Loader: FC<Props> = ({ className, ...rest }) => {
   const style = classNames(
-    'absolute top-0 z-10 left-0 w-full h-full',
+    'absolute top-0 z-10 left-0 w-full h-full flex justify-center items-center',
     className
   );
   return (
-    <div className={style}>
-      <div className='flex justify-center items-center'>
-        <ClipLoader color='white' />
-      </div>
+    <div className={style} {...rest}>
+      <ClipLoader size={30} color='white' />
     </div>
   );
 };

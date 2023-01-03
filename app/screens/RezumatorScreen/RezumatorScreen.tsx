@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { Loader } from '@/components/common/Loader';
 import { Button } from '@/components/common/ui/Button';
 import { About } from '@/components/rezumator/about';
 import { Education } from '@/components/rezumator/education';
@@ -45,15 +44,9 @@ export const RezumatorScreen: FC = () => {
             className='flex mt-5 ml-auto'
             disabled={isSubmitting}
             type='submit'
+            loader={isSubmitting}
           >
-            {isSubmitting ? (
-              <>
-                <Loader className='bg-[var(--primary-bg-color)] top-[5px] rounded-lg' />
-                {'Предпросмотр'}
-              </>
-            ) : (
-              'Предпросмотр'
-            )}
+            Предпросмотр
           </Button>
         ) : (
           <span className='flex justify-end mt-5'>Переходим к шаблону...</span>
