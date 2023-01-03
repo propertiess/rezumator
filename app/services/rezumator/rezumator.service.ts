@@ -1,5 +1,5 @@
 import { RezumatorState } from '@/store/slices/rezumator';
-import { instance } from '../api/instance';
+import instance from '../api/instance';
 
 export const RezumatorService = {
   async getFields(id: string) {
