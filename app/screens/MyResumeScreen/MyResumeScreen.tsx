@@ -27,7 +27,7 @@ export const MyResumeScreen: FC<Props> = () => {
   return (
     <Layout title='Моё резюме' description='Самое лучшее резюме на планете!'>
       <div className='flex mt-3'>
-        <Breadcrumbs links={[links[0]]} last='Резюме' />
+        <Breadcrumbs aria-label='breadcrumb' links={[links[0]]} last='Резюме' />
       </div>
       <div className='relative'>
         {counter < 4 && (

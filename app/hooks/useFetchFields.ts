@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { FieldValues, Path, UseFormSetValue } from 'react-hook-form';
-import { RezumatorService } from '@/services/rezumator/rezumator';
+import { RezumatorService } from '@/services/rezumator/rezumator.service';
 import { useAppSelector } from '@/store';
 import { useActions } from '@/store/hooks/useActions';
 import { RezumatorState } from '@/store/slices/rezumator';

@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { getFullFields } from '@/components/myresume/utils/getFullFields';
 import { AuthContext } from '@/context/AuthContext';
-import { RezumatorService } from '@/services/rezumator/rezumator';
+import { RezumatorService } from '@/services/rezumator/rezumator.service';
 import { useAppSelector } from '@/store';
 import { useActions } from '@/store/hooks/useActions';
 import { RezumatorState } from '@/store/slices/rezumator/rezumator';
@@ -42,13 +43,21 @@ export const useRezumatorForm = () => {
 
     if (authToken) {
       try {
-        await RezumatorService.setFields(authToken, newRezumator);
+        const fields = await RezumatorService.setFields(
+          authToken,
+          newRezumator
+        );
+        setRezumator(fields);
+        push('/myresume');
+
+        return;
       } catch (e) {
         console.log(e);
       }
     }
 
-    setRezumator(newRezumator);
+    const fullFields = getFullFields(newRezumator);
+    setRezumator(fullFields);
 
     push('/myresume');
   };

@@ -1,15 +1,19 @@
 import Link from 'next/link';
-import { FC, Fragment, PropsWithChildren } from 'react';
+import { FC, Fragment, HTMLAttributes, PropsWithChildren } from 'react';
 import { LinkData } from '@/components/home/Navbar/links.data';
 
-type Props = {
+type Props = HTMLAttributes<HTMLDivElement> & {
   links: LinkData[];
   last: string;
 };
 
-const Breadcrumbs: FC<PropsWithChildren<Props>> = ({ links, last }) => {
+const Breadcrumbs: FC<PropsWithChildren<Props>> = ({
+  links,
+  last,
+  ...props
+}) => {
   return (
-    <div className='text-gray-600 text-sm sm:text-2xl leading-5'>
+    <div className='text-gray-600 text-sm sm:text-2xl leading-5' {...props}>
       {links.map(link => (
         <Fragment key={link.title}>
           <Link key={link.title} href={link.href} className='hover:underline'>
