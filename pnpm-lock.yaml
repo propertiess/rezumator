@@ -34,6 +34,7 @@ specifiers:
   react-redux: ^8.0.4
   react-spinners: ^0.13.7
   react-transition-group: ^4.4.5
+  react-use-window-localstorage: ^1.0.17
   redux: ^4.2.0
   tailwindcss: ^3.2.4
   typescript: 4.8.4
@@ -52,6 +53,7 @@ dependencies:
   react-redux: 8.0.4_yfr4m6wk75wdra335rld4tkrbu
   react-spinners: 0.13.7_biqbaboplfbrettd7655fr4n2y
   react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
+  react-use-window-localstorage: 1.0.17_biqbaboplfbrettd7655fr4n2y
   redux: 4.2.0
 
 devDependencies:
@@ -4502,6 +4504,16 @@ packages:
       dom-helpers: 5.2.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-use-window-localstorage/1.0.17_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-POZ5co1Y/Zty62CFj3+ysAT3zvm29C9GSAf55tMNI3CVnhc6rj2qJcLosimqO9OAsWR9L5et9X3DKVKEebZf4g==}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false

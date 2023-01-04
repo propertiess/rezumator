@@ -1,34 +1,21 @@
+import { FC, PropsWithChildren, createContext } from 'react';
 import {
-  FC,
-  PropsWithChildren,
-  createContext,
-  useEffect,
-  useState
-} from 'react';
+  LocalStorageValue,
+  useLocalStorageString
+} from 'react-use-window-localstorage';
 
 export type Auth = {
-  authToken: string;
+  authToken: LocalStorageValue<string>;
   setAuthToken: (id: string) => void;
 };
 
 export const AuthContext = createContext<Auth>({} as Auth);
 
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [authToken, setToken] = useState('');
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      authToken && setAuthToken('');
-      return;
-    }
-
-    !authToken && setAuthToken(token);
-  }, []);
+  const [authToken, setToken] = useLocalStorageString('token', '');
 
   const setAuthToken = (id: string) => {
     setToken(id);
-    localStorage.setItem('token', id);
   };
 
   return (
