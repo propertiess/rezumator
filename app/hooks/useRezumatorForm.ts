@@ -25,7 +25,9 @@ export const useRezumatorForm = () => {
     rezumator: RezumatorState;
   }>();
 
-  const [updateFieldsById] = useSetFieldsByIdMutation();
+  const [updateFieldsById] = useSetFieldsByIdMutation({
+    fixedCacheKey: 'cache'
+  });
 
   useFetchFields(setValue);
 
@@ -39,7 +41,6 @@ export const useRezumatorForm = () => {
     };
 
     const fullFields = getFullFields(newRezumator);
-    setRezumator(fullFields);
 
     if (authToken) {
       await updateFieldsById({
@@ -49,6 +50,7 @@ export const useRezumatorForm = () => {
       push('/myresume');
       return;
     }
+    setRezumator(fullFields);
 
     push('/myresume');
   };

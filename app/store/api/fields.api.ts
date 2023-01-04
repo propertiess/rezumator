@@ -5,14 +5,17 @@ export const fieldsApi = createApi({
   reducerPath: 'fieldsApi',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.BASE_URL }),
   endpoints: builder => ({
-    getFieldsById: builder.query<RezumatorState, unknown>({
+    getFieldsById: builder.query<RezumatorState, string>({
       query: (id: string) => ({
         url: `users/${id}/fields`,
         headers: { secret: process.env.SECRET_KEY }
       })
     }),
-    setFieldsById: builder.mutation({
-      query: ({ id, fields }: { id: string; fields: RezumatorState }) => ({
+    setFieldsById: builder.mutation<
+      RezumatorState,
+      { id: string; fields: RezumatorState }
+    >({
+      query: ({ id, fields }) => ({
         url: `users/${id}/fields`,
         headers: { secret: process.env.SECRET_KEY },
         method: 'POST',
