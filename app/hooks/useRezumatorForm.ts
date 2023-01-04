@@ -3,8 +3,8 @@ import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { getFullFields } from '@/components/myresume/utils/getFullFields';
 import { AuthContext } from '@/context/AuthContext';
-import { RezumatorService } from '@/services/rezumator/rezumator.service';
 import { useAppSelector } from '@/store';
+import { useSetFieldsByIdMutation } from '@/store/api/fields.api';
 import { useActions } from '@/store/hooks/useActions';
 import { RezumatorState } from '@/store/slices/rezumator/rezumator.slice';
 import { useFetchFields } from './useFetchFields';
@@ -14,7 +14,6 @@ export const useRezumatorForm = () => {
   const { authToken } = useContext(AuthContext);
   const { setRezumator } = useActions();
   const { push } = useRouter();
-
   const {
     register,
     handleSubmit,
@@ -24,15 +23,13 @@ export const useRezumatorForm = () => {
     formState: { errors, isDirty, isValid, isSubmitting, isSubmitSuccessful }
   } = useForm<{
     rezumator: RezumatorState;
-  }>({ mode: 'onChange' });
+  }>();
+
+  const [updateFieldsById] = useSetFieldsByIdMutation();
 
   useFetchFields(setValue);
 
   const onSubmit: SubmitHandler<{ rezumator: RezumatorState }> = async data => {
-    if (!isValid) {
-      return;
-    }
-
     const newRezumator = {
       ...data.rezumator,
       aboutInfo: {
@@ -41,23 +38,17 @@ export const useRezumatorForm = () => {
       }
     };
 
-    if (authToken) {
-      try {
-        const fields = await RezumatorService.setFields(
-          authToken,
-          newRezumator
-        );
-        setRezumator(fields);
-        push('/myresume');
-
-        return;
-      } catch (e) {
-        console.log(e);
-      }
-    }
-
     const fullFields = getFullFields(newRezumator);
     setRezumator(fullFields);
+
+    if (authToken) {
+      await updateFieldsById({
+        fields: newRezumator,
+        id: authToken
+      });
+      push('/myresume');
+      return;
+    }
 
     push('/myresume');
   };

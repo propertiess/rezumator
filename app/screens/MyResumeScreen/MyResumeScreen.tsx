@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { FC, HTMLAttributes, useRef } from 'react';
 import { Breadcrumbs } from '@/components/common/breadcrumbs/Breadcrumbs';
 import { links } from '@/components/home/Navbar/links.data';
@@ -35,7 +34,6 @@ export const MyResumeScreen: FC<Props> = () => {
             last='Резюме'
           />
         </div>
-        Резюме не найдено
       </Layout>
     );
   }

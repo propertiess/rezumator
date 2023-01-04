@@ -1,11 +1,12 @@
 import { createWrapper } from 'next-redux-wrapper';
 import { configureStore } from '@reduxjs/toolkit';
 import { PreloadedState, Store, combineReducers } from 'redux';
-import thunk from 'redux-thunk';
+import { fieldsApi } from '@/store/api/fields.api';
 import { rezumatorSlice } from './slices/rezumator';
 
 const rootReducer = combineReducers({
-  rezumator: rezumatorSlice.reducer
+  rezumator: rezumatorSlice.reducer,
+  [fieldsApi.reducerPath]: fieldsApi.reducer
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
@@ -13,7 +14,8 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
     reducer: rootReducer,
     preloadedState,
     devTools: process.env.NODE_ENV !== 'production',
-    middleware: [thunk]
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware().concat(fieldsApi.middleware)
   });
 };
 
