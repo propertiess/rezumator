@@ -1,6 +1,6 @@
 import { FC, HTMLAttributes, useRef } from 'react';
 import { Breadcrumbs } from '@/components/common/breadcrumbs/Breadcrumbs';
-import { links } from '@/components/home/Navbar/links.data';
+import { breadcrumbLinks } from '@/components/common/breadcrumbs/breadcrumb.links';
 import { Resume } from '@/components/myresume/Resume';
 import { ResumeImage } from '@/components/myresume/ResumeImage';
 import { useCounter } from '@/hooks/useCounter';
@@ -16,24 +16,13 @@ export const MyResumeScreen: FC<Props> = () => {
   const ref = useRef<HTMLElement>(null);
   useFetchFields();
 
-  if (!fields) {
-    return (
-      <Layout title='Моё резюме' description='Самое лучшее резюме на планете!'>
-        Ищем ваше резюме...
-      </Layout>
-    );
-  }
-
   if (!fields.aboutInfo.secondName) {
     return (
       <Layout title='Моё резюме' description='Самое лучшее резюме на планете!'>
         <div className='flex my-3'>
-          <Breadcrumbs
-            aria-label='breadcrumb'
-            links={[links[0]]}
-            last='Резюме'
-          />
+          <Breadcrumbs aria-label='breadcrumb' links={breadcrumbLinks} />
         </div>
+        ...
       </Layout>
     );
   }
@@ -41,7 +30,7 @@ export const MyResumeScreen: FC<Props> = () => {
   return (
     <Layout title='Моё резюме' description='Самое лучшее резюме на планете!'>
       <div className='flex mt-3'>
-        <Breadcrumbs aria-label='breadcrumb' links={[links[0]]} last='Резюме' />
+        <Breadcrumbs aria-label='breadcrumb' links={breadcrumbLinks} />
       </div>
       <div className='relative'>
         {counter < 4 && (
