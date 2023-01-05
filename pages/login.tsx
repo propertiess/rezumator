@@ -19,21 +19,15 @@ const Login: NextPage = () => {
   const { setAuthToken } = useContext(AuthContext);
 
   const login: SubmitHandler<SimpleUser> = async ({ username, password }) => {
-    setError('');
+    error && setError('');
 
     try {
       const user = await AuthService.login(username.trim(), password.trim());
-
-      if (user.id) {
-        setAuthToken(user.id);
-        setRezumator(user.fields);
-
-        push('/rezumator');
-      } else {
-        setError('Такого пользователя не существует!');
-      }
+      setAuthToken(user.id);
+      setRezumator(user.fields);
+      push('/rezumator');
     } catch (e) {
-      console.log(e);
+      setError((e as any).response.data.message ?? 'error');
     }
   };
 

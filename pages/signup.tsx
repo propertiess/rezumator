@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
+import { AxiosError } from 'axios';
 import { SubmitHandler } from 'react-hook-form';
 import { AuthForm } from '@/components/common/auth-form/AuthForm';
 import { AuthContext } from '@/context/AuthContext';
@@ -17,18 +18,14 @@ const SignUp: NextPage = () => {
   const { push } = useRouter();
 
   const signUp: SubmitHandler<SimpleUser> = async ({ username, password }) => {
-    setError('');
+    error && setError('');
 
     try {
       const user = await AuthService.createUser(username, password);
-      if (user.id) {
-        setAuthToken(user.id);
-        push('/rezumator');
-      } else {
-        setError('Такой username уже существует!');
-      }
+      setAuthToken(user.id);
+      push('/rezumator');
     } catch (e) {
-      console.log(e);
+      setError((e as any).response.data.message ?? 'error');
     }
   };
 
