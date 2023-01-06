@@ -2,7 +2,13 @@
 module.exports = {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './app/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {}
+    extend: {
+      screens: {
+        tablet: '740px',
+        mini_tablet: '500px',
+        phone: '420px'
+      }
+    }
   },
   plugins: []
 };

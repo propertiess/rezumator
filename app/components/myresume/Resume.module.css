@@ -1,5 +1,5 @@
 .wrapper {
-  @apply flex flex-col bg-[var(--main-color)] border w-fit mx-auto;
+  @apply w-80 phone:w-96 mini_tablet:w-[470px] sm:w-[600px] tablet:w-fit flex flex-col bg-[var(--main-color)] border mx-auto overflow-hidden overflow-x-auto;
 }
 
 .content {
