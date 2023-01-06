@@ -11,6 +11,7 @@ export const AuthService = {
     });
     return data;
   },
+
   async login(username: string, password: string) {
     const { data } = await instance.post<User>('/users/auth', {
       username,

@@ -1,9 +1,9 @@
 .title {
-  @apply flex flex-col text-2xl sm:text-4xl font-semibold;
+  @apply flex flex-col text-2xl sm:text-4xl font-bold;
 }
 
 .subtitle {
-  @apply text-[var(--primary-bg-color)] text-[24px] uppercase font-semibold;
+  @apply text-[var(--primary-bg-color)] text-[24px] uppercase font-bold;
 }
 
 .wrapper {

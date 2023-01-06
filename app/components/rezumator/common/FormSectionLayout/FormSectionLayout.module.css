@@ -5,5 +5,5 @@
 }
 
 .title {
-  @apply text-[30px] md:text-[46px] mt-3 font-semibold;
+  @apply text-[30px] md:text-[46px] mt-3 font-bold;
 }

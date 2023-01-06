@@ -13,7 +13,7 @@
 }
 
 .item .title {
-  @apply text-[24px] font-semibold;
+  @apply text-[24px] font-bold;
 }
 
 .desc {

@@ -10,6 +10,24 @@
   --lime-color: #57efb4;
 }
 
+@font-face {
+  font-family: 'Rubik';
+  src: url('../assets/fonts/Rubik-Regular.ttf') format('truetype');
+}
+
+/* for save weight semibold in pdf */
+@font-face {
+  font-family: 'Rubik';
+  font-weight: 700;
+  src: url('../assets/fonts/Rubik-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Rubik';
+  font-weight: 500;
+  src: url('../assets/fonts/Rubik-Medium.ttf') format('truetype');
+}
+
 html,
 body,
 * {

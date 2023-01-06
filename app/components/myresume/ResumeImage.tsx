@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FC, RefObject, useEffect, useState } from 'react';
+import { RefObject, forwardRef, useEffect, useState } from 'react';
 import { toPng } from 'html-to-image';
 
 interface Props {
@@ -9,36 +9,34 @@ interface Props {
   resumeRef: RefObject<HTMLElement>;
 }
 
-export const ResumeImage: FC<Props> = ({
-  trigger,
-  condition,
-  resumeRef,
-  action
-}) => {
-  const [image, setImage] = useState('');
+export const ResumeImage = forwardRef<HTMLImageElement, Props>(
+  function ResumeImage({ trigger, condition, resumeRef, action }, ref) {
+    const [image, setImage] = useState('');
 
-  useEffect(() => {
-    if (condition) {
-      return;
-    }
+    useEffect(() => {
+      if (condition) {
+        return;
+      }
 
-    toPng(resumeRef.current!).then(url => {
-      setImage(url);
-      action();
-    });
-  }, [trigger]);
+      toPng(resumeRef.current!).then(url => {
+        setImage(url);
+        action();
+      });
+    }, [trigger]);
 
-  return (
-    <div className='w-full flex justify-center mx-auto mt-3 relative'>
-      {condition && (
-        <Image
-          className='image'
-          src={image}
-          alt='resume'
-          width={700}
-          height={700}
-        />
-      )}
-    </div>
-  );
-};
+    return (
+      <div className='w-full flex justify-center items-start mx-auto relative'>
+        {condition && (
+          <Image
+            className='image'
+            src={image}
+            ref={ref}
+            alt='resume'
+            width={700}
+            height={700}
+          />
+        )}
+      </div>
+    );
+  }
+);

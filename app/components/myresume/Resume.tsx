@@ -5,10 +5,10 @@ import { Header } from '@/components/myresume/Header';
 import { Optional } from '@/components/myresume/Optional';
 import styles from './Resume.module.css';
 
-export const Resume = forwardRef<HTMLElement>(function Resume(_, ref) {
+export const Resume = forwardRef<HTMLDivElement>(function Resume(_, ref) {
   return (
-    <section className={styles.wrapper} ref={ref}>
-      <div className={styles.content}>
+    <section className={styles.wrapper}>
+      <div className={styles.content} ref={ref}>
         <Header />
         <Education />
         <Experience />

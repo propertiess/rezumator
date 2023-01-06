@@ -1,9 +1,9 @@
 .wrapper {
-  @apply flex flex-col items-center bg-[var(--main-color)];
+  @apply flex flex-col bg-[var(--main-color)] border w-fit mx-auto;
 }
 
 .content {
-  @apply mt-5 w-[700px] max-w-[1000px] border rounded p-10 bg-[var(--main-color)];
+  @apply w-[700px] max-w-[1000px] p-10 bg-[var(--main-color)];
 }
 
 .divider {

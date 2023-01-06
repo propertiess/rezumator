@@ -30,7 +30,7 @@ const Li: FC<Props> = ({ title, content }) => {
   return (
     <li className={styles}>
       <span className='text-[18px] text-gray-300'>{title}</span>
-      <span className='font-semibold'>{content}</span>
+      <span className='font-bold'>{content}</span>
     </li>
   );
 };
