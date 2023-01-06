@@ -10,6 +10,10 @@
   @apply bg-white block w-[26px] h-[2px];
 }
 
+.list {
+  @apply p-3 text-center text-3xl;
+}
+
 .burger_menu_enter {
   @apply translate-x-full opacity-0;
 }

@@ -1,8 +1,6 @@
-import { useRouter } from 'next/router';
-import { FC, useContext } from 'react';
+import { FC } from 'react';
 import { ModalNoSSR } from '@/components/common/Modal';
 import { useAuthReset } from '@/components/home/hooks/useAuthReset';
-import { AuthContext } from '@/context/AuthContext';
 import { NavItem } from '../Navbar/NavItem';
 import { links } from '../Navbar/links.data';
 import styles from './Burger.module.css';
@@ -29,7 +27,7 @@ const BurgerMenu: FC<Props> = ({ open, close }) => {
       trigger={open}
       close={close}
     >
-      <ul className='p-3'>
+      <ul className={styles.list}>
         {links.map(link => (
           <NavItem key={link.href} {...link} />
         ))}
