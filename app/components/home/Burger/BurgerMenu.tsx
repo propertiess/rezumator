@@ -19,7 +19,7 @@ const classNames = {
 };
 
 const BurgerMenu: FC<Props> = ({ open, close }) => {
-  const { authToken, disconnect } = useAuthReset();
+  const { authToken, logout } = useAuthReset();
 
   return (
     <ModalNoSSR
@@ -42,7 +42,7 @@ const BurgerMenu: FC<Props> = ({ open, close }) => {
           <li className='li_padding cursor-pointer'>
             <span
               onClick={() => {
-                disconnect();
+                logout();
                 close();
               }}
             >

@@ -10,7 +10,7 @@ import { links } from './links.data';
 type Props = HTMLAttributes<unknown>;
 
 export const Navbar: FC<Props> = ({ ...rest }) => {
-  const { authToken, disconnect } = useAuthReset();
+  const { authToken, logout } = useAuthReset();
 
   return (
     <nav className={styles.wrapper} {...rest}>
@@ -33,7 +33,7 @@ export const Navbar: FC<Props> = ({ ...rest }) => {
           </>
         ) : (
           <li className='li_padding'>
-            <Button color={AVAILABLE_COLOR.secondary} onClick={disconnect}>
+            <Button color={AVAILABLE_COLOR.secondary} onClick={logout}>
               Выйти
             </Button>
           </li>
