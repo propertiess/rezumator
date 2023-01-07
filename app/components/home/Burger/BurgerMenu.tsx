@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { ModalNoSSR } from '@/components/common/Modal';
 import { useAuthReset } from '@/components/home/hooks/useAuthReset';
+import { fadeInOutFromRight } from '@/animation';
 import { NavItem } from '../Navbar/NavItem';
 import { links } from '../Navbar/links.data';
 import styles from './Burger.module.css';
@@ -10,20 +11,13 @@ interface Props {
   close: () => void;
 }
 
-const classNames = {
-  enter: styles.burger_menu_enter,
-  enterActive: styles.burger_menu_enter_active,
-  exitActive: styles.burger_menu_exit_active
-};
-
 const BurgerMenu: FC<Props> = ({ open, close }) => {
   const { authToken, logout } = useAuthReset();
 
   return (
     <ModalNoSSR
       className='bg-[var(--main-color)]'
-      timeoutContent={300}
-      modalClassNames={classNames}
+      modalAnimation={fadeInOutFromRight}
       trigger={open}
       close={close}
     >

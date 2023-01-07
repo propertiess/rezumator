@@ -1,8 +1,8 @@
 import { FC, HTMLAttributes, useRef, useState } from 'react';
+import { AnimationProps } from 'framer-motion';
 import AvatarEditor from 'react-avatar-editor';
 import { ModalNoSSR } from '@/components/common/Modal';
 import { Button } from '@/components/common/ui/Button';
-import { useOpenSwitcher } from '@/hooks/useOpenSwitcher';
 import styles from './AvatarCropModal.module.css';
 
 interface Props extends HTMLAttributes<unknown> {
@@ -13,10 +13,22 @@ interface Props extends HTMLAttributes<unknown> {
   onImageChange: (src: string) => void;
 }
 
-const classNames = {
-  enter: styles.content_enter,
-  enterActive: styles.content_enter_active,
-  exitActive: styles.content_exit_active
+const contentAnimation: AnimationProps = {
+  initial: {
+    scale: 0
+  },
+
+  transition: {
+    type: 'spring'
+  },
+
+  animate: {
+    scale: 1
+  },
+
+  exit: {
+    scale: 0
+  }
 };
 
 const AvatarCropModal: FC<Props> = ({
@@ -27,8 +39,6 @@ const AvatarCropModal: FC<Props> = ({
   onImageChange
 }) => {
   const [scale, setScale] = useState(1);
-  const { isOpen, setClose, setOpen } = useOpenSwitcher();
-
   const editorRef = useRef<AvatarEditor>(null);
 
   const onSaveCropImage = async () => {
@@ -39,11 +49,7 @@ const AvatarCropModal: FC<Props> = ({
   return (
     <ModalNoSSR
       className={styles.modal}
-      onEnteringModal={setOpen}
-      onExitingModal={setClose}
-      triggerContent={isOpen}
-      timeoutContent={500}
-      transitionClassNames={classNames}
+      contentAnimation={contentAnimation}
       trigger={open}
       close={reset}
     >

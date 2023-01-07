@@ -17,17 +17,3 @@
 .btn_wrapper {
   @apply flex gap-3 justify-end;
 }
-
-.content_enter {
-  @apply scale-0;
-}
-
-.content_enter_active {
-  @apply scale-100;
-  transition: transform 0.5s ease;
-}
-
-.content_exit_active {
-  @apply scale-0;
-  transition: transform 0.5s ease;
-}

@@ -13,17 +13,3 @@
 .list {
   @apply p-3 text-center text-3xl;
 }
-
-.burger_menu_enter {
-  @apply translate-x-full opacity-0;
-}
-
-.burger_menu_enter_active {
-  @apply translate-x-0 opacity-100;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.burger_menu_exit_active {
-  @apply translate-x-full opacity-0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
