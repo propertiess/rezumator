@@ -1,12 +1,13 @@
 import { useContext, useEffect } from 'react';
-import { FieldValues, Path, UseFormSetValue } from 'react-hook-form';
+import { UseFormSetValue } from 'react-hook-form';
 import { AuthContext } from '@/context/AuthContext';
 import { useGetCurrentFieldsFromApi } from '@/hooks/useGetCurrentFieldsFromApi';
 import { useAppSelector } from '@/store';
 import { useActions } from '@/store/hooks/useActions';
+import { RezumatorState } from '@/store/slices/rezumator';
 
-export const useFetchFields = <T extends FieldValues>(
-  action?: UseFormSetValue<T>
+export const useFetchFields = (
+  action?: UseFormSetValue<{ rezumator: RezumatorState }>
 ) => {
   const fields = useAppSelector(state => state.rezumator.fields);
   const { authToken } = useContext(AuthContext);
@@ -15,13 +16,13 @@ export const useFetchFields = <T extends FieldValues>(
 
   useEffect(() => {
     if (!authToken) {
-      action && action('rezumator' as Path<T>, fields as any);
+      action && action('rezumator', fields);
       return;
     }
 
-    if (data) {
+    if (data && data.aboutInfo.firstName) {
       setRezumator(data);
-      action && action('rezumator' as Path<T>, data as any);
+      action && action('rezumator', data);
     }
   }, [data]);
 };

@@ -21,7 +21,11 @@ export const AvatarPicker: FC<Props> = ({ src, onImageChange }) => {
 
   return (
     <span className={styles.wrapper}>
-      {src && <Image src={src} alt='avatar' width={300} height={300} />}
+      {src && (
+        <div className='relative w-72 h-72 mx-auto sm:mx-0'>
+          <Image src={src} alt='avatar' fill />
+        </div>
+      )}
       {!src ? (
         <FileInput
           accept='.png,.jpeg,.jpg'

@@ -13,7 +13,6 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
   return configureStore({
     reducer: rootReducer,
     preloadedState,
-    devTools: process.env.NODE_ENV !== 'production',
     middleware: getDefaultMiddleware =>
       getDefaultMiddleware().concat(fieldsApi.middleware)
   });

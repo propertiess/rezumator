@@ -38,13 +38,9 @@ export const ResumeToImage = forwardRef<HTMLDivElement, Props>(
       <div className='w-full flex justify-center mx-auto relative overflow-hidden'>
         <div className='bg-[var(--main-color)] absolute top-0 left-0 w-full h-full'></div>
         {condition && (
-          <Image
-            className='image'
-            src={image}
-            alt='resume'
-            width={700}
-            height={700}
-          />
+          <div className='relative'>
+            <Image className='image' src={image} alt='resume' fill />
+          </div>
         )}
         <Component
           ref={(el: HTMLDivElement) => {
