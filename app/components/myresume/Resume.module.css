@@ -1,5 +1,5 @@
 .wrapper {
-  @apply w-80 phone:w-96 mini_tablet:w-[470px] sm:w-[600px] tablet:w-fit flex flex-col bg-[var(--main-color)] border mx-auto overflow-hidden overflow-x-auto;
+  @apply w-80 tablet:w-fit flex flex-col bg-[var(--main-color)] mx-auto overflow-hidden overflow-x-auto absolute top-0 left-0 -z-20;
 }
 
 .content {
