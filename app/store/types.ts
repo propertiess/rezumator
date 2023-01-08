@@ -1,5 +1,5 @@
 export type DateState = {
-  day: number;
+  day: string;
   month: string;
   year: string;
 };

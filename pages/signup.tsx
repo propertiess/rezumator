@@ -1,7 +1,6 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
-import { AxiosError } from 'axios';
 import { SubmitHandler } from 'react-hook-form';
 import { AuthForm } from '@/components/common/auth-form/AuthForm';
 import { AuthContext } from '@/context/AuthContext';

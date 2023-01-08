@@ -2,9 +2,11 @@ import { store } from '@/store';
 import instance from '../api/instance';
 import { User } from './auth.types';
 
+const endpoint = '/auth';
+
 export const AuthService = {
   async createUser(username: string, password: string) {
-    const { data } = await instance.post<User>('/users', {
+    const { data } = await instance.post<User>(`${endpoint}/signup`, {
       username,
       password,
       fields: store.getState().rezumator.fields
@@ -13,7 +15,7 @@ export const AuthService = {
   },
 
   async login(username: string, password: string) {
-    const { data } = await instance.post<User>('/users/auth', {
+    const { data } = await instance.post<User>(`${endpoint}/login`, {
       username,
       password
     });

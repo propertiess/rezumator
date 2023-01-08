@@ -23,5 +23,6 @@ export const getFullFields = (fields: RezumatorState) => {
     obj.fullExperienceJob = getFullExperienceJob(obj.startJob!, obj.endJob!);
     return obj;
   });
+
   return fields;
 };
