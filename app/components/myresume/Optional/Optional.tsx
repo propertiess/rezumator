@@ -43,7 +43,16 @@ export const Optional: FC<Props> = () => {
               content={optionalInfo[li.option]}
             />
           ))}
-          <li className='mt-2'>{optionalInfo.info}</li>
+          {optionalInfo.info.split('\n').map(line => {
+            if (!line) {
+              return null;
+            }
+            return (
+              <li key={line} className='mt-2'>
+                {line}
+              </li>
+            );
+          })}
         </ul>
       </SectionLayout>
     </>

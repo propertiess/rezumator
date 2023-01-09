@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes } from 'react';
+import { FC, Fragment, HTMLAttributes } from 'react';
 import { Divider } from '@/components/common/Divider';
 import { Li } from '@/components/myresume/common/Li';
 import { SectionLayout } from '@/components/myresume/common/SectionLayout';
@@ -24,20 +24,20 @@ export const Experience: FC<Props> = () => {
       <SectionLayout title='Опыт работы'>
         {experienceInfo.map((experience, i) => (
           // TODO need unique id
-          <div className={repeatStyles.wrapper} key={i}>
-            <div className={styles.col}>
-              <h4 className={repeatStyles.subtitle}>
-                {experience.organization}
-              </h4>
-              <ul>
-                <Li title='Должность:' content={experience.profession} />
-                {experience.duties && (
-                  <li className='break-all mt-2'>{experience.duties}</li>
-                )}
-              </ul>
+          <Fragment key={i}>
+            <div className={repeatStyles.wrapper}>
+              <div className={styles.col}>
+                <h4 className={repeatStyles.subtitle}>
+                  {experience.organization}
+                </h4>
+                <ul>
+                  <Li title='Должность:' content={experience.profession} />
+                  <Li title='' content={experience.fullExperienceJob} />
+                </ul>
+              </div>
             </div>
-            <p>{experience.fullExperienceJob}</p>
-          </div>
+            {experience.duties && <p className='mt-2'>{experience.duties}</p>}
+          </Fragment>
         ))}
       </SectionLayout>
     </>
