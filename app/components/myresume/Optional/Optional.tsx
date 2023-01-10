@@ -1,4 +1,5 @@
 import { FC, HTMLAttributes } from 'react';
+import classNames from 'classnames';
 import { Divider } from '@/components/common/Divider';
 import { optionalLi } from '@/components/myresume/Optional/optional.data';
 import { Li } from '@/components/myresume/common/Li';
@@ -43,12 +44,14 @@ export const Optional: FC<Props> = () => {
               content={optionalInfo[li.option]}
             />
           ))}
-          {optionalInfo.info.split('\n').map(line => {
+          {optionalInfo.info.split('\n').map((line, idx) => {
+            // array won't change in the resume page
             if (!line) {
-              return null;
+              return <span key={idx} className='my-2 block'></span>;
             }
+
             return (
-              <li key={line} className='mt-2'>
+              <li key={line} className={classNames({ 'mt-2': idx === 0 })}>
                 {line}
               </li>
             );
