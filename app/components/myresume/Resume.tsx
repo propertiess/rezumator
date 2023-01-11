@@ -1,8 +1,8 @@
 import { forwardRef } from 'react';
-import { Education } from '@/components/myresume/Education';
-import { Experience } from '@/components/myresume/Experience';
-import { Header } from '@/components/myresume/Header';
-import { Optional } from '@/components/myresume/Optional';
+import { Education } from '@/components/myresume/education';
+import { Experience } from '@/components/myresume/experience';
+import { Header } from '@/components/myresume/header/Header';
+import { Optional } from '@/components/myresume/optional';
 import styles from './Resume.module.css';
 
 export const Resume = forwardRef<HTMLDivElement>(function Resume(_, ref) {

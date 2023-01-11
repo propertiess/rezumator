@@ -1,15 +1,15 @@
 import { NextPage } from 'next';
 import { useRef } from 'react';
 import { savePDF } from '@progress/kendo-react-pdf';
-import { Loader } from '@/components/common/Loader';
 import { Breadcrumbs } from '@/components/common/breadcrumbs/Breadcrumbs';
 import { breadcrumbLinks } from '@/components/common/breadcrumbs/breadcrumb.links';
-import { Button } from '@/components/common/ui/Button';
+import { Loader } from '@/components/common/loader';
+import { Button } from '@/components/common/ui/button';
 import { Resume } from '@/components/myresume';
 import { ResumeToImage } from '@/components/myresume/ResumeToImage';
 import { useCounter } from '@/hooks/useCounter';
 import { useFetchFields } from '@/hooks/useFetchFields';
-import { Layout } from '@/layout/Layout';
+import { Layout } from '@/layout';
 import { useAppSelector } from '@/store';
 
 const MyResume: NextPage = () => {

@@ -1,4 +1,4 @@
-import { SelectOptions } from '@/components/common/ui/Select';
+import { SelectOptions } from '@/components/common/ui/select';
 
 export const removal: SelectOptions[] = [
   {

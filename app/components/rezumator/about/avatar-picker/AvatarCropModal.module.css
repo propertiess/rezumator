@@ -1,0 +1,19 @@
+.modal {
+  @apply flex justify-center items-center bg-black bg-opacity-90;
+}
+
+.content {
+  @apply flex flex-col bg-[var(--secondary-bg-color)] 
+  min-w-[200px]
+  sm:min-w-[400px]
+  md:min-w-[768px]
+  p-5 rounded-lg gap-5 max-h-fit overflow-hidden;
+}
+
+.content div:first-child {
+  @apply mx-auto;
+}
+
+.btn_wrapper {
+  @apply flex gap-3 justify-end;
+}

@@ -1,13 +1,13 @@
 import { FC, Fragment, useEffect } from 'react';
 import { useFieldArray } from 'react-hook-form';
-import { Label } from '@/components/common/Label';
-import { LabelForCheckbox } from '@/components/common/LabelForCheckbox';
-import { Input } from '@/components/common/ui/Input';
-import { TextArea } from '@/components/common/ui/TextArea';
+import { Label } from '@/components/common/label';
+import { LabelForCheckbox } from '@/components/common/label-for-checkbox';
+import { Input } from '@/components/common/ui/input';
+import { TextArea } from '@/components/common/ui/text-area';
+import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
 import { RezumatorPropsWithControl } from '@/components/rezumator/interfaces';
 import { useAppSelector } from '@/store';
 import { OptionalState } from '@/store/slices/rezumator';
-import { FormSectionLayout } from '../common/FormSectionLayout';
 import styles from './Optional.module.css';
 
 type Props = RezumatorPropsWithControl<OptionalState>;

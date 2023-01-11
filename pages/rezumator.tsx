@@ -1,12 +1,12 @@
 import { NextPage } from 'next';
-import { Button } from '@/components/common/ui/Button';
+import { Button } from '@/components/common/ui/button';
 import { About } from '@/components/rezumator/about';
 import { Education } from '@/components/rezumator/education';
 import { Experience } from '@/components/rezumator/experience';
 import { Optional } from '@/components/rezumator/optional';
 import { Personal } from '@/components/rezumator/personal';
 import { useRezumatorForm } from '@/hooks/useRezumatorForm';
-import { Layout } from '@/layout/Layout';
+import { Layout } from '@/layout';
 
 const Rezumator: NextPage = () => {
   const {

@@ -1,16 +1,16 @@
 import { FC, Fragment, useEffect } from 'react';
 import classNames from 'classnames';
 import { useFieldArray } from 'react-hook-form';
-import { Label } from '@/components/common/Label';
-import { Input } from '@/components/common/ui/Input';
-import { Select } from '@/components/common/ui/Select';
+import { Label } from '@/components/common/label';
+import { Input } from '@/components/common/ui/input';
+import { Select } from '@/components/common/ui/select';
+import { AddRemoveButtons } from '@/components/rezumator/common/add-remove-buttons';
+import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
 import { useAppSelector } from '@/store';
 import { EducationState, initialEducation } from '@/store/slices/rezumator';
-import { EDUCATION_YEARS } from '@/utils/DateState.constant';
+import { EDUCATION_YEARS } from '@/utils/constants/full-date';
 import styles from '../Repeat.module.css';
-import { FormSectionLayout } from '../common/FormSectionLayout';
 import { RezumatorPropsWithControl } from '../interfaces';
-import { AddRemoveButtons } from './../common/AddRemoveButtons/AddRemoveButtons';
 import { formOfEducation } from './education.data';
 
 type Props = RezumatorPropsWithControl<EducationState>;

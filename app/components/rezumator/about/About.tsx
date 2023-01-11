@@ -1,19 +1,19 @@
 import { FC } from 'react';
 import classNames from 'classnames';
-import { Label } from '@/components/common/Label';
-import { LabelForCheckbox } from '@/components/common/LabelForCheckbox';
-import { Input } from '@/components/common/ui/Input';
-import { Select } from '@/components/common/ui/Select';
+import { Label } from '@/components/common/label';
+import { LabelForCheckbox } from '@/components/common/label-for-checkbox';
+import { Input } from '@/components/common/ui/input';
+import { Select } from '@/components/common/ui/select';
+import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
 import { RezumatorProps } from '@/components/rezumator/interfaces';
 import { useAppSelector } from '@/store';
 import { useActions } from '@/store/hooks/useActions';
 import { AboutInfoState } from '@/store/slices/rezumator';
-import { formatPhoneNumber } from '@/utils/formatPhoneNumber';
-import { formatSalary } from '@/utils/formatSalary';
+import { formatPhoneNumber } from '@/utils/helpers/formatPhoneNumber';
+import { formatSalary } from '@/utils/helpers/formatSalary';
 import styles from '../Repeat.module.css';
-import { FormSectionLayout } from '../common/FormSectionLayout';
-import { AvatarPicker } from './AvatarPicker';
 import { currencies, phoneCodes, scheduleOfWork } from './about.data';
+import { AvatarPicker } from './avatar-picker';
 
 type Props = RezumatorProps<AboutInfoState>;
 

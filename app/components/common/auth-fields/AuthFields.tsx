@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { FieldErrorsImpl, UseFormRegister } from 'react-hook-form';
-import { Input } from '@/components/common/ui/Input';
+import { Input } from '@/components/common/ui/input';
 import { SimpleUser } from '@/services/auth/auth.types';
 
 type Props = {

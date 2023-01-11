@@ -1,11 +1,12 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
+import { AxiosError } from 'axios';
 import { SubmitHandler } from 'react-hook-form';
-import { AuthForm } from '@/components/common/auth-form/AuthForm';
+import { AuthForm } from '@/components/common/auth-form';
 import { AuthContext } from '@/context/AuthContext';
 import { useAuthForm } from '@/hooks/useAuthForm';
-import { Layout } from '@/layout/Layout';
+import { Layout } from '@/layout';
 import { AuthService } from '@/services/auth/auth.service';
 import { SimpleUser } from '@/services/auth/auth.types';
 
@@ -24,7 +25,10 @@ const SignUp: NextPage = () => {
       setAuthToken(user.id);
       push('/rezumator');
     } catch (e) {
-      setError((e as any).response.data.message ?? 'error');
+      setError(
+        (e as AxiosError<{ message: string }>).response?.data?.message ??
+          'error'
+      );
     }
   };
 
