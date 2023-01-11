@@ -1,5 +1,6 @@
 import { FC, Fragment, HTMLAttributes } from 'react';
 import { Divider } from '@/components/common/Divider';
+import { DescriptionList } from '@/components/common/description-list/DescriptionList';
 import { Li } from '@/components/myresume/common/Li';
 import { SectionLayout } from '@/components/myresume/common/SectionLayout';
 import { useAppSelector } from '@/store';
@@ -36,7 +37,11 @@ export const Experience: FC<Props> = () => {
                 </ul>
               </div>
             </div>
-            {experience.duties && <p className='mt-2'>{experience.duties}</p>}
+            {experience.duties && (
+              <ul>
+                <DescriptionList data={experience.duties} />
+              </ul>
+            )}
           </Fragment>
         ))}
       </SectionLayout>
