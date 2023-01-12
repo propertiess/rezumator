@@ -1,22 +1,15 @@
 import { ChangeEventHandler, FC, InputHTMLAttributes, useRef } from 'react';
 import classNames from 'classnames';
-import {
-  FieldError,
-  FieldErrorsImpl,
-  FieldValues,
-  Merge
-} from 'react-hook-form';
+import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
 import { Button } from '@/components/common/ui/button';
 import styles from './FileInput.module.css';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
-  error?: FieldError | Merge<FieldError, FieldErrorsImpl<FieldValues>>;
+  error?: FieldError | Merge<FieldError, FieldErrorsImpl>;
   onImageChange?: (src: string) => void;
   openModalCrop?: () => void;
 }
-
-// TODO: make custom hook with functional for file to image string
 
 const FileInput: FC<Props> = ({
   className,

@@ -1,4 +1,4 @@
-import { FC, Fragment, useEffect } from 'react';
+import { FC, Fragment, memo, useEffect } from 'react';
 import classNames from 'classnames';
 import { useFieldArray } from 'react-hook-form';
 import { Label } from '@/components/common/label';
@@ -15,7 +15,10 @@ import { formOfEducation } from './education.data';
 
 type Props = RezumatorPropsWithControl<EducationState>;
 
-export const Education: FC<Props> = ({ register, control }) => {
+export const Education: FC<Props> = memo(function Education({
+  register,
+  control
+}) {
   const education = useAppSelector(
     state => state.rezumator.fields?.educationInfo
   );
@@ -82,4 +85,4 @@ export const Education: FC<Props> = ({ register, control }) => {
       />
     </FormSectionLayout>
   );
-};
+});

@@ -1,6 +1,6 @@
 import { FC, FormEventHandler, HTMLProps } from 'react';
 import { FieldErrorsImpl, UseFormRegister } from 'react-hook-form';
-import { AuthFields } from '@/components/common/auth-fields/AuthFields';
+import { AuthFields } from '@/components/common/auth-fields';
 import { Button } from '@/components/common/ui/button';
 import { SimpleUser } from '@/services/auth/auth.types';
 import styles from '@/styles/Auth.repeat.module.css';

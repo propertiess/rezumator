@@ -10,10 +10,13 @@ import { RezumatorState } from '@/store/slices/rezumator/rezumator.slice';
 import { useFetchFields } from './useFetchFields';
 
 export const useRezumatorForm = () => {
-  const fields = useAppSelector(state => state.rezumator.fields);
+  const avatar = useAppSelector(
+    state => state.rezumator.fields.aboutInfo.avatar
+  );
   const { authToken } = useContext(AuthContext);
   const { setRezumator } = useActions();
   const { push } = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -36,7 +39,7 @@ export const useRezumatorForm = () => {
       ...data.rezumator,
       aboutInfo: {
         ...data.rezumator.aboutInfo,
-        avatar: fields && fields.aboutInfo.avatar
+        avatar
       }
     };
 

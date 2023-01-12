@@ -1,4 +1,4 @@
-import { FC, Fragment, useEffect } from 'react';
+import { FC, Fragment, memo, useEffect } from 'react';
 import classNames from 'classnames';
 import { useFieldArray } from 'react-hook-form';
 import { Label } from '@/components/common/label';
@@ -16,7 +16,10 @@ import { RezumatorPropsWithControl } from '../interfaces';
 
 type Props = RezumatorPropsWithControl<ExperienceState>;
 
-export const Experience: FC<Props> = ({ register, control }) => {
+export const Experience: FC<Props> = memo(function Experience({
+  register,
+  control
+}) {
   const experience = useAppSelector(
     state => state.rezumator.fields?.experienceInfo
   );
@@ -106,4 +109,4 @@ export const Experience: FC<Props> = ({ register, control }) => {
       />
     </FormSectionLayout>
   );
-};
+});
