@@ -11,10 +11,10 @@
 }
 
 .content {
-  @apply flex flex-col items-center;
+  @apply flex flex-col items-center gap-1;
 }
 
 .text {
   font-family: 'Sora', sans-serif;
-  @apply text-[var(--secondary-text-color)] text-[14px] md:text-[16px];
+  @apply text-[var(--secondary-text-color)] text-xs sm:text-sm md:text-[16px];
 }

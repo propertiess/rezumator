@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FC, HTMLAttributes } from 'react';
+import { FC, HTMLAttributes, MouseEvent, useRef } from 'react';
 import classNames from 'classnames';
 import { AVAILABLE_COLOR } from '@/utils/color';
 import styles from './Advantage.module.css';
@@ -13,18 +13,22 @@ export interface Advantage {
 
 interface Props extends HTMLAttributes<unknown> {
   item: Advantage;
+  width?: number | null;
 }
 
 const AdvantageItem: FC<Props> = ({
   item: { desc, src, title, color },
-  ...rest
+  width
 }) => {
+  const itemRef = useRef<HTMLLIElement>(null);
+  const isUseMouseMove = width && width < 1020;
+
   const itemStyles = classNames(styles.item, {
-    [styles.primary]: color === AVAILABLE_COLOR.primary
+    [styles.primary_container]: color === AVAILABLE_COLOR.primary
   });
 
   const imgStyles = classNames(styles.img, {
-    [styles.primary]: color === '',
+    [styles.primary_img]: color === '',
     [styles.lime]: color !== ''
   });
 
@@ -33,8 +37,22 @@ const AdvantageItem: FC<Props> = ({
     'text-white': color === ''
   });
 
+  const onMouseMove = (e: MouseEvent<HTMLLIElement>) => {
+    if (isUseMouseMove) {
+      return;
+    }
+
+    if (!itemRef.current) {
+      return;
+    }
+
+    const { x, y } = itemRef.current.getBoundingClientRect();
+    itemRef.current.style.setProperty('--x', (e.clientX - x).toString());
+    itemRef.current.style.setProperty('--y', (e.clientY - y).toString());
+  };
+
   return (
-    <div className={itemStyles} {...rest}>
+    <li className={itemStyles} onMouseMove={onMouseMove} ref={itemRef}>
       <div className={imgStyles}>
         <Image sizes='100vw' src={src} alt={title} />
       </div>
@@ -42,7 +60,7 @@ const AdvantageItem: FC<Props> = ({
         <h4 className={styles.title}>{title}</h4>
         <p className={descStyles}>{desc}</p>
       </div>
-    </div>
+    </li>
   );
 };
 

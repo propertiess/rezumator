@@ -1,5 +1,5 @@
 .wrapper {
-  @apply px-5 mt-12 md:mt-28 xl:px-2;
+  @apply mt-12 md:mt-28 xl:px-2 mb-10 sm:mb-3;
 }
 .wrapper h1 {
   @apply capitalize text-[40px] md:text-[72px] font-semibold;
