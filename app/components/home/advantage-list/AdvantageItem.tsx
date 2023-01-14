@@ -13,15 +13,14 @@ export interface Advantage {
 
 interface Props extends HTMLAttributes<unknown> {
   item: Advantage;
-  width?: number | null;
+  isUseMouseMove?: boolean;
 }
 
 const AdvantageItem: FC<Props> = ({
   item: { desc, src, title, color },
-  width
+  isUseMouseMove
 }) => {
   const itemRef = useRef<HTMLLIElement>(null);
-  const isUseMouseMove = width && width < 1020;
 
   const itemStyles = classNames(styles.item, {
     [styles.primary_container]: color === AVAILABLE_COLOR.primary
@@ -38,7 +37,7 @@ const AdvantageItem: FC<Props> = ({
   });
 
   const onMouseMove = (e: MouseEvent<HTMLLIElement>) => {
-    if (isUseMouseMove) {
+    if (!isUseMouseMove) {
       return;
     }
 
