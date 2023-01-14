@@ -14,6 +14,11 @@
   @apply flex flex-col items-center gap-1;
 }
 
+.content a {
+  @apply border border-transparent
+  focus:border-[var(--primary-bg-color)];
+}
+
 .text {
   font-family: 'Sora', sans-serif;
   @apply text-[var(--secondary-text-color)] text-xs sm:text-sm md:text-[16px];
