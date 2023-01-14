@@ -37,8 +37,16 @@ body,
   font-family: 'Rubik', sans-serif;
 }
 
+body {
+  @apply bg-[var(--main-color)] text-white;
+}
+
 #__next {
-  @apply min-h-screen min-w-fit;
+  @apply min-h-screen min-w-fit flex flex-col;
+}
+
+main {
+  @apply flex-grow;
 }
 
 .my_container {
@@ -57,16 +65,4 @@ body,
 li,
 a {
   @apply focus:outline-0;
-}
-
-body {
-  @apply bg-[var(--main-color)] text-white;
-}
-
-#__next {
-  @apply flex flex-col;
-}
-
-main {
-  @apply flex-grow;
 }
