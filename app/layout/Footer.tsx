@@ -18,7 +18,7 @@ const Footer: FC = ({ ...rest }) => {
                 <Image src={GitHubIcon} alt='https://github.com/propertiess/' />
               </a>
               <p className={styles.text}>
-                Copyright 2022 &copy; Rezumator. All right reserved
+                &copy; Rezumator 2022. All rights reserved.
               </p>
             </div>
           </div>

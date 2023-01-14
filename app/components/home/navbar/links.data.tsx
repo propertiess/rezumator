@@ -8,9 +8,5 @@ export const links: LinkData[] = [
   {
     href: '/about',
     title: 'О сервисе'
-  },
-  {
-    href: '/help',
-    title: 'Помощь'
   }
 ];
