@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosHeaders } from 'axios';
 
 const instance = axios.create({
   baseURL: process.env.BASE_URL,
@@ -7,12 +7,18 @@ const instance = axios.create({
   }
 });
 
-instance.interceptors.request.use(config => {
-  if (config.headers) {
-    config.headers.secret = process.env.SECRET_KEY;
-  }
+instance.interceptors.request.use(
+  config => {
+    (config.headers as AxiosHeaders).set(
+      'secret',
+      process.env.SECRET_KEY ?? ''
+    );
 
-  return config;
-});
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
 
 export default instance;
