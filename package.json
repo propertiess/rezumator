@@ -31,9 +31,9 @@
     "redux": "^4.2.0"
   },
   "devDependencies": {
+    "@propertiess/prettier-config": "^1.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
-    "@trivago/prettier-plugin-sort-imports": "^3.4.0",
     "@types/jest": "^29.2.5",
     "@types/node": "18.8.2",
     "@types/react": "18.0.21",
