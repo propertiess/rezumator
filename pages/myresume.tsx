@@ -1,16 +1,18 @@
 import { NextPage } from 'next';
 import { useRef } from 'react';
+
 import { savePDF } from '@progress/kendo-react-pdf';
-import { Breadcrumbs } from '@/components/common/breadcrumbs/Breadcrumbs';
-import { breadcrumbLinks } from '@/components/common/breadcrumbs/breadcrumb.links';
+
+import { Breadcrumbs, breadcrumbLinks } from '@/components/common/breadcrumbs';
 import { Loader } from '@/components/common/loader';
-import { Button } from '@/components/common/ui/button';
-import { Resume } from '@/components/myresume';
-import { ResumeToImage } from '@/components/myresume/ResumeToImage';
-import { useCounter } from '@/hooks/useCounter';
-import { useFetchFields } from '@/hooks/useFetchFields';
-import { Layout } from '@/layout';
+import { Button } from '@/components/common/ui';
+import { Resume, ResumeToImage } from '@/components/myresume';
+
+import { useCounter, useFetchFields } from '@/hooks';
+
 import { useAppSelector } from '@/store';
+
+import { Layout } from '@/layout';
 
 const MyResume: NextPage = () => {
   const fields = useAppSelector(state => state.rezumator.fields);

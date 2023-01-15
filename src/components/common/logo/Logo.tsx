@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
+
 import LogoAvatar from '@/../public/logo.svg';
+
 import styles from './Logo.module.css';
 
 export const Logo: FC = () => {

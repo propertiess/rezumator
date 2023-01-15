@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+
 import { SimpleUser } from '@/services/auth/auth.types';
 
 export const useAuthForm = () => {

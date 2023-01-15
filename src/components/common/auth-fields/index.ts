@@ -1,1 +1,1 @@
-export * from './AuthFields'
+export * from './AuthFields';

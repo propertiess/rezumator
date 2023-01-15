@@ -1,4 +1,5 @@
 import { InfoLi } from '@/components/myresume/header/header.data';
+
 import { EducationState } from '@/store/slices/rezumator';
 
 export const educationLi: InfoLi<EducationState>[] = [

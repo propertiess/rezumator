@@ -1,5 +1,7 @@
 import { FC, HTMLAttributes, PropsWithChildren } from 'react';
+
 import classNames from 'classnames';
+
 import styles from './Label.module.css';
 
 interface Props extends HTMLAttributes<unknown> {

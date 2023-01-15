@@ -1,15 +1,20 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
+
 import { AxiosError } from 'axios';
 import { SubmitHandler } from 'react-hook-form';
+
 import { AuthForm } from '@/components/common/auth-form';
-import { AuthContext } from '@/context/AuthContext';
-import { useAuthForm } from '@/hooks/useAuthForm';
-import { Layout } from '@/layout';
-import { AuthService } from '@/services/auth/auth.service';
-import { SimpleUser } from '@/services/auth/auth.types';
+
+import { useAuthForm } from '@/hooks';
 import { useActions } from '@/store/hooks/useActions';
+
+import { AuthContext } from '@/context';
+
+import { AuthService, SimpleUser } from '@/services/auth';
+
+import { Layout } from '@/layout';
 
 const Login: NextPage = () => {
   const [error, setError] = useState('');

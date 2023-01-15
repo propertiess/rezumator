@@ -1,5 +1,3 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { initialRezumator } from '@/utils/constants/initial_fields';
 import {
   AboutInfoState,
   EducationState,
@@ -7,6 +5,9 @@ import {
   OptionalState,
   PersonalInfoState
 } from './types';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+
+import { initialRezumator } from '@/utils/constants/initial_fields';
 
 export interface RezumatorState {
   aboutInfo: AboutInfoState;

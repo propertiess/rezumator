@@ -1,6 +1,8 @@
 import { FC, HTMLAttributes } from 'react';
+
 import classNames from 'classnames';
 import ClipLoader from 'react-spinners/ClipLoader';
+
 import styles from './Loader.module.css';
 
 type Props = HTMLAttributes<unknown> & {

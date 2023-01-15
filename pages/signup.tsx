@@ -1,14 +1,19 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
+
 import { AxiosError } from 'axios';
 import { SubmitHandler } from 'react-hook-form';
+
 import { AuthForm } from '@/components/common/auth-form';
-import { AuthContext } from '@/context/AuthContext';
-import { useAuthForm } from '@/hooks/useAuthForm';
+
+import { useAuthForm } from '@/hooks';
+
+import { AuthContext } from '@/context';
+
+import { AuthService, SimpleUser } from '@/services/auth';
+
 import { Layout } from '@/layout';
-import { AuthService } from '@/services/auth/auth.service';
-import { SimpleUser } from '@/services/auth/auth.types';
 
 const SignUp: NextPage = () => {
   const [error, setError] = useState('');

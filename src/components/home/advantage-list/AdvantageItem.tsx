@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import { FC, HTMLAttributes, MouseEvent, useRef } from 'react';
+
 import classNames from 'classnames';
+
 import { AVAILABLE_COLOR } from '@/utils/color';
+
 import styles from './Advantage.module.css';
 
 export interface Advantage {

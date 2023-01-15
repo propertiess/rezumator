@@ -1,11 +1,14 @@
 import dynamic from 'next/dynamic';
 import { FC, PropsWithChildren } from 'react';
+
+import { defaultModalAnimation } from './default.animation';
 import classNames from 'classnames';
 import { AnimatePresence, AnimationProps, motion } from 'framer-motion';
 import { createPortal } from 'react-dom';
+
 import { useClickOutside } from '@/hooks/useClickOutside';
+
 import styles from './Modal.module.css';
-import { defaultModalAnimation } from './default.animation';
 
 interface Props {
   trigger: boolean;

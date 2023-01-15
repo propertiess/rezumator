@@ -1,5 +1,7 @@
 import { FC } from 'react';
+
 import classNames from 'classnames';
+
 import styles from './Divider.module.css';
 
 type Props = {

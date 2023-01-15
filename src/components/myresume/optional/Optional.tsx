@@ -1,11 +1,15 @@
 import { FC, HTMLAttributes } from 'react';
-import { DescriptionList } from '@/components/common/description-list/DescriptionList';
+
+import { SectionLayout } from '../common/section-layout';
+
+import { DescriptionList } from '@/components/common/description-list';
 import { Divider } from '@/components/common/divider';
 import { Li } from '@/components/myresume/common/Li';
 import { optionalLi } from '@/components/myresume/optional/optional.data';
+
 import { useAppSelector } from '@/store';
+
 import resStyles from '../Resume.module.css';
-import { SectionLayout } from '../common/section-layout';
 
 type Props = HTMLAttributes<unknown>;
 

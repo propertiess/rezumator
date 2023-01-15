@@ -1,5 +1,7 @@
 import { FC, HTMLAttributes } from 'react';
+
 import repeatStyles from '@/components/myresume/common/Repeat.module.css';
+
 import styles from './SectionLayout.module.css';
 
 interface Props extends HTMLAttributes<unknown> {

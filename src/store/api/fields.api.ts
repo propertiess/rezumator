@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { LocalStorageValue } from 'react-use-window-localstorage';
+
 import { RezumatorState } from '@/store/slices/rezumator';
 
 export const fieldsApi = createApi({

@@ -1,4 +1,5 @@
 import { FC, HTMLProps, ReactNode } from 'react';
+
 import { Loader } from '@/components/common/loader';
 
 interface Props extends HTMLProps<unknown> {

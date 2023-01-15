@@ -1,4 +1,5 @@
 import { FC, SelectHTMLAttributes, forwardRef } from 'react';
+
 import classNames from 'classnames';
 import {
   FieldError,
@@ -6,6 +7,7 @@ import {
   FieldValues,
   Merge
 } from 'react-hook-form';
+
 import styles from './Select.module.css';
 
 export interface SelectOptions {

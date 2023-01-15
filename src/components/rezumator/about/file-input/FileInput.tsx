@@ -1,7 +1,10 @@
 import { ChangeEventHandler, FC, InputHTMLAttributes, useRef } from 'react';
+
 import classNames from 'classnames';
 import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
+
 import { Button } from '@/components/common/ui/button';
+
 import styles from './FileInput.module.css';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {

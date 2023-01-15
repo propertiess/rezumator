@@ -1,5 +1,7 @@
 import { FC, HTMLAttributes } from 'react';
+
 import classNames from 'classnames';
+
 import styles from './LabelForCheckbox.module.css';
 
 interface Props extends HTMLAttributes<unknown> {

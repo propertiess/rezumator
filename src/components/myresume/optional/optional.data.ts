@@ -1,4 +1,5 @@
 import { InfoLi } from '@/components/myresume/header/header.data';
+
 import { OptionalState } from '@/store/slices/rezumator';
 
 export const optionalLi: InfoLi<Omit<OptionalState, 'driveLicenses'>>[] = [

@@ -1,9 +1,12 @@
 import { FC, HTMLAttributes } from 'react';
+
 import { Divider } from '@/components/common/divider';
 import { Li } from '@/components/myresume/common/Li';
 import { SectionLayout } from '@/components/myresume/common/section-layout';
 import { educationLi } from '@/components/myresume/education/education.data';
+
 import { useAppSelector } from '@/store';
+
 import resStyles from '../Resume.module.css';
 import repeatStyles from '../common/Repeat.module.css';
 

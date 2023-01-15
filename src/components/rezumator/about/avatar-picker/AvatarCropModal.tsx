@@ -1,8 +1,11 @@
 import { FC, HTMLAttributes, useRef, useState } from 'react';
+
 import { AnimationProps } from 'framer-motion';
 import AvatarEditor from 'react-avatar-editor';
+
 import { ModalNoSSR } from '@/components/common/modal';
-import { Button } from '@/components/common/ui/button';
+import { Button } from '@/components/common/ui';
+
 import styles from './AvatarCropModal.module.css';
 
 interface Props extends HTMLAttributes<unknown> {

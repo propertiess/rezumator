@@ -1,14 +1,19 @@
 import { FC } from 'react';
+
+import { RezumatorProps } from '../types';
+import { removal } from './personal.data';
 import classNames from 'classnames';
+
 import { Label } from '@/components/common/label';
 import { Input } from '@/components/common/ui/input';
 import { Select } from '@/components/common/ui/select';
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
+
 import { PersonalInfoState } from '@/store/slices/rezumator';
+
 import { DAYS, MONTHS, YEARS } from '@/utils/constants/full-date';
+
 import styles from '../Repeat.module.css';
-import { RezumatorProps } from '../interfaces';
-import { removal } from './personal.data';
 
 type Props = RezumatorProps<PersonalInfoState>;
 

@@ -1,8 +1,9 @@
-import { AVAILABLE_COLOR } from '@/utils/color';
 import maxPossibility from '../assets/maxPossibility.svg';
 import minTime from '../assets/minTime.svg';
 import perfectDesign from '../assets/perfectDesign.svg';
 import { Advantage } from './AdvantageItem';
+
+import { AVAILABLE_COLOR } from '@/utils/color';
 
 export const advantages: Advantage[] = [
   {

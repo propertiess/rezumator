@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { FC, PropsWithChildren } from 'react';
+
 import { Footer } from '@/layout/Footer';
 import { Header } from '@/layout/Header';
 

@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { FC } from 'react';
-import GitHubIcon from '../components/home/assets/GithubIcon.svg';
+
+import GitHubIcon from '@/components/home/assets/GithubIcon.svg';
+
 import styles from './Footer.module.css';
 
 const Footer: FC = ({ ...rest }) => {

@@ -1,9 +1,13 @@
 import { FC } from 'react';
-import { ModalNoSSR } from '@/components/common/modal';
-import { useAuthReset } from '@/components/home/hooks/useAuthReset';
-import { fadeInOutFromRight } from '@/animation';
+
 import { NavItem } from '../navbar/NavItem';
 import { links } from '../navbar/links.data';
+
+import { ModalNoSSR } from '@/components/common/modal';
+import { useAuthReset } from '@/components/home/hooks/useAuthReset';
+
+import { fadeInOutFromRight } from '@/animation';
+
 import styles from './Burger.module.css';
 
 interface Props {

@@ -1,10 +1,13 @@
 import Link from 'next/link';
 import { FC, HTMLAttributes } from 'react';
+
 import { Button } from '@/components/common/ui/button';
 import { useAuthReset } from '@/components/home/hooks/useAuthReset';
 import { NavItem } from '@/components/home/navbar/NavItem';
 import { links } from '@/components/home/navbar/links.data';
+
 import { AVAILABLE_COLOR } from '@/utils/color';
+
 import styles from './Navbar.module.css';
 
 type Props = HTMLAttributes<unknown>;

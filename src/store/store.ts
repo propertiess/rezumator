@@ -1,8 +1,10 @@
 import { createWrapper } from 'next-redux-wrapper';
+
+import { rezumatorSlice } from './slices/rezumator';
 import { configureStore } from '@reduxjs/toolkit';
 import { PreloadedState, Store, combineReducers } from 'redux';
+
 import { fieldsApi } from '@/store/api/fields.api';
-import { rezumatorSlice } from './slices/rezumator';
 
 const rootReducer = combineReducers({
   rezumator: rezumatorSlice.reducer,

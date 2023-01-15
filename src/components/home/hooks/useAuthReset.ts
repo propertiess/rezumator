@@ -1,8 +1,12 @@
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
-import { AuthContext } from '@/context/AuthContext';
-import { useSetFieldsByIdMutation } from '@/store/api/fields.api';
+
 import { useActions } from '@/store/hooks/useActions';
+
+import { useSetFieldsByIdMutation } from '@/store/api/fields.api';
+
+import { AuthContext } from '@/context/AuthContext';
+
 import { initialRezumator } from '@/utils/constants/initial_fields';
 
 export const useAuthReset = () => {

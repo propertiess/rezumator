@@ -1,7 +1,11 @@
 import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react';
+
 import classNames from 'classnames';
+
 import { LoaderInButton } from '@/components/common/loader-in-button/LoaderInButton';
+
 import { AVAILABLE_COLOR } from '@/utils/color';
+
 import styles from './Button.module.css';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {

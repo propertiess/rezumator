@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import { Divider } from './Divider';
+import { render, screen } from '@testing-library/react';
 
 const setup = () => render(<Divider />);
 

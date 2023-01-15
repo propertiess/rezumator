@@ -1,9 +1,13 @@
 import Image from 'next/image';
 import { FC } from 'react';
-import { Button } from '@/components/common/ui/button';
-import { useOpenSwitcher } from '@/hooks/useOpenSwitcher';
+
 import { FileInput } from '../file-input';
 import { AvatarCropModal } from './AvatarCropModal';
+
+import { Button } from '@/components/common/ui/button';
+
+import { useOpenSwitcher } from '@/hooks/useOpenSwitcher';
+
 import styles from './AvatarPicker.module.css';
 
 interface Props {

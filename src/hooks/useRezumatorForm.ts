@@ -1,13 +1,18 @@
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
+
+import { useFetchFields } from './useFetchFields';
 import { SubmitHandler, useForm } from 'react-hook-form';
+
 import { getFullFields } from '@/components/myresume/utils/getFullFields';
-import { AuthContext } from '@/context/AuthContext';
+
+import { useActions } from '@/store/hooks/useActions';
+
 import { useAppSelector } from '@/store';
 import { useSetFieldsByIdMutation } from '@/store/api/fields.api';
-import { useActions } from '@/store/hooks/useActions';
 import { RezumatorState } from '@/store/slices/rezumator/rezumator.slice';
-import { useFetchFields } from './useFetchFields';
+
+import { AuthContext } from '@/context/AuthContext';
 
 export const useRezumatorForm = () => {
   const avatar = useAppSelector(

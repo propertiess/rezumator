@@ -1,5 +1,7 @@
 import { FC, HTMLAttributes, useState } from 'react';
-import { BurgerMenu } from '@/components/home/burger/BurgerMenu';
+
+import { BurgerMenu } from './BurgerMenu';
+
 import styles from './Burger.module.css';
 
 type Props = HTMLAttributes<unknown>;
