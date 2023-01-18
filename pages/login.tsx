@@ -29,7 +29,8 @@ const Login: NextPage = () => {
 
     try {
       const user = await AuthService.login(username.trim(), password.trim());
-      setAuthToken(user.id);
+
+      setAuthToken(user._id);
       setRezumator(user.fields);
       push('/rezumator');
     } catch (e) {

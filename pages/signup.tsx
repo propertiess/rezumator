@@ -27,7 +27,8 @@ const SignUp: NextPage = () => {
 
     try {
       const user = await AuthService.createUser(username, password);
-      setAuthToken(user.id);
+      
+      setAuthToken(user._id);
       push('/rezumator');
     } catch (e) {
       setError(
