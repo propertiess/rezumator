@@ -16,7 +16,7 @@ const AuthFields: FC<Props> = ({ register, errors }) => {
     <div className='flex flex-col gap-3 w-full'>
       <Input
         error={errors.username}
-        placeholder='username'
+        placeholder='Имя пользователя'
         {...register('username', {
           required: true,
           minLength: 2,
@@ -26,7 +26,7 @@ const AuthFields: FC<Props> = ({ register, errors }) => {
       <Input
         error={errors.password}
         type='password'
-        placeholder='password'
+        placeholder='Пароль'
         {...register('password', {
           required: true,
           minLength: 5,

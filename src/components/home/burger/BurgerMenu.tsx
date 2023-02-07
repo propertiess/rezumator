@@ -30,10 +30,7 @@ const BurgerMenu: FC<Props> = ({ open, close }) => {
           <NavItem key={link.href} {...link} />
         ))}
         {!authToken ? (
-          <>
-            <NavItem href='/login' title='Войти' />
-            <NavItem href='/signup' title='Регистрация' />
-          </>
+          <NavItem href='/authorization' title='Авторизация' />
         ) : (
           <li className='li_padding cursor-pointer'>
             <span

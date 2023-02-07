@@ -22,18 +22,11 @@ export const Navbar: FC<Props> = ({ ...rest }) => {
           <NavItem key={link.title} {...link} />
         ))}
         {!authToken ? (
-          <>
-            <li className='li_padding'>
-              <Link href='/login'>
-                <Button color={AVAILABLE_COLOR.secondary}>Войти</Button>
-              </Link>
-            </li>
-            <li className='li_padding'>
-              <Link href='/signup'>
-                <Button color={AVAILABLE_COLOR.secondary}>Регистрация</Button>
-              </Link>
-            </li>
-          </>
+          <li className='li_padding'>
+            <Link href='/authorization'>
+              <Button color={AVAILABLE_COLOR.secondary}>Авторизация</Button>
+            </Link>
+          </li>
         ) : (
           <li className='li_padding'>
             <Button color={AVAILABLE_COLOR.secondary} onClick={logout}>
