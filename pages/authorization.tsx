@@ -82,12 +82,12 @@ const Authorization: NextPage = () => {
         >
           <AuthFields register={register} errors={errors} />
           {error && <span className='text-red-500'>{error}</span>}
-          <div className='ml-auto'>
+          <div className='flex flex-wrap gap-3 ml-auto'>
             <Button
               name='login'
               loader={isSubmitting && pickAuthType.current === 'login'}
               type='submit'
-              className='mr-2'
+              className='w-full sm:w-auto'
             >
               Войти
             </Button>
@@ -95,6 +95,7 @@ const Authorization: NextPage = () => {
               name='signup'
               loader={isSubmitting && pickAuthType.current === 'signup'}
               type='submit'
+              className='w-full sm:w-auto'
             >
               Зарегистрироваться
             </Button>
