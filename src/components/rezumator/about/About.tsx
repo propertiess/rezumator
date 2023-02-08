@@ -7,7 +7,6 @@ import { Input } from '@/components/common/ui/input';
 import { Select } from '@/components/common/ui/select';
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
 import { RezumatorProps } from '@/components/rezumator/types';
-import { useFields } from '@/context';
 import { AboutInfoState } from '@/types';
 import { formatPhoneNumber } from '@/utils/helpers/formatPhoneNumber';
 import { formatSalary } from '@/utils/helpers/formatSalary';
@@ -17,17 +16,12 @@ import { AvatarPicker } from './avatar-picker';
 
 import styles from '../Repeat.module.css';
 
-type Props = RezumatorProps<AboutInfoState>;
+type Props = RezumatorProps<AboutInfoState> & {
+  avatar: string;
+  setAvatar: (src: string) => void;
+};
 
-export const About: FC<Props> = ({ register, errors }) => {
-  // const { fields, setAvatar } = useFields();
-  // const src = fields.aboutInfo.avatar;
-
-  // const src = useAppSelector(
-  //   state => state.rezumator.fields && state.rezumator.fields?.aboutInfo.avatar
-  // );
-  // const { setAvatar } = useActions();
-
+export const About: FC<Props> = ({ register, errors, avatar, setAvatar }) => {
   return (
     <FormSectionLayout title='Обо мне'>
       <div className={classNames(styles.col, styles.big_col)}>
@@ -115,7 +109,7 @@ export const About: FC<Props> = ({ register, errors }) => {
       </div>
       <div className={classNames(styles.col, styles.middle_col)}>
         <Label label='Фото:'>
-          <AvatarPicker src={src ?? ''} onImageChange={src => setAvatar(src)} />
+          <AvatarPicker src={avatar} onImageChange={src => setAvatar(src)} />
         </Label>
         <Label label='Должность:'>
           <Input

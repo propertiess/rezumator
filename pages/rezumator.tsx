@@ -8,7 +8,6 @@ import {
   Optional,
   Personal
 } from '@/components/rezumator';
-import { useFields } from '@/context';
 import { useRezumatorForm } from '@/hooks';
 import { Layout } from '@/layout';
 
@@ -21,29 +20,36 @@ const Rezumator: NextPage = () => {
     isSubmitting,
     isSubmitSuccessful,
     fields,
-    setFields,
     setAvatar
   } = useRezumatorForm();
 
   return (
     <Layout title='Составить резюме' description='Составить резюме'>
       <form onSubmit={onSubmit}>
-        <About register={register} errors={errors.rezumator?.aboutInfo} />
+        <About
+          register={register}
+          errors={errors.rezumator?.aboutInfo}
+          avatar={fields.aboutInfo.avatar ?? ''}
+          setAvatar={setAvatar}
+        />
         <Personal register={register} errors={errors.rezumator?.personalInfo} />
         <Education
           register={register}
           errors={errors.rezumator?.educationInfo}
           control={control}
+          education={fields.educationInfo}
         />
         <Experience
           register={register}
           errors={errors.rezumator?.experienceInfo}
           control={control}
+          experience={fields.experienceInfo}
         />
         <Optional
           register={register}
           errors={errors.rezumator?.optionalInfo}
           control={control}
+          driveLicense={fields.optionalInfo.driveLicenses}
         />
 
         {!isSubmitSuccessful ? (

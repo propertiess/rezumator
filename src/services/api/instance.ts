@@ -1,6 +1,6 @@
 import axios, { AxiosHeaders } from 'axios';
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: process.env.BASE_URL,
   headers: {
     'Content-Type': 'application/json'
@@ -20,5 +20,3 @@ instance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
-export default instance;

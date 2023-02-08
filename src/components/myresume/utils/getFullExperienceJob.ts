@@ -1,4 +1,4 @@
-import { JobDate } from '@/store/types';
+import { JobDate } from '@/types';
 
 export const getFullExperienceJob = (
   startOfJob: JobDate,

@@ -1,4 +1,4 @@
-import { AboutInfoState, PersonalInfoState } from '@/store/slices/rezumator';
+import { AboutInfoState, PersonalInfoState } from '@/types';
 
 export type InfoLi<T> = {
   title: string;

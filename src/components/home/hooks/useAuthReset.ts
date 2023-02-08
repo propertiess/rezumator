@@ -1,22 +1,12 @@
-import { useRouter } from 'next/router';
-
-import { useAuth, useFields } from '@/context';
-import { initialRezumator } from '@/utils/constants/initial_fields';
+import { initialFields, useAuth, useFields } from '@/context';
 
 export const useAuthReset = () => {
   const { authToken, setAuthToken } = useAuth();
   const { setFields } = useFields();
-  // const [, { reset }] = useSetFieldsByIdMutation({
-  //   fixedCacheKey: 'cache'
-  // });
-  // const { setRezumator } = useActions();
-  const router = useRouter();
 
   const logout = () => {
     setAuthToken('');
-    // reset();
-    setFields(initialRezumator);
-    router.push('/');
+    setFields(initialFields);
   };
 
   return {

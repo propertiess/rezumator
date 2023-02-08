@@ -7,14 +7,13 @@ import { Loader } from '@/components/common/loader';
 import { Button } from '@/components/common/ui';
 import { Resume, ResumeToImage } from '@/components/myresume';
 import { useFields } from '@/context';
-import { useCounter, useFetchFields } from '@/hooks';
+import { useCounter } from '@/hooks';
 import { Layout } from '@/layout';
 
 const MyResume: NextPage = () => {
   const { fields } = useFields();
   const { counter, increment } = useCounter(0);
   const resume = useRef<HTMLDivElement>(null);
-  useFetchFields();
 
   const isShowResumePreview = counter >= 4;
 

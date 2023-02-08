@@ -1,6 +1,5 @@
+import { instance } from '@/services/api';
 import { Fields } from '@/types';
-
-import instance from '../api/instance';
 
 const endpoint = '/users';
 

@@ -17,13 +17,11 @@ type SubmitEvent = Event & {
 
 const Authorization: NextPage = () => {
   const pickAuthType = useRef<'login' | 'signup' | null>(null);
-
   const [error, setError] = useState('');
   const { register, errors, handleSubmit, isSubmitting } = useAuthForm();
-  const { setFields } = useFields();
 
   const { setAuthToken } = useAuth();
-  // const { setRezumator } = useActions();
+  const { fields } = useFields();
 
   const { push } = useRouter();
 
@@ -31,7 +29,7 @@ const Authorization: NextPage = () => {
     error && setError('');
 
     try {
-      const user = await AuthService.createUser(username, password);
+      const user = await AuthService.createUser(username, password, fields);
       setAuthToken(user._id);
       push('/rezumator');
     } catch (e) {
@@ -48,7 +46,6 @@ const Authorization: NextPage = () => {
     try {
       const user = await AuthService.login(username.trim(), password.trim());
       setAuthToken(user._id);
-      setFields(user.fields);
       push('/rezumator');
     } catch (e) {
       setError(

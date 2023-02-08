@@ -5,27 +5,25 @@ import { Label } from '@/components/common/label';
 import { LabelForCheckbox } from '@/components/common/label-for-checkbox';
 import { Input, TextArea } from '@/components/common/ui';
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
-import { useAppSelector } from '@/store';
-import { OptionalState } from '@/store/slices/rezumator';
+import { DriveLicense, OptionalState } from '@/types';
 
 import { RezumatorPropsWithControl } from '../types';
 
 import styles from './Optional.module.css';
 
-type Props = RezumatorPropsWithControl<OptionalState>;
+type Props = RezumatorPropsWithControl<OptionalState> & {
+  driveLicense: DriveLicense[];
+};
 
-export const Optional: FC<Props> = ({ register, control }) => {
-  const driveLicensesStore = useAppSelector(
-    state => state.rezumator.fields?.optionalInfo.driveLicenses
-  );
+export const Optional: FC<Props> = ({ register, control, driveLicense }) => {
   const { fields: driveLicenses, replace } = useFieldArray({
     control,
     name: 'rezumator.optionalInfo.driveLicenses'
   });
 
   useEffect(() => {
-    driveLicensesStore && replace(driveLicensesStore);
-  }, [driveLicensesStore, replace]);
+    driveLicense && replace(driveLicense);
+  }, [driveLicense, replace]);
 
   return (
     <FormSectionLayout title='Дополнительная информация'>

@@ -5,7 +5,7 @@ import { Label } from '@/components/common/label';
 import { Input } from '@/components/common/ui/input';
 import { Select } from '@/components/common/ui/select';
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
-import { PersonalInfoState } from '@/store/slices/rezumator';
+import { PersonalInfoState } from '@/types';
 import { DAYS, MONTHS, YEARS } from '@/utils/constants/full-date';
 
 import { RezumatorProps } from '../types';

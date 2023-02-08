@@ -4,10 +4,14 @@ import {
   PropsWithChildren,
   SetStateAction,
   useContext,
+  useEffect,
   useState
 } from 'react';
 
+import { FieldsService } from '@/services/fields';
 import { EducationState, ExperienceState, Fields } from '@/types';
+
+import { useAuth } from './AuthContext';
 
 type IFieldsContext = {
   fields: Fields;
@@ -81,14 +85,29 @@ const initialState = {
   }
 } as unknown as IFieldsContext;
 
+export const initialFields = initialState.fields;
+
 const FieldsContext = createContext(initialState);
 
 export const FieldsProvider = ({ children }: PropsWithChildren) => {
-  const [fields, setFields] = useState(() => initialState.fields);
+  const { authToken } = useAuth();
+  const [fields, setFields] = useState(() => initialFields);
 
   const setAvatar = (src: string) => {
     setFields({ ...fields, aboutInfo: { ...fields.aboutInfo, avatar: src } });
   };
+
+  useEffect(() => {
+    if (!authToken) {
+      return;
+    }
+
+    const fetchFields = async () => {
+      const data = await FieldsService.getById(authToken);
+      setFields(data);
+    };
+    fetchFields();
+  }, [authToken]);
 
   return (
     <FieldsContext.Provider value={{ fields, setFields, setAvatar }}>

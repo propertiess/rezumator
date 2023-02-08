@@ -8,25 +8,23 @@ import { Select } from '@/components/common/ui/select';
 import { TextArea } from '@/components/common/ui/text-area';
 import { AddRemoveButtons } from '@/components/rezumator/common/add-remove-buttons';
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
-import { useAppSelector } from '@/store';
-import { ExperienceState } from '@/store/slices/rezumator';
-import { initialExperience } from '@/store/slices/rezumator';
+import { initialExperience } from '@/context';
+import { ExperienceState } from '@/types';
 import { MONTHS, YEARS } from '@/utils/constants/full-date';
 
 import { RezumatorPropsWithControl } from '../types';
 
 import styles from '../Repeat.module.css';
 
-type Props = RezumatorPropsWithControl<ExperienceState>;
+type Props = RezumatorPropsWithControl<ExperienceState> & {
+  experience: ExperienceState[];
+};
 
 export const Experience = memo(function Experience({
   register,
-  control
+  control,
+  experience
 }: Props) {
-  const experience = useAppSelector(
-    state => state.rezumator.fields?.experienceInfo
-  );
-
   const {
     fields: experienceInfo,
     remove,

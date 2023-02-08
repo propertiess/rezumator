@@ -1,21 +1,17 @@
-import { FC, HTMLAttributes } from 'react';
-
 import { Divider } from '@/components/common/divider';
 import { Li } from '@/components/myresume/common/Li';
 import { SectionLayout } from '@/components/myresume/common/section-layout';
 import { educationLi } from '@/components/myresume/education/education.data';
-import { useAppSelector } from '@/store';
+import { EducationState } from '@/types';
 
 import repeatStyles from '../common/Repeat.module.css';
 import resStyles from '../Resume.module.css';
 
-type Props = HTMLAttributes<unknown>;
+type Props = {
+  educationInfo: EducationState[];
+};
 
-export const Education: FC<Props> = () => {
-  const educationInfo = useAppSelector(
-    state => state.rezumator.fields?.educationInfo
-  );
-
+export const Education = ({ educationInfo }: Props) => {
   if (!educationInfo?.length) {
     return null;
   }

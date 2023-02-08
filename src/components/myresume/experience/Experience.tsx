@@ -1,22 +1,20 @@
-import { FC, Fragment, HTMLAttributes } from 'react';
+import { Fragment } from 'react';
 
 import { DescriptionList } from '@/components/common/description-list';
 import { Divider } from '@/components/common/divider';
 import { Li } from '@/components/myresume/common/Li';
 import { SectionLayout } from '@/components/myresume/common/section-layout';
-import { useAppSelector } from '@/store';
+import { ExperienceState } from '@/types';
 
 import repeatStyles from '../common/Repeat.module.css';
 import resStyles from '../Resume.module.css';
 import styles from './Experience.module.css';
 
-type Props = HTMLAttributes<unknown>;
+type Props = {
+  experienceInfo: ExperienceState[];
+};
 
-export const Experience: FC<Props> = () => {
-  const experienceInfo = useAppSelector(
-    state => state.rezumator.fields?.experienceInfo
-  );
-
+export const Experience = ({ experienceInfo }: Props) => {
   if (!experienceInfo?.length) {
     return null;
   }
