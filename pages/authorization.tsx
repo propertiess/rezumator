@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { AxiosError } from 'axios';
 import { NextPage } from 'next';
@@ -6,11 +6,10 @@ import { useRouter } from 'next/router';
 
 import { AuthFields } from '@/components/common/auth-fields';
 import { Button } from '@/components/common/ui';
-import { AuthContext } from '@/context';
+import { useAuth, useFields } from '@/context';
 import { useAuthForm } from '@/hooks';
 import { Layout } from '@/layout';
 import { AuthService, SimpleUser } from '@/services/auth';
-import { useActions } from '@/store/hooks/useActions';
 
 type SubmitEvent = Event & {
   submitter: HTMLButtonElement;
@@ -18,12 +17,11 @@ type SubmitEvent = Event & {
 
 const Authorization: NextPage = () => {
   const pickAuthType = useRef<'login' | 'signup' | null>(null);
-
   const [error, setError] = useState('');
   const { register, errors, handleSubmit, isSubmitting } = useAuthForm();
 
-  const { setAuthToken } = useContext(AuthContext);
-  const { setRezumator } = useActions();
+  const { setAuthToken } = useAuth();
+  const { fields } = useFields();
 
   const { push } = useRouter();
 
@@ -31,7 +29,7 @@ const Authorization: NextPage = () => {
     error && setError('');
 
     try {
-      const user = await AuthService.createUser(username, password);
+      const user = await AuthService.createUser(username, password, fields);
       setAuthToken(user._id);
       push('/rezumator');
     } catch (e) {
@@ -48,7 +46,6 @@ const Authorization: NextPage = () => {
     try {
       const user = await AuthService.login(username.trim(), password.trim());
       setAuthToken(user._id);
-      setRezumator(user.fields);
       push('/rezumator');
     } catch (e) {
       setError(

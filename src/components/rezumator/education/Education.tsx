@@ -7,8 +7,8 @@ import { Input } from '@/components/common/ui/input';
 import { Select } from '@/components/common/ui/select';
 import { AddRemoveButtons } from '@/components/rezumator/common/add-remove-buttons';
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
-import { useAppSelector } from '@/store';
-import { EducationState, initialEducation } from '@/store/slices/rezumator';
+import { initialEducation } from '@/context';
+import { EducationState } from '@/types';
 import { EDUCATION_YEARS } from '@/utils/constants/full-date';
 
 import { RezumatorPropsWithControl } from '../types';
@@ -17,13 +17,15 @@ import { formOfEducation } from './education.data';
 
 import styles from '../Repeat.module.css';
 
-type Props = RezumatorPropsWithControl<EducationState>;
+type Props = RezumatorPropsWithControl<EducationState> & {
+  education: EducationState[];
+};
 
-export const Education = memo(function Education({ register, control }: Props) {
-  const education = useAppSelector(
-    state => state.rezumator.fields?.educationInfo
-  );
-
+export const Education = memo(function Education({
+  register,
+  control,
+  education
+}: Props) {
   const {
     fields: educationInfo,
     remove,

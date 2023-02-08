@@ -1,22 +1,17 @@
-import { useContext } from 'react';
+import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 
 import { getFullFields } from '@/components/myresume/utils/getFullFields';
-import { AuthContext } from '@/context/AuthContext';
-import { useAppSelector } from '@/store';
-import { useSetFieldsByIdMutation } from '@/store/api/fields.api';
-import { useActions } from '@/store/hooks/useActions';
-import { RezumatorState } from '@/store/slices/rezumator/rezumator.slice';
-
-import { useFetchFields } from './useFetchFields';
+import { useAuth, useFields } from '@/context';
+import { FieldsService } from '@/services/fields';
+import { Fields } from '@/types';
 
 export const useRezumatorForm = () => {
-  const avatar = useAppSelector(
-    state => state.rezumator.fields.aboutInfo.avatar
-  );
-  const { authToken } = useContext(AuthContext);
-  const { setRezumator } = useActions();
+  const { fields, setFields, setAvatar } = useFields();
+  const avatar = fields.aboutInfo.avatar;
+  const { authToken } = useAuth();
+
   const { push } = useRouter();
 
   const {
@@ -27,16 +22,14 @@ export const useRezumatorForm = () => {
     getValues,
     formState: { errors, isDirty, isValid, isSubmitting, isSubmitSuccessful }
   } = useForm<{
-    rezumator: RezumatorState;
+    rezumator: Fields;
   }>();
 
-  const [updateFieldsById] = useSetFieldsByIdMutation({
-    fixedCacheKey: 'cache'
-  });
+  useEffect(() => {
+    setValue('rezumator', fields);
+  }, [authToken, fields, setValue]);
 
-  useFetchFields(setValue);
-
-  const onSubmit: SubmitHandler<{ rezumator: RezumatorState }> = async data => {
+  const onSubmit: SubmitHandler<{ rezumator: Fields }> = async data => {
     const newRezumator = {
       ...data.rezumator,
       aboutInfo: {
@@ -48,14 +41,9 @@ export const useRezumatorForm = () => {
     const fullFields = getFullFields(newRezumator);
 
     if (authToken) {
-      await updateFieldsById({
-        fields: newRezumator,
-        id: authToken
-      });
-      push('/myresume');
-      return;
+      await FieldsService.setById(authToken, newRezumator);
     }
-    setRezumator(fullFields);
+    setFields(fullFields);
 
     push('/myresume');
   };
@@ -69,6 +57,8 @@ export const useRezumatorForm = () => {
     isSubmitting,
     isSubmitSuccessful,
     getValues,
-    onSubmit: handleSubmit(onSubmit)
+    onSubmit: handleSubmit(onSubmit),
+    fields,
+    setAvatar
   };
 };

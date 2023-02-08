@@ -1,4 +1,3 @@
-import { FC, HTMLAttributes } from 'react';
 import Image from 'next/image';
 
 import { Li } from '@/components/myresume/common/Li';
@@ -6,18 +5,16 @@ import {
   aboutInfoLi,
   personalInfoLi
 } from '@/components/myresume/header/header.data';
-import { useAppSelector } from '@/store';
+import { AboutInfoState, PersonalInfoState } from '@/types';
 
 import styles from './Header.module.css';
 
-type Props = HTMLAttributes<unknown>;
+type Props = {
+  aboutInfo: AboutInfoState;
+  personalInfo: PersonalInfoState;
+};
 
-export const Header: FC<Props> = () => {
-  const aboutInfo = useAppSelector(state => state.rezumator.fields?.aboutInfo);
-  const personalInfo = useAppSelector(
-    state => state.rezumator.fields?.personalInfo
-  );
-
+export const Header = ({ aboutInfo, personalInfo }: Props) => {
   return (
     <div className={styles.wrapper}>
       <div className='flex gap-10'>

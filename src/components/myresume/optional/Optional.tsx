@@ -1,22 +1,18 @@
-import { FC, HTMLAttributes } from 'react';
-
 import { DescriptionList } from '@/components/common/description-list';
 import { Divider } from '@/components/common/divider';
 import { Li } from '@/components/myresume/common/Li';
 import { optionalLi } from '@/components/myresume/optional/optional.data';
-import { useAppSelector } from '@/store';
+import { OptionalState } from '@/types';
 
 import { SectionLayout } from '../common/section-layout';
 
 import resStyles from '../Resume.module.css';
 
-type Props = HTMLAttributes<unknown>;
+type Props = {
+  optionalInfo: OptionalState;
+};
 
-export const Optional: FC<Props> = () => {
-  const optionalInfo = useAppSelector(
-    state => state.rezumator.fields?.optionalInfo
-  );
-
+export const Optional = ({ optionalInfo }: Props) => {
   if (!optionalInfo) {
     return null;
   }

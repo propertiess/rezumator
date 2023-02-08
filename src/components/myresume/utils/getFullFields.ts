@@ -1,8 +1,8 @@
 import { getFullBirthDay } from '@/components/myresume/utils/getFullBirthDay';
 import { getFullExperienceJob } from '@/components/myresume/utils/getFullExperienceJob';
-import { RezumatorState } from '@/store/slices/rezumator';
+import { Fields } from '@/types';
 
-export const getFullFields = (fields: RezumatorState) => {
+export const getFullFields = (fields: Fields) => {
   if (fields.aboutInfo.salary.amountOfMoney) {
     fields.aboutInfo.fullSalary =
       fields.aboutInfo.salary.amountOfMoney +

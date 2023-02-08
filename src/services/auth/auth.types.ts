@@ -1,10 +1,10 @@
-import { RezumatorState } from '@/store/slices/rezumator';
+import { Fields } from '@/types';
 
 export type User = {
   _id: string;
   username: string;
   password: string;
-  fields: RezumatorState;
+  fields: Fields;
 };
 
 export type SimpleUser = Omit<User, '_id' | 'fields'>;

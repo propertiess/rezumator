@@ -1,17 +1,16 @@
-import { store } from '@/store';
-
-import instance from '../api/instance';
+import { initialFields } from '@/context';
+import { instance } from '@/services/api';
 
 import { User } from './auth.types';
 
 const endpoint = '/auth';
 
 export const AuthService = {
-  async createUser(username: string, password: string) {
+  async createUser(username: string, password: string, fields = initialFields) {
     const { data } = await instance.post<User>(`${endpoint}/signup`, {
       username,
       password,
-      fields: store.getState().rezumator.fields
+      fields
     });
     return data;
   },
