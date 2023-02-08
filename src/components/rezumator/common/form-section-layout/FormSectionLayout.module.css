@@ -1,9 +1,9 @@
 .wrapper {
-  @apply border border-white border-opacity-20 flex flex-wrap gap-3 
-  p-5 rounded-lg mt-5 text-[14px] 
+  @apply mt-5 flex flex-wrap gap-3 rounded-lg border 
+  border-white border-opacity-20 p-5 text-[14px] 
   md:text-[16px] lg:gap-10;
 }
 
 .title {
-  @apply text-[30px] md:text-[46px] mt-3 font-bold;
+  @apply mt-3 text-[30px] font-bold md:text-[46px];
 }

@@ -1,7 +1,7 @@
 .wrapper {
-  @apply flex flex-col basis-full xl:basis-0 xl:flex-grow gap-3;
+  @apply flex basis-full flex-col gap-3 xl:flex-grow xl:basis-0;
 }
 
 .btn {
-  @apply flex ml-auto;
+  @apply ml-auto flex;
 }

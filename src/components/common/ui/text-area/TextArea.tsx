@@ -1,4 +1,4 @@
-import { FC, forwardRef,HTMLAttributes } from 'react';
+import { FC, forwardRef, HTMLAttributes } from 'react';
 
 import styles from './TextArea.module.css';
 

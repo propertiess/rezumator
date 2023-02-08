@@ -1,5 +1,5 @@
 .backdrop {
-  @apply fixed top-0 left-0 w-full h-full;
+  @apply fixed top-0 left-0 h-full w-full;
 }
 
 .modal_enter {

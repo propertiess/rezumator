@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
-import { combineReducers,PreloadedState, Store } from 'redux';
+import { combineReducers, PreloadedState, Store } from 'redux';
 
 import { fieldsApi } from '@/store/api/fields.api';
 

@@ -1,5 +1,5 @@
 .col {
-  @apply flex flex-col gap-3 basis-full;
+  @apply flex basis-full flex-col gap-3;
 }
 
 .big_col {

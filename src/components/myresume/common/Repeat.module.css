@@ -1,11 +1,11 @@
 .title {
-  @apply flex flex-col text-2xl sm:text-4xl font-bold;
+  @apply flex flex-col text-2xl font-bold sm:text-4xl;
 }
 
 .subtitle {
-  @apply text-[var(--primary-bg-color)] text-[24px] uppercase font-bold;
+  @apply text-[24px] font-bold uppercase text-[var(--primary-bg-color)];
 }
 
 .wrapper {
-  @apply flex justify-between gap-3 mt-5 items-center;
+  @apply mt-5 flex items-center justify-between gap-3;
 }

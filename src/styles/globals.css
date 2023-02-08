@@ -42,7 +42,7 @@ body {
 }
 
 #__next {
-  @apply min-h-screen min-w-fit flex flex-col;
+  @apply flex min-h-screen min-w-fit flex-col;
 }
 
 main {

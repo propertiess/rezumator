@@ -26,7 +26,7 @@ export const AvatarPicker: FC<Props> = ({ src, onImageChange }) => {
   return (
     <span className={styles.wrapper}>
       {src && (
-        <div className='relative w-72 h-72 mx-auto sm:mx-0'>
+        <div className='relative mx-auto h-72 w-72 sm:mx-0'>
           <Image src={src} alt='avatar' fill />
         </div>
       )}

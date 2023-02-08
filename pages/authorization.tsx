@@ -60,9 +60,9 @@ const Authorization: NextPage = () => {
 
   return (
     <Layout title='Авторизация' description='Регистрация или вход в аккаунт'>
-      <div className='max-w-[18rem] sm:max-w-[31rem] mx-auto mt-5'>
+      <div className='mx-auto mt-5 max-w-[18rem] sm:max-w-[31rem]'>
         <form
-          className='flex flex-col justify-center items-center p-5 gap-10 rounded-lg border border-white border-opacity-20 mx-auto'
+          className='mx-auto flex flex-col items-center justify-center gap-10 rounded-lg border border-white border-opacity-20 p-5'
           onSubmit={e => {
             e.preventDefault();
 
@@ -77,7 +77,7 @@ const Authorization: NextPage = () => {
         >
           <AuthFields register={register} errors={errors} />
           {error && <span className='text-red-500'>{error}</span>}
-          <div className='flex flex-wrap gap-3 ml-auto'>
+          <div className='ml-auto flex flex-wrap gap-3'>
             <Button
               name='login'
               loader={isSubmitting && pickAuthType.current === 'login'}

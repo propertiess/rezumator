@@ -12,7 +12,7 @@ const LoaderInButton: FC<Props> = ({ condition, text }) => {
     <>
       {condition ? (
         <>
-          <Loader className='bg-[var(--primary-bg-color)] rounded-lg' />
+          <Loader className='rounded-lg bg-[var(--primary-bg-color)]' />
           {text}
         </>
       ) : (

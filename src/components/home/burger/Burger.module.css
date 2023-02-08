@@ -3,11 +3,11 @@
 }
 
 .burger_icon {
-  @apply flex flex-col gap-1 cursor-pointer;
+  @apply flex cursor-pointer flex-col gap-1;
 }
 
 .wrapper span {
-  @apply bg-white block w-[26px] h-[2px];
+  @apply block h-[2px] w-[26px] bg-white;
 }
 
 .list {

@@ -1,11 +1,11 @@
 .list {
-  @apply flex flex-wrap justify-center 
-  mt-14 gap-5
-  md:justify-start md:mt-24;
+  @apply mt-14 flex flex-wrap 
+  justify-center gap-5
+  md:mt-24 md:justify-start;
 }
 
 .item {
-  @apply relative sm:overflow-hidden pt-5 pb-2 px-2 sm:p-5 sm:pb-10 rounded-lg w-full md:max-w-[400px];
+  @apply relative w-full rounded-lg px-2 pt-5 pb-2 sm:overflow-hidden sm:p-5 sm:pb-10 md:max-w-[400px];
   transition: transform 0.3s ease;
 }
 
@@ -16,7 +16,7 @@
 .item:before {
   content: '';
 
-  @apply absolute bg-white bg-opacity-20 w-full h-[1px] -bottom-2 left-0;
+  @apply absolute -bottom-2 left-0 h-[1px] w-full bg-white bg-opacity-20;
 }
 
 .item:hover:after {
@@ -25,7 +25,7 @@
 
 .item:after {
   content: '';
-  @apply absolute bg-[var(--primary-bg-color)] blur-2xl opacity-0 w-[110px] h-[150px];
+  @apply absolute h-[150px] w-[110px] bg-[var(--primary-bg-color)] opacity-0 blur-2xl;
 }
 
 .item .text {
@@ -53,7 +53,7 @@
 }
 
 .item .img {
-  @apply p-4 rounded-lg w-fit flex items-center relative;
+  @apply relative flex w-fit items-center rounded-lg p-4;
 }
 .lime {
   @apply bg-[var(--lime-color)];

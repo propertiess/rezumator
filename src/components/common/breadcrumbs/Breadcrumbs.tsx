@@ -12,14 +12,14 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 const Breadcrumbs: FC<PropsWithChildren<Props>> = ({ links, ...props }) => {
   const { asPath } = useRouter();
   return (
-    <div className='text-gray-600 text-sm sm:text-2xl leading-5' {...props}>
+    <div className='text-sm leading-5 text-gray-600 sm:text-2xl' {...props}>
       {links.map((link, index) => (
         <Fragment key={link.title}>
           <Link
             key={link.title}
             href={link.href}
             className={classNames('hover:underline', {
-              'text-white pointer-events-none': asPath === link.href
+              'pointer-events-none text-white': asPath === link.href
             })}
           >
             {link.title}

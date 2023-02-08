@@ -3,7 +3,7 @@
 }
 
 .footer_wrapper {
-  @apply bg-[var(--secondary-bg-color)] mt-10;
+  @apply mt-10 bg-[var(--secondary-bg-color)];
 }
 
 .wrapper {
@@ -21,5 +21,5 @@
 
 .text {
   font-family: 'Sora', sans-serif;
-  @apply text-[var(--secondary-text-color)] text-xs sm:text-sm md:text-[16px];
+  @apply text-xs text-[var(--secondary-text-color)] sm:text-sm md:text-[16px];
 }

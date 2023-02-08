@@ -44,7 +44,7 @@ const Rezumator: NextPage = () => {
 
         {!isSubmitSuccessful ? (
           <Button
-            className='flex mt-5 ml-auto'
+            className='mt-5 ml-auto flex'
             disabled={isSubmitting}
             type='submit'
             loader={isSubmitting}
@@ -52,7 +52,7 @@ const Rezumator: NextPage = () => {
             Предпросмотр
           </Button>
         ) : (
-          <span className='flex justify-end mt-5'>Переходим к шаблону...</span>
+          <span className='mt-5 flex justify-end'>Переходим к шаблону...</span>
         )}
       </form>
     </Layout>

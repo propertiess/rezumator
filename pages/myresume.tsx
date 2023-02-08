@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { savePDF } from '@progress/kendo-react-pdf';
 import { NextPage } from 'next';
 
-import { breadcrumbLinks,Breadcrumbs } from '@/components/common/breadcrumbs';
+import { breadcrumbLinks, Breadcrumbs } from '@/components/common/breadcrumbs';
 import { Loader } from '@/components/common/loader';
 import { Button } from '@/components/common/ui';
 import { Resume, ResumeToImage } from '@/components/myresume';
@@ -28,7 +28,7 @@ const MyResume: NextPage = () => {
   if (!fields.aboutInfo.secondName) {
     return (
       <Layout title='Моё резюме' description='Самое лучшее резюме на планете!'>
-        <div className='flex my-3'>
+        <div className='my-3 flex'>
           <Breadcrumbs aria-label='breadcrumb' links={breadcrumbLinks} />
         </div>
         ...
@@ -38,7 +38,7 @@ const MyResume: NextPage = () => {
 
   return (
     <Layout title='Моё резюме' description='Самое лучшее резюме на планете!'>
-      <div className='flex my-3'>
+      <div className='my-3 flex'>
         <Breadcrumbs aria-label='breadcrumb' links={breadcrumbLinks} />
       </div>
       {!isShowResumePreview && <Loader />}
@@ -50,7 +50,7 @@ const MyResume: NextPage = () => {
         ref={resume}
       />
       {isShowResumePreview && (
-        <Button className='block mt-3 ml-auto' onClick={downloadPDF}>
+        <Button className='mt-3 ml-auto block' onClick={downloadPDF}>
           Скачать
         </Button>
       )}

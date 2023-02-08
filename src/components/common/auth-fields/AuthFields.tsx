@@ -11,7 +11,7 @@ type Props = {
 
 const AuthFields: FC<Props> = ({ register, errors }) => {
   return (
-    <div className='flex flex-col gap-3 w-full'>
+    <div className='flex w-full flex-col gap-3'>
       <Input
         error={errors.username}
         placeholder='Имя пользователя'
