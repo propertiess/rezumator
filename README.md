@@ -3,7 +3,7 @@
 ## Stack
 
 ```
-NextJS, Typescript, redux-toolkit, module css, tailwind
+NextJS, Typescript, React Context, Module CSS, Tailwind
 ```
 ## Installation
 
