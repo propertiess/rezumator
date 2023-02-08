@@ -8,6 +8,7 @@ import {
   Optional,
   Personal
 } from '@/components/rezumator';
+import { useFields } from '@/context';
 import { useRezumatorForm } from '@/hooks';
 import { Layout } from '@/layout';
 
@@ -18,7 +19,10 @@ const Rezumator: NextPage = () => {
     errors,
     onSubmit,
     isSubmitting,
-    isSubmitSuccessful
+    isSubmitSuccessful,
+    fields,
+    setFields,
+    setAvatar
   } = useRezumatorForm();
 
   return (

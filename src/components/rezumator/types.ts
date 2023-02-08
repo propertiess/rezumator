@@ -7,11 +7,11 @@ import {
   UseFormRegister
 } from 'react-hook-form';
 
-import { RezumatorState } from '@/store/slices/rezumator';
+import { Fields } from '@/types';
 
 export interface RezumatorProps<T extends FieldValues> {
   register: UseFormRegister<{
-    rezumator: RezumatorState;
+    rezumator: Fields;
   }>;
   errors?: Merge<FieldError, FieldErrorsImpl<T>>;
 }
@@ -20,7 +20,7 @@ export type RezumatorPropsWithControl<T extends FieldValues> =
   RezumatorProps<T> & {
     control: Control<
       {
-        rezumator: RezumatorState;
+        rezumator: Fields;
       },
       unknown
     >;

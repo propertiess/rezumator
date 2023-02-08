@@ -1,19 +1,18 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { UseFormSetValue } from 'react-hook-form';
 
-import { AuthContext } from '@/context/AuthContext';
-import { useGetCurrentFieldsFromApi } from '@/hooks/useGetCurrentFieldsFromApi';
-import { useAppSelector } from '@/store';
-import { useActions } from '@/store/hooks/useActions';
-import { RezumatorState } from '@/store/slices/rezumator';
+import { useAuth, useFields } from '@/context';
+import { FieldsService } from '@/services/fields';
+import { Fields } from '@/types';
 
 export const useFetchFields = (
-  action?: UseFormSetValue<{ rezumator: RezumatorState }>
+  action?: UseFormSetValue<{ rezumator: Fields }>
 ) => {
-  const fields = useAppSelector(state => state.rezumator.fields);
-  const { authToken } = useContext(AuthContext);
-  const { data } = useGetCurrentFieldsFromApi();
-  const { setRezumator } = useActions();
+  const { fields, setFields } = useFields();
+  const { authToken } = useAuth();
+  // const fields = useAppSelector(state => state.rezumator.fields);
+  // const { data } = useGetCurrentFieldsFromApi();
+  // const { setRezumator } = useActions();
 
   useEffect(() => {
     if (!authToken) {
@@ -21,10 +20,20 @@ export const useFetchFields = (
       return;
     }
 
-    if (data && data.aboutInfo.firstName) {
-      setRezumator(data);
-      action && action('rezumator', data);
-    }
+    const fetchFields = async () => {
+      const data = await FieldsService.getById(authToken);
+      if (data && data.aboutInfo.firstName) {
+        setFields(data);
+        action && action('rezumator', data);
+      }
+    };
+
+    fetchFields();
+
+    // if (data && data.aboutInfo.firstName) {
+    //   setRezumator(data);
+    //   action && action('rezumator', data);
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, []);
 };

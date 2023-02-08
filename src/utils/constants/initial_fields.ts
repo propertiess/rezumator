@@ -1,6 +1,6 @@
-import { RezumatorState } from '@/store/slices/rezumator';
+import { EducationState, ExperienceState, Fields } from '@/types';
 
-export const initialRezumator: RezumatorState = {
+export const initialRezumator: Fields = {
   aboutInfo: {
     firstName: '',
     secondName: '',
@@ -45,4 +45,21 @@ export const initialRezumator: RezumatorState = {
     ],
     info: ''
   }
+};
+
+export const initialEducation: EducationState = {
+  form: null,
+  faculty: '',
+  institute: '',
+  specialty: '',
+  end: ''
+};
+
+export const initialExperience: ExperienceState = {
+  organization: '',
+  profession: '',
+  startJob: null,
+  fullExperienceJob: '',
+  endJob: null,
+  duties: ''
 };

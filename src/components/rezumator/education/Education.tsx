@@ -16,6 +16,7 @@ import { RezumatorPropsWithControl } from '../types';
 import { formOfEducation } from './education.data';
 
 import styles from '../Repeat.module.css';
+import { useFields } from '@/context';
 
 type Props = RezumatorPropsWithControl<EducationState>;
 

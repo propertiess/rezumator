@@ -1,4 +1,4 @@
-import { createContext, FC, PropsWithChildren } from 'react';
+import { createContext, FC, PropsWithChildren, useContext } from 'react';
 import {
   LocalStorageValue,
   useLocalStorageString
@@ -9,7 +9,7 @@ export type Auth = {
   setAuthToken: (id: string) => void;
 };
 
-export const AuthContext = createContext<Auth>({} as Auth);
+const AuthContext = createContext<Auth>({} as Auth);
 
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [authToken, setToken] = useLocalStorageString('token', '');
@@ -24,3 +24,5 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+export const useAuth = () => useContext(AuthContext);

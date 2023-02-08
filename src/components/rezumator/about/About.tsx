@@ -7,9 +7,8 @@ import { Input } from '@/components/common/ui/input';
 import { Select } from '@/components/common/ui/select';
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
 import { RezumatorProps } from '@/components/rezumator/types';
-import { useAppSelector } from '@/store';
-import { useActions } from '@/store/hooks/useActions';
-import { AboutInfoState } from '@/store/slices/rezumator';
+import { useFields } from '@/context';
+import { AboutInfoState } from '@/types';
 import { formatPhoneNumber } from '@/utils/helpers/formatPhoneNumber';
 import { formatSalary } from '@/utils/helpers/formatSalary';
 
@@ -21,10 +20,13 @@ import styles from '../Repeat.module.css';
 type Props = RezumatorProps<AboutInfoState>;
 
 export const About: FC<Props> = ({ register, errors }) => {
-  const src = useAppSelector(
-    state => state.rezumator.fields && state.rezumator.fields?.aboutInfo.avatar
-  );
-  const { setAvatar } = useActions();
+  // const { fields, setAvatar } = useFields();
+  // const src = fields.aboutInfo.avatar;
+
+  // const src = useAppSelector(
+  //   state => state.rezumator.fields && state.rezumator.fields?.aboutInfo.avatar
+  // );
+  // const { setAvatar } = useActions();
 
   return (
     <FormSectionLayout title='Обо мне'>
