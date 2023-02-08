@@ -1,12 +1,11 @@
-import { FC, SelectHTMLAttributes, forwardRef } from 'react';
-
-import classNames from 'classnames';
+import { FC, forwardRef,SelectHTMLAttributes } from 'react';
 import {
   FieldError,
   FieldErrorsImpl,
   FieldValues,
   Merge
 } from 'react-hook-form';
+import classNames from 'classnames';
 
 import styles from './Select.module.css';
 

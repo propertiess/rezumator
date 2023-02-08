@@ -1,5 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { LocalStorageValue } from 'react-use-window-localstorage';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { RezumatorState } from '@/store/slices/rezumator';
 

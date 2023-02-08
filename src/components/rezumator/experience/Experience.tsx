@@ -1,8 +1,6 @@
-import { FC, Fragment, memo, useEffect } from 'react';
-
-import { RezumatorPropsWithControl } from '../types';
-import classNames from 'classnames';
+import { Fragment, memo, useEffect } from 'react';
 import { useFieldArray } from 'react-hook-form';
+import classNames from 'classnames';
 
 import { Label } from '@/components/common/label';
 import { Input } from '@/components/common/ui/input';
@@ -10,21 +8,21 @@ import { Select } from '@/components/common/ui/select';
 import { TextArea } from '@/components/common/ui/text-area';
 import { AddRemoveButtons } from '@/components/rezumator/common/add-remove-buttons';
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
-
 import { useAppSelector } from '@/store';
 import { ExperienceState } from '@/store/slices/rezumator';
 import { initialExperience } from '@/store/slices/rezumator';
-
 import { MONTHS, YEARS } from '@/utils/constants/full-date';
+
+import { RezumatorPropsWithControl } from '../types';
 
 import styles from '../Repeat.module.css';
 
 type Props = RezumatorPropsWithControl<ExperienceState>;
 
-export const Experience: FC<Props> = memo(function Experience({
+export const Experience = memo(function Experience({
   register,
   control
-}) {
+}: Props) {
   const experience = useAppSelector(
     state => state.rezumator.fields?.experienceInfo
   );

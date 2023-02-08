@@ -1,8 +1,7 @@
+import { FC } from 'react';
+import classnames from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { FC } from 'react';
-
-import classnames from 'classnames';
 
 import styles from './Navbar.module.css';
 

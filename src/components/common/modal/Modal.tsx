@@ -1,12 +1,12 @@
-import dynamic from 'next/dynamic';
 import { FC, PropsWithChildren } from 'react';
-
-import { defaultModalAnimation } from './default.animation';
+import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { AnimatePresence, AnimationProps, motion } from 'framer-motion';
-import { createPortal } from 'react-dom';
+import dynamic from 'next/dynamic';
 
 import { useClickOutside } from '@/hooks/useClickOutside';
+
+import { defaultModalAnimation } from './default.animation';
 
 import styles from './Modal.module.css';
 

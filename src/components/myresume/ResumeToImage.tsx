@@ -1,15 +1,14 @@
-import Image from 'next/image';
 import {
+  forwardRef,
   ForwardRefExoticComponent,
   MutableRefObject,
   RefAttributes,
-  forwardRef,
   useEffect,
   useRef,
   useState
 } from 'react';
-
 import { toPng } from 'html-to-image';
+import Image from 'next/image';
 
 interface Props {
   trigger: number;
@@ -33,6 +32,7 @@ export const ResumeToImage = forwardRef<HTMLDivElement, Props>(
           setImage(url);
           action();
         });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [trigger]);
 
     return (

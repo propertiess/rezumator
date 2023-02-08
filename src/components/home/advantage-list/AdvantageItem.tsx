@@ -1,7 +1,6 @@
-import Image from 'next/image';
 import { FC, HTMLAttributes, MouseEvent, useRef } from 'react';
-
 import classNames from 'classnames';
+import Image from 'next/image';
 
 import { AVAILABLE_COLOR } from '@/utils/color';
 

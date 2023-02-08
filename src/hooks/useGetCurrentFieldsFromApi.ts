@@ -1,11 +1,9 @@
 import { useContext } from 'react';
 
+import { AuthContext } from '@/context/AuthContext';
 import { useAppSelector } from '@/store';
 import { fieldsApi, useGetFieldsByIdQuery } from '@/store/api/fields.api';
 import { RezumatorState } from '@/store/slices/rezumator';
-
-import { AuthContext } from '@/context/AuthContext';
-
 import { initialRezumator } from '@/utils/constants/initial_fields';
 
 export const useGetCurrentFieldsFromApi = (): { data: RezumatorState } => {

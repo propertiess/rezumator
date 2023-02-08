@@ -1,7 +1,8 @@
-import instance from '../api/instance';
-import { User } from './auth.types';
-
 import { store } from '@/store';
+
+import instance from '../api/instance';
+
+import { User } from './auth.types';
 
 const endpoint = '/auth';
 

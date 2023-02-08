@@ -8,9 +8,7 @@ import {
   Optional,
   Personal
 } from '@/components/rezumator';
-
 import { useRezumatorForm } from '@/hooks';
-
 import { Layout } from '@/layout';
 
 const Rezumator: NextPage = () => {

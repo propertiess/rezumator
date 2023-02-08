@@ -1,21 +1,16 @@
+import { useContext, useRef, useState } from 'react';
+import { SubmitHandler } from 'react-hook-form';
+import { AxiosError } from 'axios';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { useContext, useRef, useState } from 'react';
-
-import { AxiosError } from 'axios';
-import { SubmitHandler } from 'react-hook-form';
 
 import { AuthFields } from '@/components/common/auth-fields';
 import { Button } from '@/components/common/ui';
-
-import { useAuthForm } from '@/hooks';
-import { useActions } from '@/store/hooks/useActions';
-
 import { AuthContext } from '@/context';
-
-import { AuthService, SimpleUser } from '@/services/auth';
-
+import { useAuthForm } from '@/hooks';
 import { Layout } from '@/layout';
+import { AuthService, SimpleUser } from '@/services/auth';
+import { useActions } from '@/store/hooks/useActions';
 
 type SubmitEvent = Event & {
   submitter: HTMLButtonElement;

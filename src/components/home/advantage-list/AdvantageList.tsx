@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
+import { useLayoutWidth } from '@/hooks/useLayoutWidth';
+
 import { AdvantageItem } from './AdvantageItem';
 import { advantages } from './advantages.data';
-
-import { useLayoutWidth } from '@/hooks/useLayoutWidth';
 
 import styles from './Advantage.module.css';
 

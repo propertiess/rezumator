@@ -1,12 +1,11 @@
-import { FC, InputHTMLAttributes, forwardRef } from 'react';
-
-import classNames from 'classnames';
+import { FC, forwardRef,InputHTMLAttributes } from 'react';
 import {
   FieldError,
   FieldErrorsImpl,
   FieldValues,
   Merge
 } from 'react-hook-form';
+import classNames from 'classnames';
 
 import styles from './Input.module.css';
 

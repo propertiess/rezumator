@@ -1,7 +1,4 @@
 import { FC } from 'react';
-
-import { currencies, phoneCodes, scheduleOfWork } from './about.data';
-import { AvatarPicker } from './avatar-picker';
 import classNames from 'classnames';
 
 import { Label } from '@/components/common/label';
@@ -10,14 +7,14 @@ import { Input } from '@/components/common/ui/input';
 import { Select } from '@/components/common/ui/select';
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
 import { RezumatorProps } from '@/components/rezumator/types';
-
-import { useActions } from '@/store/hooks/useActions';
-
 import { useAppSelector } from '@/store';
+import { useActions } from '@/store/hooks/useActions';
 import { AboutInfoState } from '@/store/slices/rezumator';
-
 import { formatPhoneNumber } from '@/utils/helpers/formatPhoneNumber';
 import { formatSalary } from '@/utils/helpers/formatSalary';
+
+import { currencies, phoneCodes, scheduleOfWork } from './about.data';
+import { AvatarPicker } from './avatar-picker';
 
 import styles from '../Repeat.module.css';
 

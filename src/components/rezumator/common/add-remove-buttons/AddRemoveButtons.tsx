@@ -1,7 +1,6 @@
 import { FC } from 'react';
-
-import classNames from 'classnames';
 import { UseFieldArrayRemove } from 'react-hook-form';
+import classNames from 'classnames';
 
 import { Button } from '@/components/common/ui/button';
 

@@ -1,12 +1,12 @@
-import Image from 'next/image';
 import { FC } from 'react';
-
-import { FileInput } from '../file-input';
-import { AvatarCropModal } from './AvatarCropModal';
+import Image from 'next/image';
 
 import { Button } from '@/components/common/ui/button';
-
 import { useOpenSwitcher } from '@/hooks/useOpenSwitcher';
+
+import { FileInput } from '../file-input';
+
+import { AvatarCropModal } from './AvatarCropModal';
 
 import styles from './AvatarPicker.module.css';
 

@@ -1,12 +1,11 @@
 import { FC } from 'react';
 
-import { NavItem } from '../navbar/NavItem';
-import { links } from '../navbar/links.data';
-
+import { fadeInOutFromRight } from '@/animation';
 import { ModalNoSSR } from '@/components/common/modal';
 import { useAuthReset } from '@/components/home/hooks/useAuthReset';
 
-import { fadeInOutFromRight } from '@/animation';
+import { links } from '../navbar/links.data';
+import { NavItem } from '../navbar/NavItem';
 
 import styles from './Burger.module.css';
 

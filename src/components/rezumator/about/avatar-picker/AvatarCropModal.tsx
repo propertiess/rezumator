@@ -1,7 +1,6 @@
 import { FC, HTMLAttributes, useRef, useState } from 'react';
-
-import { AnimationProps } from 'framer-motion';
 import AvatarEditor from 'react-avatar-editor';
+import { AnimationProps } from 'framer-motion';
 
 import { ModalNoSSR } from '@/components/common/modal';
 import { Button } from '@/components/common/ui';

@@ -1,13 +1,12 @@
 import { FC, HTMLAttributes } from 'react';
 
-import { SectionLayout } from '../common/section-layout';
-
 import { DescriptionList } from '@/components/common/description-list';
 import { Divider } from '@/components/common/divider';
 import { Li } from '@/components/myresume/common/Li';
 import { optionalLi } from '@/components/myresume/optional/optional.data';
-
 import { useAppSelector } from '@/store';
+
+import { SectionLayout } from '../common/section-layout';
 
 import resStyles from '../Resume.module.css';
 

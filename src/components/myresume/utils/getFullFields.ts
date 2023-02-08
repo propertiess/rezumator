@@ -1,6 +1,5 @@
 import { getFullBirthDay } from '@/components/myresume/utils/getFullBirthDay';
 import { getFullExperienceJob } from '@/components/myresume/utils/getFullExperienceJob';
-
 import { RezumatorState } from '@/store/slices/rezumator';
 
 export const getFullFields = (fields: RezumatorState) => {

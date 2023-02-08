@@ -1,7 +1,6 @@
 import { ChangeEventHandler, FC, InputHTMLAttributes, useRef } from 'react';
-
-import classNames from 'classnames';
 import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
+import classNames from 'classnames';
 
 import { Button } from '@/components/common/ui/button';
 
@@ -39,6 +38,7 @@ const FileInput: FC<Props> = ({
       try {
         reader.readAsDataURL(e.target.files[0]);
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error(e);
       }
     }

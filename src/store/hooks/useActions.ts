@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-
-import { rezumatorSlice } from '../slices/rezumator';
 import { bindActionCreators } from '@reduxjs/toolkit';
 
 import { useAppDispatch } from '@/store/hooks/useAppDispatch';
+
+import { rezumatorSlice } from '../slices/rezumator';
 
 const allActions = {
   ...rezumatorSlice.actions

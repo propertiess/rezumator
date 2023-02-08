@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import { FC, HTMLAttributes } from 'react';
-
-import { AdvantageList } from '../advantage-list';
+import Link from 'next/link';
 
 import { Button } from '@/components/common/ui/button';
+
+import { AdvantageList } from '../advantage-list';
 
 import styles from './Hero.module.css';
 

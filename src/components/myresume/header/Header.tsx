@@ -1,12 +1,11 @@
-import Image from 'next/image';
 import { FC, HTMLAttributes } from 'react';
+import Image from 'next/image';
 
 import { Li } from '@/components/myresume/common/Li';
 import {
   aboutInfoLi,
   personalInfoLi
 } from '@/components/myresume/header/header.data';
-
 import { useAppSelector } from '@/store';
 
 import styles from './Header.module.css';

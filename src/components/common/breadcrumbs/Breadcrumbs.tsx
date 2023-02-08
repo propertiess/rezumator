@@ -1,8 +1,7 @@
+import { FC, Fragment, HTMLAttributes, PropsWithChildren } from 'react';
+import classNames from 'classnames';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { FC, Fragment, HTMLAttributes, PropsWithChildren } from 'react';
-
-import classNames from 'classnames';
 
 import { LinkData } from '@/components/home/navbar/links.data';
 
