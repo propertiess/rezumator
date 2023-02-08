@@ -5,16 +5,20 @@
 ```
 NextJS, Typescript, React Context, Module CSS, Tailwind
 ```
-## Installation
+## Install
 
-### `pnpm i`
+```
+pnpm i
+```
 
 ## Running the app
 
-### `pnpm build & pnpm start`
+```
+pnpm build && pnpm start
+```
 
 ## Home page
 
-<img src='./readme/home.png' alt="Домашняя страница" />
+<img src='./readme/home-page.png' alt="home page" />
 
 
