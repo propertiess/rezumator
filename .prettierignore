@@ -16,9 +16,7 @@ logs
 *.yml
 *.sh
 *.svg
-*rc.*
 *.htm
 *.html
-*.json
 *.md
 .*ignore
