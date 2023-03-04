@@ -5,7 +5,3 @@ export type User = {
   password: string;
   fields: FieldsDto;
 };
-
-export type FullUser = User & {
-  id: string;
-};

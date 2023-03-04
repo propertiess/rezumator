@@ -30,3 +30,5 @@ ResumeSchema.virtual('user', {
   localField: '_id',
   foreignField: 'fields'
 });
+
+export const ResumeModel = { name: ResumeEntity.name, schema: ResumeSchema };

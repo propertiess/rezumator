@@ -29,24 +29,4 @@ export class UsersController {
     }
     throw new HttpException("You don't have rights", HttpStatus.BAD_GATEWAY);
   }
-
-  // @Get(':id/fields')
-  // getFieldsById(@Req() req: Request, @Param('id') id: string) {
-  //   if (req.headers['secret'] === process.env['SECRET_KEY']) {
-  //     return this.usersService.getFieldsById(id);
-  //   }
-  //   throw new HttpException("You don't have rights", HttpStatus.BAD_GATEWAY);
-  // }
-
-  // @Post(':id/fields')
-  // setFieldsUser(
-  //   @Req() req: Request,
-  //   @Param('id') id: string,
-  //   @Body() fields: FieldsDto
-  // ) {
-  //   if (req.headers['secret'] === process.env['SECRET_KEY']) {
-  //     return this.usersService.setFieldsUser(id, fields);
-  //   }
-  //   throw new HttpException("You don't have rights", HttpStatus.BAD_GATEWAY);
-  // }
 }

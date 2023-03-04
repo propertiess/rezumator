@@ -15,7 +15,7 @@ export class UsersService {
     return this.userModel.findById(id).populate('fields');
   }
 
-  getUsers(): Promise<UserEntity[]> {
+  async getUsers(): Promise<UserEntity[]> {
     return this.userModel.find().populate('fields').exec();
   }
 }

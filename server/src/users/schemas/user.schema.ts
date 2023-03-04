@@ -16,3 +16,5 @@ export class UserEntity {
 }
 
 export const UserSchema = SchemaFactory.createForClass(UserEntity);
+
+export const UserModel = { name: UserEntity.name, schema: UserSchema };

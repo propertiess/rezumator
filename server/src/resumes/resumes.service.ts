@@ -15,16 +15,8 @@ export class ResumesService {
     private usersService: UsersService
   ) {}
 
-  async getById(id: string) {
-    const resume = await this.resumeModel.findById(id);
-
-    return resume;
-  }
-
-  async getByUserId(id: string) {
-    const user = await this.usersService.getById(id);
-
-    return user.fields;
+  async getById(id: string): Promise<ResumeEntity> {
+    return this.resumeModel.findById(id);
   }
 
   async setResumeFields(

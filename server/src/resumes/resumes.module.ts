@@ -1,19 +1,14 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UserEntity, UserSchema } from 'src/users/schemas/user.schema';
 import { UsersService } from 'src/users/users.service';
 import { ResumesController } from './resumes.controller';
 import { ResumesService } from './resumes.service';
-import { ResumeEntity, ResumeSchema } from './schemas/resume.schema';
+import { ResumeModel } from './schemas/resume.schema';
+import { UserModel } from '../users/schemas/user.schema';
 
 @Module({
-  imports: [
-    MongooseModule.forFeature([{ name: UserEntity.name, schema: UserSchema }]),
-    MongooseModule.forFeature([
-      { name: ResumeEntity.name, schema: ResumeSchema }
-    ])
-  ],
-  providers: [ResumesService, UsersService],
+  imports: [MongooseModule.forFeature([UserModel, ResumeModel])],
+  providers: [UsersService, ResumesService],
   controllers: [ResumesController]
 })
 export class ResumesModule {}

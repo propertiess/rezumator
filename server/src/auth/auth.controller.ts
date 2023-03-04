@@ -1,7 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 
 import { CreateUserDto, GetUserDto } from '../users/dto';
-
 import { AuthService } from './auth.service';
 
 @Controller('auth')
@@ -18,4 +17,3 @@ export class AuthController {
     return this.authService.getUser(dto);
   }
 }
-
