@@ -10,7 +10,7 @@ import { useFields } from '@/context';
 import { useCounter } from '@/hooks';
 import { Layout } from '@/layout';
 
-const MyResume: NextPage = () => {
+const ResumeView: NextPage = () => {
   const { fields } = useFields();
   const { counter, increment } = useCounter(0);
   const resume = useRef<HTMLDivElement>(null);
@@ -42,6 +42,7 @@ const MyResume: NextPage = () => {
       </div>
       {!isShowResumePreview && <Loader />}
       <ResumeToImage
+        fields={fields}
         trigger={counter}
         condition={isShowResumePreview}
         Component={Resume}
@@ -57,4 +58,4 @@ const MyResume: NextPage = () => {
   );
 };
 
-export default MyResume;
+export default ResumeView;

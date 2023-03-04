@@ -7,9 +7,9 @@ import { useAuth, useFields } from '@/context';
 import { FieldsService } from '@/services/fields';
 import { Fields } from '@/types';
 
-export const useRezumatorForm = () => {
+export const useRezumatorForm = (resumeId?: string) => {
   const { fields, setFields, setAvatar } = useFields();
-  const avatar = fields.aboutInfo.avatar;
+  const avatar = fields?.aboutInfo?.avatar;
   const { authToken } = useAuth();
 
   const { push } = useRouter();
@@ -24,6 +24,23 @@ export const useRezumatorForm = () => {
   } = useForm<{
     rezumator: Fields;
   }>();
+
+  useEffect(() => {
+    if (!resumeId) {
+      return;
+    }
+
+    const fetchFields = async () => {
+      try {
+        const data = await FieldsService.getById(resumeId!);
+        setFields(data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    fetchFields();
+  }, [resumeId]);
 
   useEffect(() => {
     setValue('rezumator', fields);
@@ -41,11 +58,19 @@ export const useRezumatorForm = () => {
     const fullFields = getFullFields(newRezumator);
 
     if (authToken) {
-      await FieldsService.setById(authToken, newRezumator);
+      try {
+        await FieldsService.setById(authToken, fields._id, newRezumator);
+      } catch (e) {
+        console.log(e);
+      }
     }
     setFields(fullFields);
 
-    push('/myresume');
+    if (authToken) {
+      push(`/resume/view/${fields._id}`);
+    } else {
+      push(`/resume/view`);
+    }
   };
 
   return {

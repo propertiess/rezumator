@@ -1,8 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
-
-import { FieldsDto } from 'src/fields/fields.dto';
-import { initialRezumator } from 'src/fields/utils';
+import { HydratedDocument, SchemaTypes, Types } from 'mongoose';
 
 export type UserDocument = HydratedDocument<UserEntity>;
 
@@ -14,8 +11,8 @@ export class UserEntity {
   @Prop()
   password: string;
 
-  @Prop({ type: FieldsDto, default: initialRezumator })
-  fields: FieldsDto;
+  @Prop({ type: SchemaTypes.ObjectId, ref: 'ResumeEntity', required: true })
+  fields!: Types.ObjectId;
 }
 
 export const UserSchema = SchemaFactory.createForClass(UserEntity);

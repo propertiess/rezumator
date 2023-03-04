@@ -31,7 +31,7 @@ const Authorization: NextPage = () => {
     try {
       const user = await AuthService.createUser(username, password, fields);
       setAuthToken(user._id);
-      push('/rezumator');
+      push(`/resume/edit/${user.fields._id}`);
     } catch (e) {
       setError(
         (e as AxiosError<{ message: string }>).response?.data?.message ??
@@ -46,7 +46,7 @@ const Authorization: NextPage = () => {
     try {
       const user = await AuthService.login(username.trim(), password.trim());
       setAuthToken(user._id);
-      push('/rezumator');
+      push(`/resume/edit/${user.fields._id}`);
     } catch (e) {
       setError(
         (e as AxiosError<{ message: string }>).response?.data?.message ??

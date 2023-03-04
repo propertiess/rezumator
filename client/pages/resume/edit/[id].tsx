@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { useRouter } from 'next/router';
 
 import { Button } from '@/components/common/ui';
 import {
@@ -11,7 +11,8 @@ import {
 import { useRezumatorForm } from '@/hooks';
 import { Layout } from '@/layout';
 
-const Rezumator: NextPage = () => {
+const ResumeEditById = () => {
+  const { query } = useRouter();
   const {
     register,
     control,
@@ -21,7 +22,7 @@ const Rezumator: NextPage = () => {
     isSubmitSuccessful,
     fields,
     setAvatar
-  } = useRezumatorForm();
+  } = useRezumatorForm(query?.id as string);
 
   return (
     <Layout title='Составить резюме' description='Составить резюме'>
@@ -29,7 +30,7 @@ const Rezumator: NextPage = () => {
         <About
           register={register}
           errors={errors.rezumator?.aboutInfo}
-          avatar={fields.aboutInfo.avatar ?? ''}
+          avatar={fields?.aboutInfo?.avatar ?? ''}
           setAvatar={setAvatar}
         />
         <Personal register={register} errors={errors.rezumator?.personalInfo} />
@@ -49,7 +50,7 @@ const Rezumator: NextPage = () => {
           register={register}
           errors={errors.rezumator?.optionalInfo}
           control={control}
-          driveLicense={fields.optionalInfo.driveLicenses}
+          driveLicense={fields.optionalInfo?.driveLicenses}
         />
 
         {!isSubmitSuccessful ? (
@@ -69,4 +70,4 @@ const Rezumator: NextPage = () => {
   );
 };
 
-export default Rezumator;
+export default ResumeEditById;

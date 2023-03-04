@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ResumeEntity, ResumeSchema } from 'src/resumes/schemas/resume.schema';
-
 import { UserEntity, UserSchema } from 'src/users/schemas/user.schema';
-
-import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
+import { UsersService } from 'src/users/users.service';
+import { ResumesController } from './resumes.controller';
+import { ResumesService } from './resumes.service';
+import { ResumeEntity, ResumeSchema } from './schemas/resume.schema';
 
 @Module({
   imports: [
@@ -14,8 +13,7 @@ import { AuthService } from './auth.service';
       { name: ResumeEntity.name, schema: ResumeSchema }
     ])
   ],
-  controllers: [AuthController],
-  providers: [AuthService]
+  providers: [ResumesService, UsersService],
+  controllers: [ResumesController]
 })
-export class AuthModule {}
-
+export class ResumesModule {}
