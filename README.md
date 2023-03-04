@@ -1,4 +1,4 @@
-# Propertiess rezumator
+# Rezumator
 
 ## Stack
 
