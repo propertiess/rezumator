@@ -10,15 +10,25 @@ import {
 import { toPng } from 'html-to-image';
 import Image from 'next/image';
 
+import { Fields } from '@/types';
+
+import { ResumeProps } from './Resume';
+
 interface Props {
   trigger: number;
   condition: boolean;
   action: () => void;
-  Component: ForwardRefExoticComponent<RefAttributes<HTMLDivElement>>;
+  fields: Fields;
+  Component: ForwardRefExoticComponent<
+    ResumeProps & RefAttributes<HTMLDivElement>
+  >;
 }
 
 export const ResumeToImage = forwardRef<HTMLDivElement, Props>(
-  function ResumeToImage({ trigger, condition, Component, action }, ref) {
+  function ResumeToImage(
+    { trigger, condition, Component, action, fields },
+    ref
+  ) {
     const [image, setImage] = useState('');
     const resumeRef = useRef<HTMLDivElement | null>(null);
 
@@ -44,6 +54,7 @@ export const ResumeToImage = forwardRef<HTMLDivElement, Props>(
           </div>
         )}
         <Component
+          fields={fields}
           ref={(el: HTMLDivElement) => {
             resumeRef.current = el;
             (ref as MutableRefObject<HTMLDivElement | null>).current = el;

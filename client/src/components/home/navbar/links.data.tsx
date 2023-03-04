@@ -2,7 +2,7 @@ export type LinkData = { href: string; title: string };
 
 export const links: LinkData[] = [
   {
-    href: '/rezumator',
+    href: '/resume/edit',
     title: 'Составить резюме'
   },
   {

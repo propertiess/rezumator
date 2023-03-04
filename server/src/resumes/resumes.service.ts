@@ -17,8 +17,6 @@ export class ResumesService {
 
   async getById(id: string) {
     const resume = await this.resumeModel.findById(id);
-    console.log('gg');
-    console.log(resume);
 
     return resume;
   }
@@ -36,13 +34,13 @@ export class ResumesService {
   ): Promise<FieldsDto> {
     const user = await this.usersService.getById(userId);
 
-    if ((user.fields as ResumeEntity & { _id: string })._id + '' !== id) {
+    if (user.fields._id + '' !== id) {
       throw new HttpException("You don't have rights", HttpStatus.BAD_GATEWAY);
     }
 
     fields = getFullFields(fields);
 
-    await this.resumeModel.updateOne({ _id: id }, { fields });
+    await this.resumeModel.updateOne({ _id: id }, fields);
     return fields;
   }
 }

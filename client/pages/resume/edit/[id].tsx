@@ -1,4 +1,3 @@
-import { HTMLAttributes, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { Button } from '@/components/common/ui';
@@ -9,12 +8,10 @@ import {
   Optional,
   Personal
 } from '@/components/rezumator';
-import { useFields } from '@/context';
 import { useRezumatorForm } from '@/hooks';
 import { Layout } from '@/layout';
-import { FieldsService } from '@/services/fields';
 
-const ResumeEdit = () => {
+const ResumeEditById = () => {
   const { query } = useRouter();
   const {
     register,
@@ -73,4 +70,4 @@ const ResumeEdit = () => {
   );
 };
 
-export default ResumeEdit;
+export default ResumeEditById;

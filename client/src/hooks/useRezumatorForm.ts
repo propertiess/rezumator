@@ -26,14 +26,21 @@ export const useRezumatorForm = (resumeId?: string) => {
   }>();
 
   useEffect(() => {
-    resumeId &&
-      (async () => {
-        const data = await FieldsService.getById(resumeId);
-        console.log(data);
+    if (!resumeId) {
+      return;
+    }
 
+    const fetchFields = async () => {
+      try {
+        const data = await FieldsService.getById(resumeId!);
         setFields(data);
-      });
-  }, []);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    fetchFields();
+  }, [resumeId]);
 
   useEffect(() => {
     setValue('rezumator', fields);
@@ -51,11 +58,19 @@ export const useRezumatorForm = (resumeId?: string) => {
     const fullFields = getFullFields(newRezumator);
 
     if (authToken) {
-      await FieldsService.setById(authToken, fields._id, newRezumator);
+      try {
+        await FieldsService.setById(authToken, fields._id, newRezumator);
+      } catch (e) {
+        console.log(e);
+      }
     }
     setFields(fullFields);
 
-    push('/myresume');
+    if (authToken) {
+      push(`/resume/view/${fields._id}`);
+    } else {
+      push(`/resume/view`);
+    }
   };
 
   return {

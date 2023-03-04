@@ -6,7 +6,7 @@ import { Header } from '@/layout/Header';
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
 }
 
 const Layout: FC<PropsWithChildren<Props>> = ({
@@ -18,7 +18,11 @@ const Layout: FC<PropsWithChildren<Props>> = ({
     <>
       <Head>
         <title>{title}</title>
-        <meta name='description' content={description} />
+        {description ? (
+          <meta name='description' content={description} />
+        ) : (
+          <meta name='robots' content='noindex' />
+        )}
       </Head>
       <Header />
       <main>

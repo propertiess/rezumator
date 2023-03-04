@@ -11,7 +11,7 @@ import {
 import { useRezumatorForm } from '@/hooks';
 import { Layout } from '@/layout';
 
-const Rezumator: NextPage = () => {
+const ResumeEdit: NextPage = () => {
   const {
     register,
     control,
@@ -69,4 +69,4 @@ const Rezumator: NextPage = () => {
   );
 };
 
-export default Rezumator;
+export default ResumeEdit;

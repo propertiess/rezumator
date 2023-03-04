@@ -18,7 +18,6 @@ export class ResumeEntity {
   educationInfo: EducationState[];
 
   @Prop()
-  // @Type(() => ResumeEntity)
   experienceInfo: ExperienceState[];
 
   @Prop({ type: OptionalInfoDto })
@@ -26,3 +25,8 @@ export class ResumeEntity {
 }
 
 export const ResumeSchema = SchemaFactory.createForClass(ResumeEntity);
+ResumeSchema.virtual('user', {
+  ref: 'UserEntity',
+  localField: '_id',
+  foreignField: 'fields'
+});
