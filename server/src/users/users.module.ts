@@ -5,7 +5,7 @@ import { UserEntity, UserSchema } from './schemas/user.schema';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { ResumeEntity } from 'src/resumes/schemas/resume.schema';
-import { ResumeSchema } from './../resumes/schemas/resume.schema';
+import { ResumeSchema } from '../resumes/schemas/resume.schema';
 
 @Module({
   imports: [
