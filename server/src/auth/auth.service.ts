@@ -38,10 +38,12 @@ export class AuthService {
   }
 
   async getUser(dto: GetUserDto): Promise<UserEntity> {
-    const user = await this.userModel.findOne({
-      username: dto.username,
-      password: dto.password
-    });
+    const user = await this.userModel
+      .findOne({
+        username: dto.username,
+        password: dto.password
+      })
+      .populate('fields');
 
     if (!user) {
       throw new HttpException(
@@ -53,4 +55,3 @@ export class AuthService {
     return user;
   }
 }
-
