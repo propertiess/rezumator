@@ -84,6 +84,7 @@ export type DriveLicense = {
 };
 
 export type Fields = {
+  _id: string;
   aboutInfo: AboutInfoState;
   personalInfo: PersonalInfoState;
   educationInfo: EducationState[];

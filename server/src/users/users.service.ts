@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import {
+  ResumeDocument,
+  ResumeEntity
+} from 'src/resumes/schemas/resume.schema';
 
 import { FieldsDto } from '../fields/fields.dto';
 import { getFullFields } from '../utils/getFullFields';
@@ -10,7 +14,9 @@ import { UserEntity, UserDocument } from './schemas/user.schema';
 export class UsersService {
   constructor(
     @InjectModel(UserEntity.name)
-    private userModel: Model<UserDocument>
+    private userModel: Model<UserDocument>,
+    @InjectModel(ResumeEntity.name)
+    private resumeModel: Model<ResumeDocument>
   ) {}
 
   async getById(id: string): Promise<UserEntity> {
@@ -21,16 +27,9 @@ export class UsersService {
     return this.userModel.find().exec();
   }
 
-  async getFieldsById(id: string): Promise<FieldsDto> {
-    const user = await this.getById(id);
+  // async getFieldsById(id: string): Promise<ResumeEntity> {
+  //   const user = await this.getById(id);
 
-    return user.fields;
-  }
-
-  async setFieldsUser(id: string, fields: FieldsDto): Promise<FieldsDto> {
-    fields = getFullFields(fields);
-
-    await this.userModel.updateOne({ _id: id }, { fields });
-    return fields;
-  }
+  //   return user.fields;
+  // }
 }
