@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { AboutInfoDto, OptionalInfoDto } from 'src/fields/dto';
+import { AboutInfoDto, OptionalInfoDto } from '../../fields/dto';
 
-import { EducationState, ExperienceState } from 'src/fields/fields.types';
+import { EducationState, ExperienceState } from '../../fields/fields.types';
 
 export type ResumeDocument = HydratedDocument<ResumeEntity>;
 

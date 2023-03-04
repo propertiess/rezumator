@@ -9,7 +9,7 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
-import { FieldsDto } from 'src/fields/fields.dto';
+import { FieldsDto } from '../../fields/fields.dto';
 
 export class CreateUserDto {
   @IsString()

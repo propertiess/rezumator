@@ -1,16 +1,13 @@
 import {
-  Body,
   Controller,
   Get,
   HttpException,
   HttpStatus,
   Param,
-  Post,
   Req
 } from '@nestjs/common';
 import { Request } from 'express';
 
-import { FieldsDto } from '../fields/fields.dto';
 import { UsersService } from './users.service';
 
 @Controller('users')
