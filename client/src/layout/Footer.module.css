@@ -1,0 +1,25 @@
+.footer {
+  @apply mt-auto;
+}
+
+.footer_wrapper {
+  @apply mt-10 bg-[var(--secondary-bg-color)];
+}
+
+.wrapper {
+  @apply p-2;
+}
+
+.content {
+  @apply flex flex-col items-center gap-1;
+}
+
+.content a {
+  @apply border border-transparent
+  focus:border-[var(--primary-bg-color)];
+}
+
+.text {
+  font-family: 'Sora', sans-serif;
+  @apply text-xs text-[var(--secondary-text-color)] sm:text-sm md:text-[16px];
+}

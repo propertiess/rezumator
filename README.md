@@ -3,18 +3,18 @@
 ## Stack
 
 ```
-NextJS, Typescript, React Context, Module CSS, Tailwind
+NextJS, NestJS, Typescript, React Context, Module CSS, Tailwind
 ```
 ## Install
 
 ```
-pnpm i
+pnpm i && pnpm deps
 ```
 
 ## Running the app
 
 ```
-pnpm build && pnpm start
+pnpm start
 ```
 
 ## Home page
