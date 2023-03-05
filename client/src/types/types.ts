@@ -6,6 +6,10 @@ export type DateState = {
 
 export type JobDate = Omit<DateState, 'day'>;
 
+export type ResumeProps = {
+  fields?: Fields;
+};
+
 export interface AboutInfoState {
   firstName: string;
   secondName: string;

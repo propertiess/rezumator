@@ -1,4 +1,4 @@
-import { SelectOptions } from '@/components/common/ui/select';
+import { SelectOptions } from '@/components/ui/select';
 
 const addZeroToStartOrNot = (str: string) => {
   if (str.length === 1) {
@@ -17,7 +17,7 @@ export const getDateStateForSelect = () => {
   for (let i = 1; i <= 31; i++) {
     days.push({
       value: addZeroToStartOrNot(i.toString()),
-      label: addZeroToStartOrNot(i.toString())
+      label: addZeroToStartOrNot(i.toString()),
     });
   }
 
@@ -25,7 +25,7 @@ export const getDateStateForSelect = () => {
   for (let i = 1950; i <= currentYear; i++) {
     years.unshift({
       value: i.toString(),
-      label: i.toString()
+      label: i.toString(),
     });
   }
 
@@ -33,7 +33,7 @@ export const getDateStateForSelect = () => {
   for (let i = currentYear + 1; i <= currentYear + 4; i++) {
     educationYears.unshift({
       value: i.toString(),
-      label: i.toString()
+      label: i.toString(),
     });
   }
 
@@ -41,7 +41,7 @@ export const getDateStateForSelect = () => {
   for (let i = 1; i <= 12; i++) {
     months.push({
       value: addZeroToStartOrNot(i.toString()),
-      label: addZeroToStartOrNot(i.toString())
+      label: addZeroToStartOrNot(i.toString()),
     });
   }
 
@@ -49,6 +49,6 @@ export const getDateStateForSelect = () => {
     years,
     educationYears,
     months,
-    days
+    days,
   };
 };

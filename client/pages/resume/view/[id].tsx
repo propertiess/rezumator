@@ -1,51 +1,11 @@
-import { useRef } from 'react';
-import { savePDF } from '@progress/kendo-react-pdf';
 import { GetServerSideProps } from 'next';
 
-import { Loader } from '@/components/common/loader';
-import { Button } from '@/components/common/ui';
-import { Resume, ResumeToImage } from '@/components/myresume';
-import { useCounter } from '@/hooks';
-import { Layout } from '@/layout';
+import { ResumeViewScreen } from '@/screens/resume-view/ResumeViewScreen';
 import { FieldsService } from '@/services/fields';
-import { Fields } from '@/types';
+import { ResumeProps } from '@/types';
 
-type Props = {
-  fields: Fields;
-};
-
-const ResumeViewById = ({ fields }: Props) => {
-  const { counter, increment } = useCounter(0);
-  const resume = useRef<HTMLDivElement>(null);
-
-  const isShowResumePreview = counter >= 4;
-
-  const downloadPDF = () => {
-    resume.current &&
-      fields &&
-      savePDF(resume.current, {
-        fileName: `Резюме ${fields.aboutInfo.profession} ${fields.aboutInfo.secondName} ${fields.aboutInfo.firstName}`,
-      });
-  };
-
-  return (
-    <Layout title='Резюме'>
-      {!isShowResumePreview && <Loader />}
-      <ResumeToImage
-        fields={fields!}
-        trigger={counter}
-        condition={isShowResumePreview}
-        Component={Resume}
-        action={increment}
-        ref={resume}
-      />
-      {isShowResumePreview && (
-        <Button className='mt-3 ml-auto block' onClick={downloadPDF}>
-          Скачать
-        </Button>
-      )}
-    </Layout>
-  );
+const ResumeViewById = ({ fields }: Required<ResumeProps>) => {
+  return <ResumeViewScreen fields={fields} />;
 };
 
 export default ResumeViewById;

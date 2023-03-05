@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Image from 'next/image';
 
-import GitHubIcon from '@/components/home/assets/GithubIcon.svg';
+import GitHubIcon from '@/screens/home/assets/GithubIcon.svg';
 
 import styles from './Footer.module.css';
 

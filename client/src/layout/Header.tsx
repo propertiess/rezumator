@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { Logo } from '@/components/common/logo';
-import { Burger } from '@/components/home/burger';
-import { Navbar } from '@/components/home/navbar';
+import { Logo } from '@/components/logo';
+import { Burger } from '@/screens/home/burger';
+import { Navbar } from '@/screens/home/navbar';
 
 import styles from './Header.module.css';
 

@@ -4,8 +4,8 @@ import { AxiosError } from 'axios';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
-import { AuthFields } from '@/components/common/auth-fields';
-import { Button } from '@/components/common/ui';
+import { AuthFields } from '@/components/auth-fields';
+import { Button } from '@/components/ui';
 import { useAuth, useFields } from '@/context';
 import { useAuthForm } from '@/hooks';
 import { Layout } from '@/layout';

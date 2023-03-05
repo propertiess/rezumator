@@ -30,6 +30,7 @@ export class AuthService {
         HttpStatus.BAD_REQUEST
       );
     }
+
     const resume = await this.resumeModel.create(dto.fields);
     const newUser = await this.userModel.create({ ...dto, fields: resume._id });
     const _id = (newUser as unknown as { _doc: { _id: string } })._doc._id;
