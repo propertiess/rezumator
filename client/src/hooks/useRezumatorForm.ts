@@ -7,7 +7,7 @@ import { useAuth, useFields } from '@/context';
 import { FieldsService } from '@/services/fields';
 import { Fields } from '@/types';
 
-export const useRezumatorForm = (resumeId?: string) => {
+export const useRezumatorForm = (serverFields?: Fields) => {
   const { fields, setFields, setAvatar } = useFields();
   const avatar = fields?.aboutInfo?.avatar;
   const { authToken } = useAuth();
@@ -20,29 +20,20 @@ export const useRezumatorForm = (resumeId?: string) => {
     setValue,
     control,
     getValues,
-    formState: { errors, isDirty, isValid, isSubmitting, isSubmitSuccessful }
+    formState: { errors, isDirty, isValid, isSubmitting, isSubmitSuccessful },
   } = useForm<{
     rezumator: Fields;
-  }>();
+  }>({
+    defaultValues: {
+      rezumator: serverFields,
+    },
+  });
 
   useEffect(() => {
-    if (!resumeId) {
+    if (authToken || serverFields) {
       return;
     }
 
-    const fetchFields = async () => {
-      try {
-        const data = await FieldsService.getById(resumeId!);
-        setFields(data);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    fetchFields();
-  }, [resumeId]);
-
-  useEffect(() => {
     setValue('rezumator', fields);
   }, [authToken, fields, setValue]);
 
@@ -51,23 +42,23 @@ export const useRezumatorForm = (resumeId?: string) => {
       ...data.rezumator,
       aboutInfo: {
         ...data.rezumator.aboutInfo,
-        avatar
-      }
+        avatar,
+      },
     };
 
     const fullFields = getFullFields(newRezumator);
 
-    if (authToken) {
+    if (authToken && serverFields) {
       try {
-        await FieldsService.setById(authToken, fields._id, newRezumator);
+        await FieldsService.setById(authToken, serverFields._id, newRezumator);
       } catch (e) {
         console.log(e);
       }
     }
     setFields(fullFields);
 
-    if (authToken) {
-      push(`/resume/view/${fields._id}`);
+    if (authToken && serverFields) {
+      push(`/resume/view/${serverFields._id}`);
     } else {
       push(`/resume/view`);
     }
@@ -84,6 +75,6 @@ export const useRezumatorForm = (resumeId?: string) => {
     getValues,
     onSubmit: handleSubmit(onSubmit),
     fields,
-    setAvatar
+    setAvatar,
   };
 };

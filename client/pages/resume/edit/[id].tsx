@@ -28,7 +28,7 @@ const ResumeEditById = ({ fields }: Props) => {
     isSubmitting,
     isSubmitSuccessful,
     setAvatar,
-  } = useRezumatorForm(fields._id);
+  } = useRezumatorForm(fields);
 
   return (
     <Layout title='Составить резюме' description='Составить резюме'>
