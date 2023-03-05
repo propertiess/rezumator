@@ -1,11 +1,9 @@
-import { NextPage } from 'next';
-
 import { Layout } from '@/layout';
 
-const NotFound: NextPage = () => {
+const NotFound = () => {
   return (
     <Layout title='404' description='Страница не найдена!'>
-      <h3 className='text-center mt-1'>Страница не найдена!</h3>
+      <h3 className='text-center text-2xl mt-2'>Страница не найдена!</h3>
     </Layout>
   );
 };

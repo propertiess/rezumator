@@ -10,7 +10,7 @@ import { AddRemoveButtons } from '@/components/rezumator/common/add-remove-butto
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
 import { initialExperience } from '@/context';
 import { ExperienceState } from '@/types';
-import { MONTHS, YEARS } from '@/utils/constants/full-date';
+import { MONTHS, YEARS } from '@/utils/consts/full-date';
 
 import { RezumatorPropsWithControl } from '../types';
 
@@ -23,13 +23,13 @@ type Props = RezumatorPropsWithControl<ExperienceState> & {
 export const Experience = memo(function Experience({
   register,
   control,
-  experience
+  experience,
 }: Props) {
   const {
     fields: experienceInfo,
     remove,
     insert,
-    replace
+    replace,
   } = useFieldArray({ control, name: 'rezumator.experienceInfo' });
 
   // TODO: think about another way

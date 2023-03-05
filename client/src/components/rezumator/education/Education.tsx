@@ -9,7 +9,7 @@ import { AddRemoveButtons } from '@/components/rezumator/common/add-remove-butto
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
 import { initialEducation } from '@/context';
 import { EducationState } from '@/types';
-import { EDUCATION_YEARS } from '@/utils/constants/full-date';
+import { EDUCATION_YEARS } from '@/utils/consts/full-date';
 
 import { RezumatorPropsWithControl } from '../types';
 
@@ -24,13 +24,13 @@ type Props = RezumatorPropsWithControl<EducationState> & {
 export const Education = memo(function Education({
   register,
   control,
-  education
+  education,
 }: Props) {
   const {
     fields: educationInfo,
     remove,
     insert,
-    replace
+    replace,
   } = useFieldArray({ control, name: 'rezumator.educationInfo' });
 
   // TODO: think about another way

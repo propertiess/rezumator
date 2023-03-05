@@ -6,7 +6,7 @@ import { Input } from '@/components/common/ui/input';
 import { Select } from '@/components/common/ui/select';
 import { FormSectionLayout } from '@/components/rezumator/common/form-section-layout';
 import { PersonalInfoState } from '@/types';
-import { DAYS, MONTHS, YEARS } from '@/utils/constants/full-date';
+import { DAYS, MONTHS, YEARS } from '@/utils/consts/full-date';
 
 import { RezumatorProps } from '../types';
 
@@ -24,7 +24,7 @@ export const Personal: FC<Props> = ({ register, errors }) => {
           <Input
             error={errors?.city}
             {...register('rezumator.personalInfo.city', {
-              required: true
+              required: true,
             })}
           />
         </Label>
@@ -32,7 +32,7 @@ export const Personal: FC<Props> = ({ register, errors }) => {
           <Input
             error={errors?.citizenShip}
             {...register('rezumator.personalInfo.citizenShip', {
-              required: true
+              required: true,
             })}
           />
         </Label>
@@ -54,7 +54,7 @@ export const Personal: FC<Props> = ({ register, errors }) => {
               options={DAYS}
               error={errors?.birthDay}
               {...register('rezumator.personalInfo.birthDay.day', {
-                required: true
+                required: true,
               })}
             />
             <Select
@@ -62,7 +62,7 @@ export const Personal: FC<Props> = ({ register, errors }) => {
               options={MONTHS}
               error={errors?.birthDay}
               {...register('rezumator.personalInfo.birthDay.month', {
-                required: true
+                required: true,
               })}
             />
             <Select
@@ -71,7 +71,7 @@ export const Personal: FC<Props> = ({ register, errors }) => {
               options={YEARS}
               error={errors?.birthDay}
               {...register('rezumator.personalInfo.birthDay.year', {
-                required: true
+                required: true,
               })}
             />
           </span>

@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { GetServerSideProps } from 'next';
 
 import { Button } from '@/components/common/ui';
 import {
@@ -6,13 +6,20 @@ import {
   Education,
   Experience,
   Optional,
-  Personal
+  Personal,
 } from '@/components/rezumator';
 import { useRezumatorForm } from '@/hooks';
 import { Layout } from '@/layout';
+import { FieldsService } from '@/services/fields';
+import { UserService } from '@/services/user/user.service';
+import { Fields } from '@/types';
+import { AuthEnum } from '@/utils/consts';
 
-const ResumeEditById = () => {
-  const { query } = useRouter();
+type Props = {
+  fields: Fields;
+};
+
+const ResumeEditById = ({ fields }: Props) => {
   const {
     register,
     control,
@@ -20,9 +27,8 @@ const ResumeEditById = () => {
     onSubmit,
     isSubmitting,
     isSubmitSuccessful,
-    fields,
-    setAvatar
-  } = useRezumatorForm(query?.id as string);
+    setAvatar,
+  } = useRezumatorForm(fields._id);
 
   return (
     <Layout title='Составить резюме' description='Составить резюме'>
@@ -71,3 +77,41 @@ const ResumeEditById = () => {
 };
 
 export default ResumeEditById;
+
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const id = ctx.query.id;
+  const token = ctx.req.cookies[AuthEnum.AUTH_TOKEN];
+
+  if (!token) {
+    return {
+      props: {},
+      redirect: {
+        destination: '/access-denied',
+      },
+    };
+  }
+
+  const user = await UserService.getById(token);
+
+  if (user.fields._id !== id) {
+    return {
+      props: {},
+      redirect: {
+        destination: '/access-denied',
+      },
+    };
+  }
+
+  try {
+    const fields = await FieldsService.getById(id! as string);
+    return {
+      props: {
+        fields,
+      },
+    };
+  } catch (e) {
+    return {
+      notFound: true,
+    };
+  }
+};

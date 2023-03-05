@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { savePDF } from '@progress/kendo-react-pdf';
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 
 import { breadcrumbLinks, Breadcrumbs } from '@/components/common/breadcrumbs';
 import { Loader } from '@/components/common/loader';
@@ -9,6 +9,8 @@ import { Resume, ResumeToImage } from '@/components/myresume';
 import { useFields } from '@/context';
 import { useCounter } from '@/hooks';
 import { Layout } from '@/layout';
+import { UserService } from '@/services/user/user.service';
+import { AuthEnum } from '@/utils/consts';
 
 const ResumeView: NextPage = () => {
   const { fields } = useFields();
@@ -20,7 +22,7 @@ const ResumeView: NextPage = () => {
   const downloadPDF = () => {
     resume.current &&
       savePDF(resume.current, {
-        fileName: `Резюме ${fields.aboutInfo.profession} ${fields.aboutInfo.secondName} ${fields.aboutInfo.firstName}`
+        fileName: `Резюме ${fields.aboutInfo.profession} ${fields.aboutInfo.secondName} ${fields.aboutInfo.firstName}`,
       });
   };
 
@@ -59,3 +61,29 @@ const ResumeView: NextPage = () => {
 };
 
 export default ResumeView;
+
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const token = ctx.req.cookies[AuthEnum.AUTH_TOKEN];
+
+  if (!token) {
+    return {
+      props: {},
+    };
+  }
+
+  try {
+    const user = await UserService.getById(token);
+    return {
+      props: {},
+      redirect: {
+        destination: `/resume/view/${user.fields._id}`,
+      },
+    };
+  } catch (e) {
+    console.log(e);
+  }
+
+  return {
+    props: {},
+  };
+};

@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { GetServerSideProps } from 'next';
 
 import { Button } from '@/components/common/ui';
 import {
@@ -6,12 +6,14 @@ import {
   Education,
   Experience,
   Optional,
-  Personal
+  Personal,
 } from '@/components/rezumator';
 import { useRezumatorForm } from '@/hooks';
 import { Layout } from '@/layout';
+import { UserService } from '@/services/user/user.service';
+import { AuthEnum } from '@/utils/consts';
 
-const ResumeEdit: NextPage = () => {
+const ResumeEdit = () => {
   const {
     register,
     control,
@@ -20,11 +22,11 @@ const ResumeEdit: NextPage = () => {
     isSubmitting,
     isSubmitSuccessful,
     fields,
-    setAvatar
+    setAvatar,
   } = useRezumatorForm();
 
   return (
-    <Layout title='Составить резюме' description='Составить резюме'>
+    <Layout title='Составить резюме'>
       <form onSubmit={onSubmit}>
         <About
           register={register}
@@ -70,3 +72,29 @@ const ResumeEdit: NextPage = () => {
 };
 
 export default ResumeEdit;
+
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const token = ctx.req.cookies[AuthEnum.AUTH_TOKEN];
+
+  if (!token) {
+    return {
+      props: {},
+    };
+  }
+
+  try {
+    const user = await UserService.getById(token);
+    return {
+      props: {},
+      redirect: {
+        destination: `/resume/edit/${user.fields._id}`,
+      },
+    };
+  } catch (e) {
+    console.log(e);
+  }
+
+  return {
+    props: {},
+  };
+};

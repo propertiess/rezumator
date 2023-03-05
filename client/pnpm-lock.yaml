@@ -4,10 +4,11 @@ specifiers:
   '@progress/kendo-drawing': ^1.17.2
   '@progress/kendo-licensing': ^1.3.0
   '@progress/kendo-react-pdf': ^5.9.0
-  '@propertiess/eslint-config': ^1.0.2
+  '@propertiess/eslint-config': ^1.0.4
   '@testing-library/jest-dom': ^5.16.5
   '@testing-library/react': ^13.4.0
   '@types/jest': ^29.2.5
+  '@types/js-cookie': ^3.0.3
   '@types/node': 18.8.2
   '@types/react': 18.0.21
   '@types/react-avatar-editor': ^13.0.0
@@ -20,6 +21,7 @@ specifiers:
   html-to-image: ^1.11.4
   jest: ^29.3.1
   jest-environment-jsdom: ^29.3.1
+  js-cookie: ^3.0.1
   next: 13.0.7
   postcss: ^8.4.21
   prettier: ^2.8.3
@@ -28,7 +30,6 @@ specifiers:
   react-dom: 18.2.0
   react-hook-form: ^7.42.0
   react-spinners: ^0.13.7
-  react-use-window-localstorage: ^1.0.17
   tailwindcss: ^3.2.4
   typescript: 4.8.4
 
@@ -40,19 +41,20 @@ dependencies:
   classnames: 2.3.2
   framer-motion: 8.4.3_biqbaboplfbrettd7655fr4n2y
   html-to-image: 1.11.4
+  js-cookie: 3.0.1
   next: 13.0.7_pjwopsidmaokadturxaafygjp4
   react: 18.2.0
   react-avatar-editor: 13.0.0_pjwopsidmaokadturxaafygjp4
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.42.0_react@18.2.0
   react-spinners: 0.13.7_biqbaboplfbrettd7655fr4n2y
-  react-use-window-localstorage: 1.0.17_biqbaboplfbrettd7655fr4n2y
 
 devDependencies:
-  '@propertiess/eslint-config': 1.0.2_gvwvyyz6pbpdons5ebatsgboxq
+  '@propertiess/eslint-config': 1.0.4_gvwvyyz6pbpdons5ebatsgboxq
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@types/jest': 29.2.5
+  '@types/js-cookie': 3.0.3
   '@types/node': 18.8.2
   '@types/react': 18.0.21
   '@types/react-avatar-editor': 13.0.0
@@ -972,8 +974,8 @@ packages:
     resolution: {integrity: sha512-O4A3b1EuE9Xe1pC3Xz9Tcn1M/CYrL71f4y/5TXeytOVTkmkzBgYW97fYP2f+54H0e0erWRaqV/kUUB/a8Uxfbw==}
     dev: false
 
-  /@propertiess/eslint-config/1.0.2_gvwvyyz6pbpdons5ebatsgboxq:
-    resolution: {integrity: sha512-8X1HmDlfYJB6ChDGN9ms+fZxWepGSJpBkER6G9XCWbHOY3HH/pqCgY8fNBNfKCIegJ0E1OltrjxoZrbEdG9Jbg==}
+  /@propertiess/eslint-config/1.0.4_gvwvyyz6pbpdons5ebatsgboxq:
+    resolution: {integrity: sha512-m1/WhqsWgNTZdu5Ej9bg1FGeoHYlR1Sa+DYMxUEsBvZHqRmT0S7BlMRA/y0vZxMigxfC1VjZ0rOl90crOWNXjw==}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': 5.49.0
       '@typescript-eslint/parser': 5.49.0
@@ -1120,6 +1122,10 @@ packages:
     dependencies:
       expect: 29.2.2
       pretty-format: 29.2.1
+    dev: true
+
+  /@types/js-cookie/3.0.3:
+    resolution: {integrity: sha512-Xe7IImK09HP1sv2M/aI+48a20VX+TdRJucfq4vfRVy6nWN8PYPOEnlMRSgxJAgYQIXJVL8dZ4/ilAM7dWNaOww==}
     dev: true
 
   /@types/jsdom/20.0.0:
@@ -3399,6 +3405,11 @@ packages:
       - ts-node
     dev: true
 
+  /js-cookie/3.0.1:
+    resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
+    engines: {node: '>=12'}
+    dev: false
+
   /js-sdsl/4.3.0:
     resolution: {integrity: sha512-mifzlm2+5nZ+lEcLJMoBK0/IH/bDg8XnJfd/Wq6IP+xoCjLZsTOnV2QpxlVbX9bMnkl5PdEjNtBJ9Cj1NjifhQ==}
     dev: true
@@ -4175,16 +4186,6 @@ packages:
     peerDependencies:
       react: ^16.0.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-    dev: false
-
-  /react-use-window-localstorage/1.0.17_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-POZ5co1Y/Zty62CFj3+ysAT3zvm29C9GSAf55tMNI3CVnhc6rj2qJcLosimqO9OAsWR9L5et9X3DKVKEebZf4g==}
-    peerDependencies:
-      react: '>=16'
-      react-dom: '>=16'
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
