@@ -1,16 +1,18 @@
-import { initialFields, useAuth, useFields } from '@/context';
+import { useRouter } from 'next/router';
+
+import { useAuth } from '@/context';
 
 export const useAuthReset = () => {
   const { authToken, setAuthToken } = useAuth();
-  const { setFields } = useFields();
+  const router = useRouter();
 
   const logout = () => {
     setAuthToken('');
-    setFields(initialFields);
+    router.push('/');
   };
 
   return {
     authToken,
-    logout
+    logout,
   };
 };
