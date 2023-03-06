@@ -4,5 +4,6 @@ export const {
   days: DAYS,
   months: MONTHS,
   years: YEARS,
-  educationYears: EDUCATION_YEARS
+  educationYears: EDUCATION_YEARS,
+  dictionaryMonths: DICTIONARY_MONTHS,
 } = getDateStateForSelect();

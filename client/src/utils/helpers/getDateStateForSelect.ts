@@ -8,6 +8,21 @@ const addZeroToStartOrNot = (str: string) => {
   return str;
 };
 
+const dictionaryMonth = [
+  'Январь',
+  'Февраль',
+  'Март',
+  'Апрель',
+  'Май',
+  'Июнь',
+  'Июль',
+  'Август',
+  'Сентябрь',
+  'Октябрь',
+  'Ноябрь',
+  'Декабрь',
+];
+
 export const getDateStateForSelect = () => {
   const date = new Date();
   const currentYear = date.getFullYear();
@@ -38,10 +53,17 @@ export const getDateStateForSelect = () => {
   }
 
   const months: SelectOptions[] = [];
-  for (let i = 1; i <= 12; i++) {
+  const dictionaryMonths: SelectOptions[] = [];
+
+  for (let i = 0; i < 12; i++) {
     months.push({
-      value: addZeroToStartOrNot(i.toString()),
-      label: addZeroToStartOrNot(i.toString()),
+      value: addZeroToStartOrNot((i + 1).toString()),
+      label: addZeroToStartOrNot((i + 1).toString()),
+    });
+
+    dictionaryMonths.push({
+      value: dictionaryMonth[i],
+      label: dictionaryMonth[i],
     });
   }
 
@@ -49,6 +71,7 @@ export const getDateStateForSelect = () => {
     years,
     educationYears,
     months,
+    dictionaryMonths,
     days,
   };
 };

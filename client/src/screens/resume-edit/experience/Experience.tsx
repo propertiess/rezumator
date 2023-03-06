@@ -11,7 +11,7 @@ import { ResumeEditFormEnum } from '@/hooks';
 import { AddRemoveButtons } from '@/screens/resume-edit/common/add-remove-buttons';
 import { FormSectionLayout } from '@/screens/resume-edit/common/form-section-layout';
 import { ExperienceState } from '@/types';
-import { MONTHS, YEARS } from '@/utils/consts/full-date';
+import { DICTIONARY_MONTHS, YEARS } from '@/utils/consts/full-date';
 
 import { RezumatorPropsWithControl } from '../types';
 
@@ -61,7 +61,7 @@ export const Experience = memo(function Experience({
                 <Select
                   className='basis-full'
                   placeholder='Месяц'
-                  options={MONTHS}
+                  options={DICTIONARY_MONTHS}
                   {...register(
                     `${ResumeEditFormEnum.RESUME_EDIT}.experienceInfo.${index}.startJob.month`
                   )}
@@ -90,7 +90,7 @@ export const Experience = memo(function Experience({
                 <Select
                   className='basis-full'
                   placeholder='Месяц'
-                  options={MONTHS}
+                  options={DICTIONARY_MONTHS}
                   {...register(
                     `${ResumeEditFormEnum.RESUME_EDIT}.experienceInfo.${index}.endJob.month`
                   )}
