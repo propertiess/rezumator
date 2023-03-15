@@ -1,7 +1,6 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { AxiosError } from 'axios';
-import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 import { AuthFields } from '@/components/auth-fields';
@@ -16,8 +15,8 @@ type SubmitEvent = Event & {
   submitter: HTMLButtonElement;
 };
 
-const Authorization: NextPage = () => {
-  const pickAuthType = useRef<'login' | 'signup' | null>(null);
+const Authorization = () => {
+  const [type, setType] = useState<'login' | 'signup'>('login');
   const [error, setError] = useState('');
   const { register, errors, handleSubmit, isSubmitting } = useAuthForm();
 
@@ -49,10 +48,7 @@ const Authorization: NextPage = () => {
       setAuthToken(user._id);
       push(`/resume/edit/${user.fields._id}`);
     } catch (e) {
-      setError(
-        (e as AxiosError<{ message: string }>).response?.data?.message ??
-          'error'
-      );
+      e instanceof AxiosError && setError(e.response?.data?.message ?? 'error');
     }
   };
 
@@ -65,32 +61,36 @@ const Authorization: NextPage = () => {
             e.preventDefault();
 
             if ((e.nativeEvent as SubmitEvent).submitter.name === 'login') {
-              pickAuthType.current = 'login';
               handleSubmit(login)(e);
             } else {
-              pickAuthType.current = 'signup';
               handleSubmit(signUp)(e);
             }
           }}
         >
           <AuthFields register={register} errors={errors} />
           {error && <span className='text-red-500'>{error}</span>}
-          <div className='ml-auto flex flex-wrap gap-3'>
+          <div className='ml-auto flex items-center flex-wrap gap-3'>
+            {
+              <span
+                className='cursor-pointer'
+                onClick={
+                  type === 'login'
+                    ? () => setType('signup')
+                    : () => setType('login')
+                }
+              >
+                {type === 'login'
+                  ? 'Нет аккаунта? Зарегистрироваться'
+                  : 'Есть аккаунт? Войти'}
+              </span>
+            }
             <Button
-              name='login'
-              loader={isSubmitting && pickAuthType.current === 'login'}
+              name={type}
+              loader={isSubmitting}
               type='submit'
               className='w-full sm:w-auto'
             >
-              Войти
-            </Button>
-            <Button
-              name='signup'
-              loader={isSubmitting && pickAuthType.current === 'signup'}
-              type='submit'
-              className='w-full sm:w-auto'
-            >
-              Зарегистрироваться
+              {type === 'login' ? 'Войти' : 'Зарегистрироваться'}
             </Button>
           </div>
         </form>
