@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 
-import { useAuth } from '@/context';
+import { useAuthStore } from '@/store/auth/Auth';
 
 export const useAuthReset = () => {
-  const { authToken, setAuthToken } = useAuth();
+  const { authToken, setAuthToken } = useAuthStore();
   const router = useRouter();
 
   const logout = () => {

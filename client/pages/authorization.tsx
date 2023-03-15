@@ -6,10 +6,11 @@ import { useRouter } from 'next/router';
 
 import { AuthFields } from '@/components/auth-fields';
 import { Button } from '@/components/ui';
-import { useAuth, useFields } from '@/context';
+import { useFields } from '@/context';
 import { useAuthForm } from '@/hooks';
 import { Layout } from '@/layout';
 import { AuthService, SimpleUser } from '@/services/auth';
+import { useAuthStore } from '@/store/auth/Auth';
 
 type SubmitEvent = Event & {
   submitter: HTMLButtonElement;
@@ -20,7 +21,7 @@ const Authorization: NextPage = () => {
   const [error, setError] = useState('');
   const { register, errors, handleSubmit, isSubmitting } = useAuthForm();
 
-  const { setAuthToken } = useAuth();
+  const { setAuthToken } = useAuthStore();
   const { fields } = useFields();
 
   const { push } = useRouter();

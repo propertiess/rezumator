@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 
-import { useAuth, useFields } from '@/context';
+import { useFields } from '@/context';
 import { getFullFields } from '@/screens/resume-view/utils/getFullFields';
 import { FieldsService } from '@/services/fields';
+import { useAuthStore } from '@/store/auth/Auth';
 import { Fields } from '@/types';
 
 export type RezumatorFormValue = {
@@ -18,7 +19,7 @@ export const ResumeEditFormEnum: Record<string, keyof RezumatorFormValue> = {
 export const useResumeEditForm = (serverFields?: Fields) => {
   const { fields, setFields, setAvatar } = useFields();
   const avatar = fields?.aboutInfo?.avatar;
-  const { authToken } = useAuth();
+  const { authToken } = useAuthStore();
 
   const { push } = useRouter();
 
