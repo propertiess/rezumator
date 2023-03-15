@@ -3,9 +3,9 @@ import {
   FieldError,
   FieldErrorsImpl,
   FieldValues,
-  Merge
+  Merge,
 } from 'react-hook-form';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import styles from './Select.module.css';
 
@@ -24,8 +24,8 @@ const Select: FC<Props> = forwardRef<HTMLSelectElement, Props>(function Select(
   { className, error, options, placeholder, ...rest },
   ref
 ) {
-  const style = classNames(className, styles.wrapper, {
-    [styles.error]: error
+  const style = clsx(className, styles.wrapper, {
+    [styles.error]: error,
   });
 
   return (

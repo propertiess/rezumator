@@ -1,12 +1,18 @@
 export type LinkData = { href: string; title: string };
 
-export const links: LinkData[] = [
+export const notAuthorizedLinks: LinkData[] = [
   {
     href: '/resume/edit',
-    title: 'Составить резюме'
+    title: 'Составить резюме',
   },
   {
     href: '/about',
-    title: 'О сервисе'
-  }
+    title: 'О сервисе',
+  },
+  {
+    href: '/authorization',
+    title: 'Войти',
+  },
 ];
+
+export const authorizedLinks: LinkData[] = notAuthorizedLinks.slice(0, 2);

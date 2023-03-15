@@ -1,41 +1,41 @@
-import { FC, HTMLAttributes, MouseEvent, useRef } from 'react';
-import classNames from 'classnames';
+import { MouseEvent, useRef } from 'react';
+import clsx from 'clsx';
 import Image from 'next/image';
 
 import { AVAILABLE_COLOR } from '@/utils/color';
 
 import styles from './Advantage.module.css';
 
-export interface Advantage {
+export type Advantage = {
   src: string;
   title: string;
   desc: string;
   color: AVAILABLE_COLOR | '';
-}
+};
 
-interface Props extends HTMLAttributes<unknown> {
+type Props = {
   item: Advantage;
   isUseMouseMove?: boolean;
-}
+};
 
-const AdvantageItem: FC<Props> = ({
+export const AdvantageItem = ({
   item: { desc, src, title, color },
-  isUseMouseMove
-}) => {
+  isUseMouseMove,
+}: Props) => {
   const itemRef = useRef<HTMLLIElement>(null);
 
-  const itemStyles = classNames(styles.item, {
-    [styles.primary_container]: color === AVAILABLE_COLOR.primary
+  const itemStyles = clsx(styles.item, {
+    [styles.primary_container]: color === AVAILABLE_COLOR.primary,
   });
 
-  const imgStyles = classNames(styles.img, {
+  const imgStyles = clsx(styles.img, {
     [styles.primary_img]: color === '',
-    [styles.lime]: color !== ''
+    [styles.lime]: color !== '',
   });
 
-  const descStyles = classNames({
+  const descStyles = clsx({
     [styles.desc]: color !== AVAILABLE_COLOR.primary,
-    'text-white': color === ''
+    'text-white': color === '',
   });
 
   const onMouseMove = (e: MouseEvent<HTMLLIElement>) => {
@@ -64,5 +64,3 @@ const AdvantageItem: FC<Props> = ({
     </li>
   );
 };
-
-export { AdvantageItem };

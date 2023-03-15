@@ -1,6 +1,6 @@
 import { Fragment, memo, useEffect } from 'react';
 import { useFieldArray } from 'react-hook-form';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import { Label } from '@/components/label';
 import { Input } from '@/components/ui/input';
@@ -55,7 +55,7 @@ export const Education = memo(function Education({
               )}
             />
           </Label>
-          <div className={classNames(styles.col, styles.big_col)}>
+          <div className={clsx(styles.col, styles.big_col)}>
             <Label label='Факультет:'>
               <Input
                 {...register(
@@ -74,7 +74,7 @@ export const Education = memo(function Education({
               />
             </Label>
           </div>
-          <div className={classNames(styles.col, styles.middle_col)}>
+          <div className={clsx(styles.col, styles.middle_col)}>
             <Label label='Специальность:'>
               <Input
                 {...register(

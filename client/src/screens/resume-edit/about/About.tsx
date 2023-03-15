@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import { Label } from '@/components/label';
 import { LabelForCheckbox } from '@/components/label-for-checkbox';
@@ -25,7 +25,7 @@ type Props = RezumatorProps<AboutInfoState> & {
 export const About: FC<Props> = ({ register, errors, avatar, setAvatar }) => {
   return (
     <FormSectionLayout title='Обо мне'>
-      <div className={classNames(styles.col, styles.big_col)}>
+      <div className={clsx(styles.col, styles.big_col)}>
         <Label label='Фамилия:'>
           <Input
             error={errors?.secondName}
@@ -128,7 +128,7 @@ export const About: FC<Props> = ({ register, errors, avatar, setAvatar }) => {
           </span>
         </Label>
       </div>
-      <div className={classNames(styles.col, styles.middle_col)}>
+      <div className={clsx(styles.col, styles.middle_col)}>
         <Label label='Фото:'>
           <AvatarPicker src={avatar} onImageChange={src => setAvatar(src)} />
         </Label>

@@ -1,5 +1,5 @@
 import { FC, Fragment, HTMLAttributes, PropsWithChildren } from 'react';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -18,7 +18,7 @@ const Breadcrumbs: FC<PropsWithChildren<Props>> = ({ links, ...props }) => {
           <Link
             key={link.title}
             href={link.href}
-            className={classNames('hover:underline', {
+            className={clsx('hover:underline', {
               'pointer-events-none text-white': asPath === link.href,
             })}
           >

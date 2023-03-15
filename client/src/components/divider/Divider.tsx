@@ -1,13 +1,15 @@
-import { FC } from 'react';
-import classNames from 'classnames';
-
-import styles from './Divider.module.css';
+import clsx from 'clsx';
 
 type Props = {
   className?: string;
 };
 
-export const Divider: FC<Props> = ({ className, ...rest }) => {
-  const style = classNames(styles.wrapper, className);
-  return <div className={style} data-testid='Divider' {...rest}></div>;
+export const Divider = ({ className, ...rest }: Props) => {
+  return (
+    <div
+      className={clsx('my-5 h-1 rounded', className)}
+      data-testid='divider'
+      {...rest}
+    />
+  );
 };

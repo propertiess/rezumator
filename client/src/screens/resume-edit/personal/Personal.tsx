@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import { Label } from '@/components/label';
 import { Input } from '@/components/ui/input';
@@ -20,7 +20,7 @@ type Props = RezumatorProps<PersonalInfoState>;
 export const Personal: FC<Props> = ({ register, errors }) => {
   return (
     <FormSectionLayout title='Личная информация'>
-      <div className={classNames(styles.col, styles.big_col)}>
+      <div className={clsx(styles.col, styles.big_col)}>
         <Label label='Город:'>
           <Input
             error={errors?.city}
@@ -44,7 +44,7 @@ export const Personal: FC<Props> = ({ register, errors }) => {
           />
         </Label>
       </div>
-      <div className={classNames(styles.col, styles.middle_col)}>
+      <div className={clsx(styles.col, styles.middle_col)}>
         <Label label='Переезд:'>
           <Select
             className='flex-grow'

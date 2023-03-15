@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import { LoaderInButton } from '@/components/loader-in-button/LoaderInButton';
 import { AVAILABLE_COLOR } from '@/utils/color';
@@ -20,7 +20,7 @@ export const Button: FC<PropsWithChildren<Props>> = ({
   loader = false,
   ...rest
 }) => {
-  const btnStyles = classNames(styles.wrapper, className, {
+  const btnStyles = clsx(styles.wrapper, className, {
     [styles[color]]: color,
   });
 

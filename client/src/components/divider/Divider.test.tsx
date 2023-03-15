@@ -7,6 +7,6 @@ const setup = () => render(<Divider />);
 describe('Divider', () => {
   it('renders', () => {
     setup();
-    expect(screen.getByTestId('Divider')).toBeInTheDocument();
+    expect(screen.getByTestId('divider')).toBeInTheDocument();
   });
 });

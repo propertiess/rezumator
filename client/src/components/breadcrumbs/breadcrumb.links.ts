@@ -1,6 +1,6 @@
-import { LinkData, links } from '@/screens/home/navbar/links.data';
+import { LinkData, notAuthorizedLinks } from '@/screens/home/navbar/links.data';
 
 export const breadcrumbLinks: LinkData[] = [
-  links[0],
+  notAuthorizedLinks[0],
   { title: 'Резюме', href: '/resume-view' },
 ];

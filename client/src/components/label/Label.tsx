@@ -1,24 +1,23 @@
-import { FC, HTMLAttributes, PropsWithChildren } from 'react';
-import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
+import clsx from 'clsx';
 
 import styles from './Label.module.css';
 
-interface Props extends HTMLAttributes<unknown> {
+type Props = PropsWithChildren & {
   label: string;
   labelClassName?: string;
-}
+  className?: string;
+};
 
-export const Label: FC<PropsWithChildren<Props>> = ({
+export const Label = ({
   label,
   className,
   labelClassName,
-  children
-}) => {
-  const style = classNames(styles.wrapper, className);
-  const labelStyle = classNames(labelClassName, styles.label);
+  children,
+}: Props) => {
   return (
-    <div className={style}>
-      <label className={labelStyle}>{label}</label>
+    <div className={clsx(styles.wrapper, className)}>
+      <label className={clsx(labelClassName, styles.label)}>{label}</label>
       {children}
     </div>
   );

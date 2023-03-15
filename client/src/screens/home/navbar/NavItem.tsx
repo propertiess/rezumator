@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -12,12 +12,12 @@ interface Props {
 
 const NavItem: FC<Props> = ({ href, title }) => {
   const { asPath } = useRouter();
-  const linkStyles = classnames(styles.link, {
-    [styles.active]: href === asPath
+  const linkStyles = clsx(styles.link, {
+    [styles.active]: href === asPath,
   });
 
   return (
-    <li className='li_padding'>
+    <li>
       <Link className={linkStyles} href={href}>
         {title}
       </Link>

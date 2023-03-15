@@ -1,6 +1,6 @@
-import { FC, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { AnimatePresence, AnimationProps, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
@@ -10,15 +10,15 @@ import { defaultModalAnimation } from './default.animation';
 
 import styles from './Modal.module.css';
 
-interface Props {
+type Props = PropsWithChildren & {
   trigger: boolean;
   className?: string;
   contentAnimation?: AnimationProps;
   modalAnimation?: AnimationProps;
   close: () => void;
-}
+};
 
-export const Modal: FC<PropsWithChildren<Props>> = ({
+export const Modal = ({
   children,
   trigger,
   close,
@@ -26,10 +26,10 @@ export const Modal: FC<PropsWithChildren<Props>> = ({
   contentAnimation,
 
   modalAnimation = defaultModalAnimation,
-}) => {
+}: Props) => {
   const ref = useClickOutside(close, trigger);
 
-  const backdrop = classNames(styles.backdrop, className);
+  const backdrop = clsx(styles.backdrop, className);
 
   return createPortal(
     <>

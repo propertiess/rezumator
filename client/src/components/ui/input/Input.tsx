@@ -1,26 +1,26 @@
-import { FC, forwardRef, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import {
   FieldError,
   FieldErrorsImpl,
   FieldValues,
-  Merge
+  Merge,
 } from 'react-hook-form';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import styles from './Input.module.css';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+type Props = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<FieldValues>>;
-}
+};
 
-const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(function Input(
+export const Input = forwardRef<HTMLInputElement, Props>(function Input(
   { className, error, type, ...rest },
   ref
 ) {
-  const style = classNames(className, {
+  const style = clsx(className, {
     [styles.wrapper]: type !== 'checkbox',
-    [styles.error]: error
+    [styles.error]: error,
   });
 
   if (type === 'file') {
@@ -34,5 +34,3 @@ const Input: FC<Props> = forwardRef<HTMLInputElement, Props>(function Input(
 
   return <input className={style} ref={ref} type={type} {...rest} />;
 });
-
-export { Input };

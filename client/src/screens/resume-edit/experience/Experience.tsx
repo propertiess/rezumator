@@ -1,6 +1,6 @@
 import { Fragment, memo, useEffect } from 'react';
 import { useFieldArray } from 'react-hook-form';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import { Label } from '@/components/label';
 import { Input } from '@/components/ui/input';
@@ -47,7 +47,7 @@ export const Experience = memo(function Experience({
     <FormSectionLayout title='Опыт работы'>
       {experienceInfo.map((experience, index) => (
         <Fragment key={experience.id}>
-          <div className={classNames(styles.col, styles.big_col)}>
+          <div className={clsx(styles.col, styles.big_col)}>
             <Label label='Организация:'>
               <Input
                 {...register(
@@ -77,7 +77,7 @@ export const Experience = memo(function Experience({
               </span>
             </Label>
           </div>
-          <div className={classNames(styles.col, styles.middle_col)}>
+          <div className={clsx(styles.col, styles.middle_col)}>
             <Label label='Должность:' className='order-2 lg:order-none'>
               <Input
                 {...register(

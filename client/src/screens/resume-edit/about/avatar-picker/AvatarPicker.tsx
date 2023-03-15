@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
-import { useOpenSwitcher } from '@/hooks/useOpenSwitcher';
+import { useDisclosure } from '@/hooks/useDisclosure';
 
 import { FileInput } from '../file-input';
 
@@ -16,11 +16,11 @@ interface Props {
 }
 
 export const AvatarPicker: FC<Props> = ({ src, onImageChange }) => {
-  const { setClose, isOpen, setOpen } = useOpenSwitcher();
+  const [isOpen, { close, open }] = useDisclosure(false);
 
   const resetImage = () => {
     onImageChange('');
-    setClose();
+    close();
   };
 
   return (
@@ -34,7 +34,7 @@ export const AvatarPicker: FC<Props> = ({ src, onImageChange }) => {
         <FileInput
           accept='.png,.jpeg,.jpg'
           onImageChange={onImageChange}
-          openModalCrop={setOpen}
+          openModalCrop={open}
         />
       ) : (
         <span className={styles.btn}>
@@ -44,7 +44,7 @@ export const AvatarPicker: FC<Props> = ({ src, onImageChange }) => {
       <AvatarCropModal
         open={isOpen}
         reset={resetImage}
-        close={setClose}
+        close={close}
         src={src}
         onImageChange={onImageChange}
       />

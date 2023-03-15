@@ -1,6 +1,6 @@
 import { ChangeEventHandler, FC, InputHTMLAttributes, useRef } from 'react';
 import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 import { Button } from '@/components/ui/button';
 
@@ -22,7 +22,7 @@ const FileInput: FC<Props> = ({
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const style = classNames(className, {
+  const style = clsx(className, {
     [styles.error]: error,
   });
 

@@ -1,22 +1,21 @@
-import { FC, HTMLAttributes } from 'react';
-import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
+import clsx from 'clsx';
 
-import styles from './LabelForCheckbox.module.css';
 
-interface Props extends HTMLAttributes<unknown> {
+type Props = PropsWithChildren & {
   label: string;
   spanClassName?: string;
-}
+  className?: string;
+};
 
-export const LabelForCheckbox: FC<Props> = ({
+export const LabelForCheckbox = ({
   label,
   className,
   spanClassName,
-  children
-}) => {
-  const style = classNames(styles.wrapper, className);
+  children,
+}: Props) => {
   return (
-    <label className={style}>
+    <label className={clsx('flex flex-wrap items-center gap-3', className)}>
       <span className={spanClassName}>{label}</span>
       {children}
     </label>

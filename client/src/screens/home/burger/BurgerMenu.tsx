@@ -1,22 +1,19 @@
-import { FC } from 'react';
+import { ReactNode } from 'react';
 
 import { fadeInOutFromRight } from '@/animation';
 import { ModalNoSSR } from '@/components/modal';
-import { useAuthReset } from '@/screens/home/hooks/useAuthReset';
 
-import { links } from '../navbar/links.data';
+import { LinkData } from '../navbar/links.data';
 import { NavItem } from '../navbar/NavItem';
 
-import styles from './Burger.module.css';
-
-interface Props {
+type Props = {
   open: boolean;
+  links: LinkData[];
+  logOutNode?: ReactNode;
   close: () => void;
-}
+};
 
-const BurgerMenu: FC<Props> = ({ open, close }) => {
-  const { authToken, logout } = useAuthReset();
-
+export const BurgerMenu = ({ open, links, close, logOutNode }: Props) => {
   return (
     <ModalNoSSR
       className='bg-[var(--main-color)]'
@@ -24,27 +21,12 @@ const BurgerMenu: FC<Props> = ({ open, close }) => {
       trigger={open}
       close={close}
     >
-      <ul className={styles.list}>
+      <ul className='p-3 text-center text-3xl'>
         {links.map(link => (
           <NavItem key={link.href} {...link} />
         ))}
-        {!authToken ? (
-          <NavItem href='/authorization' title='Авторизация' />
-        ) : (
-          <li className='li_padding cursor-pointer'>
-            <span
-              onClick={() => {
-                logout();
-                close();
-              }}
-            >
-              Выйти
-            </span>
-          </li>
-        )}
+        {logOutNode && <li className='cursor-pointer'>{logOutNode}</li>}
       </ul>
     </ModalNoSSR>
   );
 };
-
-export { BurgerMenu };

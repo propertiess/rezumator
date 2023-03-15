@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import classNames from 'classnames';
+import clsx from 'clsx';
 
 type Props = {
   data: string;
@@ -14,7 +14,7 @@ const DescriptionList: FC<Props> = ({ data }) => {
         }
 
         return (
-          <li key={line} className={classNames({ 'mt-2': idx === 0 })}>
+          <li key={line} className={clsx({ 'mt-2': idx === 0 })}>
             {line}
           </li>
         );
