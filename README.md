@@ -3,8 +3,9 @@
 ## Stack
 
 ```
-NextJS, NestJS, Typescript, React Context, Module CSS, Tailwind
+NextJS, NestJS, Typescript, Mobx, React Context, Module CSS, Tailwind
 ```
+
 ## Install
 
 ```
@@ -20,5 +21,3 @@ pnpm start
 ## Home page
 
 <img src='./readme/home-page.png' alt="home page" />
-
-
