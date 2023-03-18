@@ -4,18 +4,13 @@ import clsx from 'clsx';
 
 type Props = HTMLAttributes<unknown> & {
   className?: string;
+  size?: number;
 };
 
-export const Loader = ({ className, ...rest }: Props) => {
+export const Loader = ({ className, size = 18, ...rest }: Props) => {
   return (
-    <div
-      className={clsx(
-        'absolute top-0 z-10 left-0 w-full h-full flex justify-center items-center',
-        className
-      )}
-      {...rest}
-    >
-      <ClipLoader size={30} color='white' />
+    <div className={clsx('flex items-center', className)} {...rest}>
+      <ClipLoader size={size} color='white' />
     </div>
   );
 };

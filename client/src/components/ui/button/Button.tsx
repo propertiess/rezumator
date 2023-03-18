@@ -1,32 +1,33 @@
-import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import clsx from 'clsx';
 
-import { LoaderInButton } from '@/components/loader-in-button/LoaderInButton';
+import { Loader } from '@/components/loader';
 import { AVAILABLE_COLOR } from '@/utils/color';
 
 import styles from './Button.module.css';
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   color?: AVAILABLE_COLOR;
   className?: string;
   loader?: boolean;
-}
+};
 
-export const Button: FC<PropsWithChildren<Props>> = ({
+export const Button = ({
   color = AVAILABLE_COLOR.primary,
   className,
   children,
   type = 'button',
   loader = false,
   ...rest
-}) => {
+}: Props) => {
   const btnStyles = clsx(styles.wrapper, className, {
     [styles[color]]: color,
   });
 
   return (
     <button className={btnStyles} type={type} {...rest}>
-      <LoaderInButton condition={loader} text={children} />
+      {loader && <Loader className='mr-1' />}
+      {children}
     </button>
   );
 };
