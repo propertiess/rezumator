@@ -26,8 +26,14 @@ export const Button = ({
 
   return (
     <button className={btnStyles} type={type} {...rest}>
-      {loader && <Loader className='mr-1' />}
-      {children}
+      {loader ? (
+        <span className='flex items-center justify-center gap-2'>
+          {loader && <Loader />}
+          {children}
+        </span>
+      ) : (
+        children
+      )}
     </button>
   );
 };
