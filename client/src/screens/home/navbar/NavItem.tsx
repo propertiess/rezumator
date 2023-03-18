@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -10,7 +9,7 @@ interface Props {
   title: string;
 }
 
-const NavItem: FC<Props> = ({ href, title }) => {
+export const NavItem = ({ href, title }: Props) => {
   const { asPath } = useRouter();
   const linkStyles = clsx(styles.link, {
     [styles.active]: href === asPath,
@@ -24,5 +23,3 @@ const NavItem: FC<Props> = ({ href, title }) => {
     </li>
   );
 };
-
-export { NavItem };

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { UseFieldArrayRemove } from 'react-hook-form';
 import clsx from 'clsx';
 
@@ -12,7 +11,7 @@ type Props = {
   remove: UseFieldArrayRemove;
 };
 
-export const AddRemoveButtons: FC<Props> = ({ length, insert, remove }) => {
+export const AddRemoveButtons = ({ length, insert, remove }: Props) => {
   const style = clsx(styles.wrapper, {
     'mt-5': length,
   });

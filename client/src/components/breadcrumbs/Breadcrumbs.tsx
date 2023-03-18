@@ -1,15 +1,16 @@
-import { FC, Fragment, HTMLAttributes, PropsWithChildren } from 'react';
+import { Fragment, HTMLAttributes, PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { LinkData } from '@/screens/home/navbar/links.data';
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  links: LinkData[];
-};
+type Props = HTMLAttributes<HTMLDivElement> &
+  PropsWithChildren & {
+    links: LinkData[];
+  };
 
-const Breadcrumbs: FC<PropsWithChildren<Props>> = ({ links, ...props }) => {
+export const Breadcrumbs = ({ links, ...props }: Props) => {
   const { asPath } = useRouter();
   return (
     <div className='text-sm leading-5 text-gray-600 sm:text-2xl' {...props}>
@@ -30,5 +31,3 @@ const Breadcrumbs: FC<PropsWithChildren<Props>> = ({ links, ...props }) => {
     </div>
   );
 };
-
-export { Breadcrumbs };

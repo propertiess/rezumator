@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import clsx from 'clsx';
 
 import { Label } from '@/components/label';
@@ -22,7 +21,7 @@ type Props = RezumatorProps<AboutInfoState> & {
   setAvatar: (src: string) => void;
 };
 
-export const About: FC<Props> = ({ register, errors, avatar, setAvatar }) => {
+export const About = ({ register, errors, avatar, setAvatar }: Props) => {
   return (
     <FormSectionLayout title='Обо мне'>
       <div className={clsx(styles.col, styles.big_col)}>

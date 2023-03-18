@@ -12,14 +12,14 @@ import Image from 'next/image';
 
 import { ResumeProps } from '@/types';
 
-interface Props extends ResumeProps {
+type Props = ResumeProps & {
   trigger: number;
   condition: boolean;
   action: () => void;
   Component: ForwardRefExoticComponent<
     ResumeProps & RefAttributes<HTMLDivElement>
   >;
-}
+};
 
 export const ResumeToImage = forwardRef<HTMLDivElement, Props>(
   function ResumeToImage(

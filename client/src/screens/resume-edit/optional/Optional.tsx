@@ -1,4 +1,4 @@
-import { FC, Fragment, useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useFieldArray } from 'react-hook-form';
 
 import { Label } from '@/components/label';
@@ -16,7 +16,7 @@ type Props = RezumatorPropsWithControl<OptionalState> & {
   driveLicense: DriveLicense[];
 };
 
-export const Optional: FC<Props> = ({ register, control, driveLicense }) => {
+export const Optional = ({ register, control, driveLicense }: Props) => {
   const { fields: driveLicenses, replace } = useFieldArray({
     control,
     name: `${ResumeEditFormEnum.RESUME_EDIT}.optionalInfo.driveLicenses`,

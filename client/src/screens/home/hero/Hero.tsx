@@ -1,4 +1,3 @@
-import { FC, HTMLAttributes } from 'react';
 import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
@@ -7,11 +6,9 @@ import { AdvantageList } from '../advantage-list';
 
 import styles from './Hero.module.css';
 
-type Props = HTMLAttributes<unknown>;
-
-export const Hero: FC<Props> = ({ ...rest }) => {
+export const Hero = () => {
   return (
-    <section className={styles.wrapper} {...rest}>
+    <section className={styles.wrapper}>
       <h1>
         Онлайн <span className={styles.dark}>конструктор</span>
         <span className={styles.lime}>.</span>

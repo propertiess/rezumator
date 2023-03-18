@@ -1,11 +1,10 @@
-import { FC } from 'react';
 import clsx from 'clsx';
 
 type Props = {
   data: string;
 };
 
-const DescriptionList: FC<Props> = ({ data }) => {
+export const DescriptionList = ({ data }: Props) => {
   return (
     <>
       {data.split('\n').map((line, idx) => {
@@ -22,5 +21,3 @@ const DescriptionList: FC<Props> = ({ data }) => {
     </>
   );
 };
-
-export { DescriptionList };

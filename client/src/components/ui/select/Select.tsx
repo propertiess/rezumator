@@ -1,4 +1,4 @@
-import { FC, forwardRef, SelectHTMLAttributes } from 'react';
+import { forwardRef, SelectHTMLAttributes } from 'react';
 import {
   FieldError,
   FieldErrorsImpl,
@@ -9,18 +9,19 @@ import clsx from 'clsx';
 
 import styles from './Select.module.css';
 
-export interface SelectOptions {
+export type SelectOptions = {
   label: string;
   value: string;
-}
-interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
+};
+
+type Props = SelectHTMLAttributes<HTMLSelectElement> & {
   className?: string;
   options?: SelectOptions[];
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<FieldValues>>;
   placeholder?: string;
-}
+};
 
-const Select: FC<Props> = forwardRef<HTMLSelectElement, Props>(function Select(
+export const Select = forwardRef<HTMLSelectElement, Props>(function Select(
   { className, error, options, placeholder, ...rest },
   ref
 ) {
@@ -43,5 +44,3 @@ const Select: FC<Props> = forwardRef<HTMLSelectElement, Props>(function Select(
     </select>
   );
 });
-
-export { Select };

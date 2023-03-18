@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { useLayoutWidth } from '@/hooks/useLayoutWidth';
 
 import { AdvantageItem } from './AdvantageItem';
@@ -7,7 +5,7 @@ import { advantages } from './advantages.data';
 
 import styles from './Advantage.module.css';
 
-export const AdvantageList: FC = () => {
+export const AdvantageList = () => {
   const width = useLayoutWidth();
   const isUseMouseMove = Boolean(width && width >= 1020);
 

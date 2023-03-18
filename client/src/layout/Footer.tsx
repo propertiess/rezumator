@@ -1,13 +1,12 @@
-import { FC } from 'react';
 import Image from 'next/image';
 
 import GitHubIcon from '@/screens/home/assets/GithubIcon.svg';
 
 import styles from './Footer.module.css';
 
-const Footer: FC = ({ ...rest }) => {
+export const Footer = () => {
   return (
-    <footer className={styles.footer} {...rest}>
+    <footer className={styles.footer}>
       <div className={styles.footer_wrapper}>
         <div className='container mx-auto'>
           <div className={styles.wrapper}>
@@ -29,5 +28,3 @@ const Footer: FC = ({ ...rest }) => {
     </footer>
   );
 };
-
-export { Footer };

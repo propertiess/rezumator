@@ -24,7 +24,6 @@ export const Modal = ({
   close,
   className,
   contentAnimation,
-
   modalAnimation = defaultModalAnimation,
 }: Props) => {
   const ref = useClickOutside(close, trigger);

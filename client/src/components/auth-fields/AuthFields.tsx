@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { FieldErrorsImpl, UseFormRegister } from 'react-hook-form';
 
 import { Input } from '@/components/ui/input';
@@ -9,7 +8,7 @@ type Props = {
   errors: Partial<FieldErrorsImpl<SimpleUser>>;
 };
 
-const AuthFields: FC<Props> = ({ register, errors }) => {
+export const AuthFields = ({ register, errors }: Props) => {
   return (
     <div className='flex w-full flex-col gap-3'>
       <Input
@@ -34,5 +33,3 @@ const AuthFields: FC<Props> = ({ register, errors }) => {
     </div>
   );
 };
-
-export { AuthFields };

@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes, useRef, useState } from 'react';
+import { HTMLAttributes, useRef, useState } from 'react';
 import AvatarEditor from 'react-avatar-editor';
 import { AnimationProps } from 'framer-motion';
 
@@ -7,13 +7,13 @@ import { Button } from '@/components/ui';
 
 import styles from './AvatarCropModal.module.css';
 
-interface Props extends HTMLAttributes<unknown> {
+type Props = HTMLAttributes<unknown> & {
   src?: string;
   open: boolean;
   reset: () => void;
   close: () => void;
   onImageChange: (src: string) => void;
-}
+};
 
 const contentAnimation: AnimationProps = {
   initial: {
@@ -33,13 +33,13 @@ const contentAnimation: AnimationProps = {
   },
 };
 
-const AvatarCropModal: FC<Props> = ({
+export const AvatarCropModal = ({
   src,
   open,
   reset,
   close,
   onImageChange,
-}) => {
+}: Props) => {
   const [scale, setScale] = useState(1);
   const editorRef = useRef<AvatarEditor>(null);
 
@@ -82,5 +82,3 @@ const AvatarCropModal: FC<Props> = ({
     </ModalNoSSR>
   );
 };
-
-export { AvatarCropModal };

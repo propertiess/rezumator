@@ -1,12 +1,12 @@
-import { FC, HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 
 import styles from './FormSectionLayout.module.css';
 
-interface Props extends HTMLAttributes<unknown> {
+type Props = HTMLAttributes<unknown> & {
   title: string;
-}
+};
 
-const FormSectionLayout: FC<Props> = ({ title, children, ...rest }) => {
+export const FormSectionLayout = ({ title, children, ...rest }: Props) => {
   return (
     <>
       <h4 className={styles.title}>{title}</h4>
@@ -16,5 +16,3 @@ const FormSectionLayout: FC<Props> = ({ title, children, ...rest }) => {
     </>
   );
 };
-
-export { FormSectionLayout };

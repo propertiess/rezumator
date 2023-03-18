@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import clsx from 'clsx';
 
 import { Label } from '@/components/label';
@@ -17,7 +16,7 @@ import styles from '../common/Repeat.module.css';
 
 type Props = RezumatorProps<PersonalInfoState>;
 
-export const Personal: FC<Props> = ({ register, errors }) => {
+export const Personal = ({ register, errors }: Props) => {
   return (
     <FormSectionLayout title='Личная информация'>
       <div className={clsx(styles.col, styles.big_col)}>

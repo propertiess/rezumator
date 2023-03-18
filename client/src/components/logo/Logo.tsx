@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -6,7 +5,7 @@ import LogoAvatar from '../../../public/logo.svg';
 
 import styles from './Logo.module.css';
 
-export const Logo: FC = () => {
+export const Logo = () => {
   return (
     <Link className={styles.wrapper} href='/'>
       <span className='relative block h-[30px] w-[30px]'>

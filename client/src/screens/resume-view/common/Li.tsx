@@ -1,13 +1,11 @@
-import { FC } from 'react';
-
-interface Props {
+type Props = {
   title: string;
   content: string | boolean;
-}
+};
 
 const styles = 'grid grid-cols-2 items-center gap-5 mt-2';
 
-const Li: FC<Props> = ({ title, content }) => {
+export const Li = ({ title, content }: Props) => {
   if (!content) {
     return null;
   }
@@ -34,5 +32,3 @@ const Li: FC<Props> = ({ title, content }) => {
     </li>
   );
 };
-
-export { Li };

@@ -1,19 +1,15 @@
-import { FC, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import Head from 'next/head';
 
 import { Footer } from '@/layout/Footer';
 import { Header } from '@/layout/Header';
 
-interface Props {
+type Props = PropsWithChildren & {
   title: string;
   description?: string;
-}
+};
 
-const Layout: FC<PropsWithChildren<Props>> = ({
-  title,
-  description,
-  children
-}) => {
+export const Layout = ({ title, description, children }: Props) => {
   return (
     <>
       <Head>
@@ -32,5 +28,3 @@ const Layout: FC<PropsWithChildren<Props>> = ({
     </>
   );
 };
-
-export { Layout };
