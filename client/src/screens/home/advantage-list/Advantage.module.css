@@ -25,7 +25,7 @@
 
 .item:after {
   content: '';
-  @apply absolute h-[150px] w-[110px] bg-[var(--primary-bg-color)] opacity-0 blur-2xl;
+  @apply absolute h-[150px] w-[110px] bg-primary opacity-0 blur-2xl;
 }
 
 .item .text {
@@ -45,11 +45,11 @@
 }
 
 .primary_container {
-  @apply md:bg-[var(--secondary-bg-color)];
+  @apply md:bg-secondary;
 }
 
 .primary_img {
-  @apply bg-[var(--secondary-bg-color)];
+  @apply bg-secondary;
 }
 
 .item .img {

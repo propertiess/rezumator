@@ -38,7 +38,7 @@ body,
 }
 
 body {
-  @apply bg-[var(--main-color)] text-white;
+  @apply bg-main text-white;
 }
 
 #__next {

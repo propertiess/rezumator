@@ -3,7 +3,7 @@
 }
 
 .footer_wrapper {
-  @apply mt-10 bg-[var(--secondary-bg-color)];
+  @apply mt-10 bg-secondary;
 }
 
 .wrapper {
@@ -16,7 +16,7 @@
 
 .content a {
   @apply border border-transparent
-  focus:border-[var(--primary-bg-color)];
+  focus:border-primary;
 }
 
 .text {

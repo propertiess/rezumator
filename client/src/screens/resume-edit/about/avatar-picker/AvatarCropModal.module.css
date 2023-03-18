@@ -7,7 +7,7 @@
   flex-col
   gap-5
   overflow-hidden
-  rounded-lg bg-[var(--secondary-bg-color)] p-5 sm:min-w-[400px] md:min-w-[768px];
+  rounded-lg bg-secondary p-5 sm:min-w-[400px] md:min-w-[768px];
 }
 
 .content div:first-child {

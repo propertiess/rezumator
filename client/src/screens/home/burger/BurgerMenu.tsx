@@ -16,7 +16,7 @@ type Props = {
 export const BurgerMenu = ({ open, links, close, logOutNode }: Props) => {
   return (
     <ModalNoSSR
-      className='bg-[var(--main-color)]'
+      className='bg-main'
       modalAnimation={fadeInOutFromRight}
       trigger={open}
       close={close}

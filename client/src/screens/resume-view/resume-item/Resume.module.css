@@ -1,7 +1,7 @@
 .content {
-  @apply w-[700px] max-w-[1000px] bg-[var(--main-color)] p-2 sm:p-10 mx-auto;
+  @apply w-[700px] max-w-[1000px] bg-main p-2 sm:p-10 mx-auto;
 }
 
 .divider {
-  @apply bg-[var(--primary-bg-color)] opacity-50;
+  @apply bg-primary opacity-50;
 }

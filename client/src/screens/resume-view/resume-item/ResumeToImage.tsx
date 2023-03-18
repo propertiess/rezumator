@@ -44,7 +44,7 @@ export const ResumeToImage = forwardRef<HTMLDivElement, Props>(
 
     return (
       <div className='relative mx-auto flex w-full justify-center overflow-hidden'>
-        <div className='absolute top-0 left-0 h-full w-full bg-[var(--main-color)]'></div>
+        <div className='absolute top-0 left-0 h-full w-full bg-main'></div>
         {condition && (
           <div className='relative'>
             <Image className='image' src={image} alt='resume' fill />

@@ -1,8 +1,8 @@
 .wrapper {
   @apply min-h-[130px] basis-full rounded-lg border border-white border-opacity-20 
-  bg-[var(--main-color)] placeholder:text-opacity-80 hover:border-[var(--primary-bg-color)]
-   focus:border-[var(--primary-bg-color)] focus:border-opacity-40 focus:shadow
-   focus:shadow-[var(--primary-bg-color)] focus:outline-0;
+  bg-main placeholder:text-opacity-80 hover:border-primary
+   focus:border-primary focus:border-opacity-40 focus:shadow
+   focus:shadow-primary focus:outline-0;
   transition: border 0.4s ease, box-shadow 0.4s ease;
   padding: 0.375rem 0.75rem;
 }

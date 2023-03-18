@@ -4,18 +4,18 @@
 }
 
 .primary {
-  @apply bg-[var(--primary-bg-color)]
-  hover:shadow hover:shadow-[var(--primary-bg-color)]
+  @apply bg-primary
+  hover:shadow hover:shadow-primary
   focus:border focus:border-white
-  focus:shadow focus:shadow-[var(--secondary-bg-color)];
+  focus:shadow focus:shadow-secondary;
 }
 
 .secondary {
-  @apply bg-[var(--secondary-bg-color)]
-  hover:shadow hover:shadow-[var(--secondary-bg-color)]
+  @apply bg-secondary
+  hover:shadow hover:shadow-secondary
   focus:border focus:border-white
-  focus:border-[var(--primary-bg-color)]
-  focus:shadow focus:shadow-[var(--secondary-bg-color)];
+  focus:border-primary
+  focus:shadow focus:shadow-secondary;
 }
 
 .primary,
