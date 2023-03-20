@@ -53,12 +53,6 @@ main {
   @apply container mx-auto px-5 sm:px-2;
 }
 
-.image {
-  object-fit: contain;
-  position: relative !important;
-  height: unset !important;
-}
-
 li,
 a {
   @apply focus:outline-0;
