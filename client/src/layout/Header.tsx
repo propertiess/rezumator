@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { Logo } from '@/components/logo';
@@ -17,9 +16,9 @@ export const Header = observer(() => {
   const { isUser, logout } = useAuthReset();
   const [showBurgerMenu, { close, open }] = useDisclosure(false);
 
-  const links = useMemo(() => {
+  const getLinks = () => {
     return isUser ? authorizedLinks : notAuthorizedLinks;
-  }, [isUser]);
+  };
 
   return (
     <header>
@@ -27,7 +26,7 @@ export const Header = observer(() => {
         <div className='flex items-center justify-between py-5'>
           <Logo />
           <Navbar
-            links={links}
+            links={getLinks()}
             logOutNode={
               isUser ? (
                 <Button color={AVAILABLE_COLOR.secondary} onClick={logout}>
@@ -39,7 +38,7 @@ export const Header = observer(() => {
           <BurgerMenu
             open={showBurgerMenu}
             close={close}
-            links={links}
+            links={getLinks()}
             logOutNode={
               isUser ? (
                 <span
